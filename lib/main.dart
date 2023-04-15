@@ -1,4 +1,5 @@
 import 'package:d4_utils/src/pages/home_page.dart';
+import 'package:d4_utils/src/pages/skill_calculator_barbarian_page.dart';
 import 'package:d4_utils/src/pages/skill_calculator_page.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,10 @@ class D4Utils extends StatelessWidget {
           case SkillCalculatorPage.route:
             return MaterialPageRoute(
               builder: (context) => const SkillCalculatorPage(),
+            );
+          case SkillCalculatorBarbarianPage.route:
+            return MaterialPageRoute(
+              builder: (context) => const SkillCalculatorBarbarianPage(),
             );
           default:
             assert(false, 'case ${settings.name} missing');

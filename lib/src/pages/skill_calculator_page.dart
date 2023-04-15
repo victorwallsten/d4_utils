@@ -1,4 +1,5 @@
 import 'package:d4_utils/src/pages/home_page.dart';
+import 'package:d4_utils/src/pages/skill_calculator_barbarian_page.dart';
 import 'package:flutter/material.dart';
 
 class SkillCalculatorPage extends StatelessWidget {
@@ -13,7 +14,19 @@ class SkillCalculatorPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(title),
       ),
-      body: const Placeholder(),
+      body: ListView(
+        children: [
+          ListTile(
+            leading: const Icon(Icons.bar_chart_rounded),
+            title: const Text(SkillCalculatorBarbarianPage.title),
+            trailing: IconButton(
+              icon: const Icon(Icons.arrow_forward),
+              onPressed: () => Navigator.pushNamed(
+                  context, SkillCalculatorBarbarianPage.route),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
