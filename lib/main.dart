@@ -1,20 +1,32 @@
+import 'package:d4_utils/src/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const D4Utils());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class D4Utils extends StatelessWidget {
+  const D4Utils({super.key});
+
+  static const String title = 'D4 Utils';
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: title,
+      initialRoute: HomePage.route,
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case HomePage.route:
+            return MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            );
+          default:
+            assert(false, 'case ${settings.name} missing');
+            return null;
+        }
+      },
     );
   }
 }
