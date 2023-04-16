@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:d4_utils/src/pages/home_page.dart';
 import 'package:d4_utils/src/pages/skill_calculator_barbarian_page.dart';
 import 'package:d4_utils/src/pages/skill_calculator_page.dart';
@@ -12,11 +14,19 @@ class D4Utils extends StatelessWidget {
 
   static const String title = 'D4 Utils';
 
+  ThemeData get _themeData => ThemeData.from(
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Color(Random().nextInt(0xFFFFFFFF))))
+      .copyWith(
+          expansionTileTheme: const ExpansionTileThemeData(
+              shape: Border(), childrenPadding: EdgeInsets.only(left: 20)));
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: title,
+      theme: _themeData,
       initialRoute: HomePage.route,
       onGenerateRoute: (settings) {
         switch (settings.name) {

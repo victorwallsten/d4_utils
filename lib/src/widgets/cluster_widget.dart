@@ -37,8 +37,8 @@ class _ClusterWidgetState extends State<ClusterWidget> {
 
   @override
   Widget build(BuildContext context) => ExpansionTile(
-        shape: const Border(),
-        childrenPadding: const EdgeInsets.only(left: 20),
+        shape: Theme.of(context).expansionTileTheme.shape,
+        childrenPadding: Theme.of(context).expansionTileTheme.childrenPadding,
         title: Text(
           '${EnumUtils.enumToNameWithSpaces(_clusterTree.element.fst)}'
           ' (${_clusterTree.element.snd})',
