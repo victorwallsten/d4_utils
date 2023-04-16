@@ -52,8 +52,8 @@ class _CharacterClassWidgetState extends State<CharacterClassWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Enum characterClass = _characterClassTree.element.key;
-    int level = _characterClassTree.element.value;
+    Enum characterClass = _characterClassTree.element.fst;
+    int level = _characterClassTree.element.snd;
     return ListView(
       children: <Widget>[
             ListTile(
@@ -69,11 +69,11 @@ class _CharacterClassWidgetState extends State<CharacterClassWidget> {
                     callback: (delta) {
                       if (level + delta >= 0) {
                         setState(() {
-                          _characterClassTree.element.value += delta;
+                          _characterClassTree.element.snd += delta;
                         });
                       }
                     },
-                    isUnlocked: _isUnlocked(child.element.key, level),
+                    isUnlocked: _isUnlocked(child.element.fst, level),
                   ))
               .toList(growable: false),
     );

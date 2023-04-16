@@ -1,6 +1,6 @@
 class Pair<K, V> {
-  Pair(this.key, this.value);
+  Pair(this.fst, this.snd);
 
-  K key;
-  V value;
+  K fst;
+  V snd;
 }
