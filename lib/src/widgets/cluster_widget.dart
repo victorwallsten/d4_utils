@@ -9,13 +9,17 @@ class ClusterWidget extends StatefulWidget {
   const ClusterWidget({
     super.key,
     required this.clusterTree,
-    this.callback,
-    this.isUnlocked = true,
+    required this.isIncrementable,
+    required this.isDecrementable,
+    required this.incrementCallback,
+    required this.decrementCallback,
   });
 
   final Tree<Pair<Enum, int>> clusterTree;
-  final Function(int delta)? callback;
-  final bool isUnlocked;
+  final bool isIncrementable;
+  final bool isDecrementable;
+  final VoidCallback incrementCallback;
+  final VoidCallback decrementCallback;
 
   @override
   State<ClusterWidget> createState() => _ClusterWidgetState();
@@ -33,8 +37,8 @@ class _ClusterWidgetState extends State<ClusterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Enum cluster = _clusterTree.element.key;
-    int level = _clusterTree.element.value;
+    Enum cluster = _clusterTree.element.fst;
+    int level = _clusterTree.element.snd;
     return ExpansionTile(
       shape: const Border(),
       childrenPadding: const EdgeInsets.only(left: 20),
@@ -45,15 +49,16 @@ class _ClusterWidgetState extends State<ClusterWidget> {
       children: _clusterTree.children
           .map((child) => SkillTreeWidget(
                 skillTree: child,
-                callback: (delta) {
-                  if (level + delta >= 0) {
-                    setState(() {
-                      _clusterTree.element.value += delta;
-                    });
-                    widget.callback?.call(delta);
-                  }
+                isIncrementable: widget.isIncrementable,
+                isDecrementable: widget.isDecrementable,
+                incrementCallback: () {
+                  setState(() => _clusterTree.element.snd++);
+                  widget.incrementCallback();
                 },
-                isUnlocked: widget.isUnlocked,
+                decrementCallback: () {
+                  setState(() => _clusterTree.element.snd--);
+                  widget.decrementCallback();
+                },
               ))
           .toList(growable: false),
     );

@@ -28,54 +28,73 @@ class _CharacterClassWidgetState extends State<CharacterClassWidget> {
     super.initState();
   }
 
-  bool _isUnlocked(Enum cluster, int level) {
+  int _thresholdOf(Enum cluster) {
     switch (cluster) {
       case BarbarianCluster.Basic:
-        return true;
+        return 0;
       case BarbarianCluster.Core:
-        return level >= 2;
+        return 2;
       case BarbarianCluster.Defensive:
-        return level >= 6;
+        return 6;
       case BarbarianCluster.Brawling:
-        return level >= 11;
+        return 11;
       case BarbarianCluster.WeaponMastery:
-        return level >= 16;
+        return 16;
       case BarbarianCluster.Ultimate:
-        return level >= 23;
+        return 23;
       case BarbarianCluster.KeyPassive:
-        return level >= 33;
+        return 33;
       default:
         assert(false, 'case for $cluster missing');
-        return false;
+        return 0;
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    Enum characterClass = _characterClassTree.element.fst;
-    int level = _characterClassTree.element.snd;
-    return ListView(
-      children: <Widget>[
-            ListTile(
-              title: Text(
-                '${EnumUtils.enumToNameWithSpaces(characterClass)}'
-                ' total: $level',
-              ),
-            ),
-          ] +
-          _characterClassTree.children
-              .map((child) => ClusterWidget(
-                    clusterTree: child,
-                    callback: (delta) {
-                      if (level + delta >= 0) {
-                        setState(() {
-                          _characterClassTree.element.snd += delta;
-                        });
-                      }
-                    },
-                    isUnlocked: _isUnlocked(child.element.fst, level),
-                  ))
-              .toList(growable: false),
-    );
+  bool _isDecrementable(
+      Pair<Enum, int> cluster, Iterable<Pair<Enum, int>> clusters) {
+    int runningSum = 0;
+    if (cluster.snd == 0 || clusters.isEmpty) {
+      return false;
+    }
+    Iterable<Pair<Enum, int>> clustersWithPoints =
+        clusters.where((element) => element.snd > 0);
+    runningSum = clustersWithPoints
+        .takeWhile((value) => value.fst.index <= cluster.fst.index)
+        .fold(0, (b, a) => b + a.snd);
+    for (Pair<Enum, int> c in clustersWithPoints
+        .skipWhile((value) => value.fst.index <= cluster.fst.index)) {
+      if (runningSum <= _thresholdOf(c.fst)) {
+        return false;
+      }
+      runningSum += c.snd;
+    }
+    return true;
   }
+
+  @override
+  Widget build(BuildContext context) => ListView(
+        children: <Widget>[
+              ListTile(
+                title: Text(
+                  '${EnumUtils.enumToNameWithSpaces(_characterClassTree.element.fst)}'
+                  ' total: ${_characterClassTree.element.snd}',
+                ),
+              ),
+            ] +
+            _characterClassTree.children
+                .map((child) => ClusterWidget(
+                      clusterTree: child,
+                      isIncrementable: _characterClassTree.element.snd >=
+                          _thresholdOf(child.element.fst),
+                      isDecrementable: _isDecrementable(
+                        child.element,
+                        _characterClassTree.children.map((c) => c.element),
+                      ),
+                      incrementCallback: () =>
+                          setState(() => _characterClassTree.element.snd++),
+                      decrementCallback: () =>
+                          setState(() => _characterClassTree.element.snd--),
+                    ))
+                .toList(growable: false),
+      );
 }

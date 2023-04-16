@@ -9,13 +9,17 @@ class SkillTreeWidget extends StatefulWidget {
   const SkillTreeWidget({
     super.key,
     required this.skillTree,
-    this.callback,
-    this.isUnlocked = true,
+    required this.isIncrementable,
+    required this.isDecrementable,
+    required this.incrementCallback,
+    required this.decrementCallback,
   });
 
   final Tree<Pair<Enum, int>> skillTree;
-  final Function(int delta)? callback;
-  final bool isUnlocked;
+  final bool isIncrementable;
+  final bool isDecrementable;
+  final VoidCallback incrementCallback;
+  final VoidCallback decrementCallback;
 
   @override
   State<SkillTreeWidget> createState() => _SkillTreeWidgetState();
@@ -32,48 +36,42 @@ class _SkillTreeWidgetState extends State<SkillTreeWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    Enum e = _skillTree.element.key;
-    int level = _skillTree.element.value;
-    return ExpansionTile(
-      shape: const Border(),
-      childrenPadding: const EdgeInsets.only(left: 20),
-      title: Text(EnumUtils.enumToNameWithSpaces(e)),
-      trailing: SkillWidget(
-        e,
-        level: level,
-        onMinusPressed: () {
-          if (widget.isUnlocked && level > 0) {
-            if (level == 1 &&
-                _skillTree.children.fold(
-                        0, (b, a) => b + a.fold(0, (d, c) => d + c.value)) >
-                    0) {
-              return;
+  Widget build(BuildContext context) => ExpansionTile(
+        shape: const Border(),
+        childrenPadding: const EdgeInsets.only(left: 20),
+        title: Text(EnumUtils.enumToNameWithSpaces(_skillTree.element.fst)),
+        trailing: SkillWidget(
+          _skillTree.element.fst,
+          level: _skillTree.element.snd,
+          onMinusPressed: () {
+            if (widget.isDecrementable &&
+                (_skillTree.element.snd > 1 ||
+                    _skillTree.element.snd == 1 &&
+                        _skillTree.children.fold(0,
+                                (b, a) => b + a.fold(0, (d, c) => d + c.snd)) ==
+                            0)) {
+              setState(() => _skillTree.element.snd--);
+              widget.decrementCallback();
             }
-            setState(() {
-              _skillTree.element.value--;
-            });
-            widget.callback?.call(-1);
-          }
-        },
-        onPlusPressed: () {
-          if (widget.isUnlocked) {
-            setState(() {
-              _skillTree.element.value++;
-            });
-            widget.callback?.call(1);
-          }
-        },
-      ),
-      children: _skillTree.children
-          .map(
-            (child) => SkillTreeWidget(
-              skillTree: child,
-              callback: widget.callback,
-              isUnlocked: level > 0,
-            ),
-          )
-          .toList(growable: false),
-    );
-  }
+          },
+          onPlusPressed: () {
+            if (widget.isIncrementable) {
+              setState(() => _skillTree.element.snd++);
+              widget.incrementCallback();
+            }
+          },
+        ),
+        children: _skillTree.children
+            .map(
+              (child) => SkillTreeWidget(
+                skillTree: child,
+                isIncrementable:
+                    widget.isIncrementable && _skillTree.element.snd > 0,
+                isDecrementable: widget.isDecrementable,
+                incrementCallback: widget.incrementCallback,
+                decrementCallback: widget.decrementCallback,
+              ),
+            )
+            .toList(growable: false),
+      );
 }
