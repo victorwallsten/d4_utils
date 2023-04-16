@@ -36,31 +36,27 @@ class _ClusterWidgetState extends State<ClusterWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    Enum cluster = _clusterTree.element.fst;
-    int level = _clusterTree.element.snd;
-    return ExpansionTile(
-      shape: const Border(),
-      childrenPadding: const EdgeInsets.only(left: 20),
-      title: Text(
-        '${EnumUtils.enumToNameWithSpaces(cluster)}'
-        ' ($level)',
-      ),
-      children: _clusterTree.children
-          .map((child) => SkillTreeWidget(
-                skillTree: child,
-                isIncrementable: widget.isIncrementable,
-                isDecrementable: widget.isDecrementable,
-                incrementCallback: () {
-                  setState(() => _clusterTree.element.snd++);
-                  widget.incrementCallback();
-                },
-                decrementCallback: () {
-                  setState(() => _clusterTree.element.snd--);
-                  widget.decrementCallback();
-                },
-              ))
-          .toList(growable: false),
-    );
-  }
+  Widget build(BuildContext context) => ExpansionTile(
+        shape: const Border(),
+        childrenPadding: const EdgeInsets.only(left: 20),
+        title: Text(
+          '${EnumUtils.enumToNameWithSpaces(_clusterTree.element.fst)}'
+          ' (${_clusterTree.element.snd})',
+        ),
+        children: _clusterTree.children
+            .map((child) => SkillTreeWidget(
+                  skillTree: child,
+                  isIncrementable: widget.isIncrementable,
+                  isDecrementable: widget.isDecrementable,
+                  incrementCallback: () {
+                    setState(() => _clusterTree.element.snd++);
+                    widget.incrementCallback();
+                  },
+                  decrementCallback: () {
+                    setState(() => _clusterTree.element.snd--);
+                    widget.decrementCallback();
+                  },
+                ))
+            .toList(growable: false),
+      );
 }
