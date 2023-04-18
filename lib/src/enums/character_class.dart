@@ -5,5 +5,5 @@ enum CharacterClass {
   Druid,
   Necromancer,
   Rogue,
-  Sorceress,
+  Sorcerer,
 }
