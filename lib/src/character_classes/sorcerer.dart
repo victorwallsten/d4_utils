@@ -458,4 +458,102 @@ abstract class Sorcerer {
 
   static Tree<Pair<Enum, int>> get combustion =>
       _tree(SorcererSkill.Combustion, _childless);
+
+  static Tree<Pair<Enum, int>> get basic => _tree(
+        SorcererCluster.Basic,
+        [
+          spark,
+          frostBolt,
+          fireBolt,
+          arcLash,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get core => _tree(
+        SorcererCluster.Core,
+        [
+          chainLightning,
+          chargedBolts,
+          fireball,
+          frozenOrb,
+          incinerate,
+          iceShards,
+          devastation,
+          potentWarding,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get defensive => _tree(
+        SorcererCluster.Defensive,
+        [
+          flameShield,
+          iceArmor,
+          teleport,
+          frostNova,
+          elementalAttunement,
+          glassCannon,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get conjuration => _tree(
+        SorcererCluster.Conjuration,
+        [
+          hydra,
+          iceBlades,
+          lightningSpear,
+          alignTheElements,
+          precisionMagic,
+          conjurationMastery,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get mastery => _tree(
+        SorcererCluster.Mastery,
+        [
+          blizzard,
+          firewall,
+          meteor,
+          ballLightning,
+          icyVeil,
+          innerFlames,
+          staticDischarge,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get ultimate => _tree(
+        SorcererCluster.Ultimate,
+        [
+          deepFreeze,
+          inferno,
+          unstableCurrents,
+          permafrost,
+          fierySurge,
+          coursingCurrents,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get keyPassive => _tree(
+        SorcererCluster.KeyPassive,
+        [
+          avalanche,
+          shatter,
+          overflowingEnergy,
+          vyrsMastery,
+          esusFerocity,
+          combustion,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get sorcerer => _tree(
+        CharacterClass.Sorcerer,
+        [
+          basic,
+          core,
+          defensive,
+          conjuration,
+          mastery,
+          ultimate,
+          keyPassive,
+        ],
+      );
 }
