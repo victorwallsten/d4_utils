@@ -425,4 +425,102 @@ abstract class Rogue {
 
   static Tree<Pair<Enum, int>> get exposure =>
       _tree(RogueSkill.Exposure, _childless);
+
+  static Tree<Pair<Enum, int>> get basic => _tree(
+        RogueCluster.Basic,
+        [
+          bladeShift,
+          forcefulArrow,
+          heartseeker,
+          invigoratingStrike,
+          puncture,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get core => _tree(
+        RogueCluster.Core,
+        [
+          barrage,
+          flurry,
+          penetratingShot,
+          rapidFire,
+          twistingBlades,
+          sturdy,
+          stutterStep,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get agility => _tree(
+        RogueCluster.Agility,
+        [
+          caltrops,
+          dash,
+          shadowStep,
+          concussive,
+          rugged,
+          weaponMastery,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get subterfuge => _tree(
+        RogueCluster.Subterfuge,
+        [
+          concealment,
+          darkShroud,
+          poisonTrap,
+          smokeGrenade,
+          exploit,
+          agile,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get imbuement => _tree(
+        RogueCluster.Imbuement,
+        [
+          coldImbuement,
+          poisonImbuement,
+          shadowImbuement,
+          deadlyVenom,
+          shadowCrash,
+          frigidFinesse,
+          precisionImbuement,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get ultimate => _tree(
+        RogueCluster.Ultimate,
+        [
+          deathTrap,
+          rainOfArrows,
+          shadowClone,
+          innervation,
+          adrenalineRush,
+          trapMastery,
+          aftermath,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get keyPassive => _tree(
+        RogueCluster.KeyPassive,
+        [
+          momentum,
+          closeQuartersCombat,
+          precision,
+          victimize,
+          exposure,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get rogue => _tree(
+        CharacterClass.Rogue,
+        [
+          basic,
+          core,
+          agility,
+          subterfuge,
+          imbuement,
+          ultimate,
+          keyPassive,
+        ],
+      );
 }
