@@ -15,7 +15,7 @@ class SkillCalculatorNecromancerPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(title),
       ),
-      body: const Placeholder(),
+      body: CharacterClassWidget(characterClassTree: Necromancer.necromancer),
     );
   }
 }

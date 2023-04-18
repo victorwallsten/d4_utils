@@ -15,7 +15,7 @@ class SkillCalculatorRoguePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(title),
       ),
-      body: const Placeholder(),
+      body: CharacterClassWidget(characterClassTree: Rogue.rogue),
     );
   }
 }
