@@ -476,4 +476,103 @@ abstract class Druid {
 
   static Tree<Pair<Enum, int>> get ursineStrength =>
       _tree(DruidSkill.UrsineStrength, _childless);
+
+  static Tree<Pair<Enum, int>> get basic => _tree(
+        DruidCluster.Basic,
+        [
+          maul,
+          claw,
+          stormStrike,
+          windShear,
+          earthSpike,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get core => _tree(
+        DruidCluster.Core,
+        [
+          lightningStorm,
+          tornado,
+          pulverize,
+          shred,
+          landSlide,
+          heartOfTheWild,
+          predatoryInstinct,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get defensive => _tree(
+        DruidCluster.Defensive,
+        [
+          earthenBulwark,
+          cycloneArmor,
+          bloodHowl,
+          debilitatingRoar,
+          ancestralFortitude,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get companion => _tree(
+        DruidCluster.Companion,
+        [
+          wolves,
+          ravens,
+          vineCreeper,
+          naturesReach,
+          callOfTheWild,
+          clarity,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get wrath => _tree(
+        DruidCluster.Wrath,
+        [
+          boulder,
+          trample,
+          hurricane,
+          rabies,
+          crushingEarth,
+          neurotoxin,
+          mending,
+          elementalExposure,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get ultimate => _tree(
+        DruidCluster.Ultimate,
+        [
+          grizzlyRage,
+          petrify,
+          lacerate,
+          cataclysm,
+          quickShift,
+          defensivePosture,
+          defiance,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get keyPassive => _tree(
+        DruidCluster.KeyPassive,
+        [
+          naturesFury,
+          earthenMight,
+          lupineFerocity,
+          bestialRampage,
+          perfectStorm,
+          ursineStrength,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get druid => _tree(
+        CharacterClass.Druid,
+        [
+          basic,
+          core,
+          defensive,
+          companion,
+          wrath,
+          ultimate,
+          keyPassive,
+        ],
+      );
 }
