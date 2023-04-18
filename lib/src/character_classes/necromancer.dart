@@ -397,4 +397,99 @@ abstract class Necromancer {
 
   static Tree<Pair<Enum, int>> get kalansEdict =>
       _tree(NecromancerSkill.KalansEdict, _childless);
+
+  static Tree<Pair<Enum, int>> get basic => _tree(
+        NecromancerCluster.Basic,
+        [
+          boneSplinters,
+          decompose,
+          hemorrhage,
+          reap,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get core => _tree(
+        NecromancerCluster.Core,
+        [
+          blight,
+          bloodLance,
+          bloodSurge,
+          boneSpear,
+          sever,
+          unlivingEnergy,
+          hewedFlesh,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get firstCorpseAndMacabre => _tree(
+        NecromancerCluster.FirstCorpseAndMacabre,
+        [
+          bloodMist,
+          bonePrison,
+          corpseExplosion,
+          grimHarvest,
+          spikedArmor,
+          skeletalWarriorMastery,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get curse => _tree(
+        NecromancerCluster.Curse,
+        [
+          decrepify,
+          ironMaiden,
+          deathsEmbrace,
+          deathsReach,
+          amplifyDamage,
+          skeletalMageMastery,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get secondCorpseAndMacabre => _tree(
+        NecromancerCluster.SecondCorpseAndMacabre,
+        [
+          boneSpirit,
+          corpseTendrils,
+          gruesomeMending,
+          serration,
+          reapersPursuit,
+          necroticCarapace,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get ultimate => _tree(
+        NecromancerCluster.Ultimate,
+        [
+          armyOfTheDead,
+          bloodWave,
+          boneStorm,
+          standAlone,
+          inspiringLeader,
+          bondedInEssence,
+          golemMastery,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get keyPassive => _tree(
+        NecromancerCluster.KeyPassive,
+        [
+          ossifiedEssence,
+          rathmasVigor,
+          shadowblight,
+          kalansEdict,
+        ],
+      );
+
+  static Tree<Pair<Enum, int>> get necromancer => _tree(
+        CharacterClass.Necromancer,
+        [
+          basic,
+          core,
+          firstCorpseAndMacabre,
+          curse,
+          secondCorpseAndMacabre,
+          ultimate,
+          keyPassive,
+        ],
+      );
 }
