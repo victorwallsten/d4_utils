@@ -1,4 +1,4 @@
-import 'package:d4_utils/src/data_structures/pair.dart';
+import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/barbarian_cluster.dart';
 import 'package:d4_utils/src/enums/character_class.dart';
@@ -16,15 +16,15 @@ class CharacterClassWidget extends StatefulWidget {
     required this.characterClassTree,
   });
 
-  final Tree<Pair<Enum, int>> characterClassTree;
+  final Tree<Skill> characterClassTree;
 
   @override
   State<CharacterClassWidget> createState() => _CharacterClassWidgetState();
 }
 
 class _CharacterClassWidgetState extends State<CharacterClassWidget> {
-  Tree<Pair<Enum, int>> _characterClassTree =
-      Tree(element: Pair(CharacterClass.Barbarian, 0));
+  Tree<Skill> _characterClassTree =
+      Tree(element: Skill(CharacterClass.Barbarian));
 
   @override
   void initState() {
@@ -82,23 +82,22 @@ class _CharacterClassWidgetState extends State<CharacterClassWidget> {
     }
   }
 
-  bool _isDecrementable(
-      Pair<Enum, int> cluster, Iterable<Pair<Enum, int>> clusters) {
+  bool _isDecrementable(Skill cluster, Iterable<Skill> clusters) {
     int runningSum = 0;
-    if (cluster.snd == 0 || clusters.isEmpty) {
+    if (cluster.assignedSkillPoints == 0 || clusters.isEmpty) {
       return false;
     }
-    Iterable<Pair<Enum, int>> clustersWithPoints =
-        clusters.where((element) => element.snd > 0);
+    Iterable<Skill> clustersWithPoints =
+        clusters.where((element) => element.assignedSkillPoints > 0);
     runningSum = clustersWithPoints
-        .takeWhile((value) => value.fst.index <= cluster.fst.index)
-        .fold(0, (b, a) => b + a.snd);
-    for (Pair<Enum, int> c in clustersWithPoints
-        .skipWhile((value) => value.fst.index <= cluster.fst.index)) {
-      if (runningSum <= _thresholdOf(c.fst)) {
+        .takeWhile((value) => value.e.index <= cluster.e.index)
+        .fold(0, (b, a) => b + a.assignedSkillPoints);
+    for (Skill c in clustersWithPoints
+        .skipWhile((value) => value.e.index <= cluster.e.index)) {
+      if (runningSum <= _thresholdOf(c.e)) {
         return false;
       }
-      runningSum += c.snd;
+      runningSum += c.assignedSkillPoints;
     }
     return true;
   }
@@ -108,24 +107,25 @@ class _CharacterClassWidgetState extends State<CharacterClassWidget> {
         children: <Widget>[
               ListTile(
                 title: Text(
-                  '${EnumUtils.enumToNameWithSpaces(_characterClassTree.element.fst)}'
-                  ' total: ${_characterClassTree.element.snd}',
+                  '${EnumUtils.enumToNameWithSpaces(_characterClassTree.element.e)}'
+                  ' total: ${_characterClassTree.element.assignedSkillPoints}',
                 ),
               ),
             ] +
             _characterClassTree.children
                 .map((child) => ClusterWidget(
                       clusterTree: child,
-                      isIncrementable: _characterClassTree.element.snd >=
-                          _thresholdOf(child.element.fst),
+                      isIncrementable:
+                          _characterClassTree.element.assignedSkillPoints >=
+                              _thresholdOf(child.element.e),
                       isDecrementable: _isDecrementable(
                         child.element,
                         _characterClassTree.children.map((c) => c.element),
                       ),
-                      incrementCallback: () =>
-                          setState(() => _characterClassTree.element.snd++),
-                      decrementCallback: () =>
-                          setState(() => _characterClassTree.element.snd--),
+                      incrementCallback: () => setState(() =>
+                          _characterClassTree.element.assignedSkillPoints++),
+                      decrementCallback: () => setState(() =>
+                          _characterClassTree.element.assignedSkillPoints--),
                     ))
                 .toList(growable: false),
       );

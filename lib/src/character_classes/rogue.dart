@@ -1,432 +1,431 @@
-import 'package:d4_utils/src/data_structures/pair.dart';
+import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/rogue_cluster.dart';
 import 'package:d4_utils/src/enums/rogue_skill.dart';
 import 'package:d4_utils/src/enums/character_class.dart';
 
 abstract class Rogue {
-  static Tree<Pair<Enum, int>> _tree(
-          Enum e, List<Tree<Pair<Enum, int>>> children) =>
-      Tree(element: Pair(e, 0), children: children);
+  static Tree<Skill> _skillTree(Enum e, List<Tree<Skill>> children) =>
+      Tree(element: Skill(e), children: children);
 
-  static List<Tree<Pair<Enum, int>>> get _childless => const [];
+  static List<Tree<Skill>> get _childless => const [];
 
   /* Basic */
-  static Tree<Pair<Enum, int>> get bladeShift => _tree(
+  static Tree<Skill> get bladeShift => _skillTree(
         RogueSkill.BladeShift,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedBladeShift,
             [
-              _tree(RogueSkill.FundamentalBladeShift, _childless),
-              _tree(RogueSkill.PrimaryBladeShift, _childless),
+              _skillTree(RogueSkill.FundamentalBladeShift, _childless),
+              _skillTree(RogueSkill.PrimaryBladeShift, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get forcefulArrow => _tree(
+  static Tree<Skill> get forcefulArrow => _skillTree(
         RogueSkill.ForcefulArrow,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedForcefulArrow,
             [
-              _tree(RogueSkill.FundamentalForcefulArrow, _childless),
-              _tree(RogueSkill.PrimaryForcefulArrow, _childless),
+              _skillTree(RogueSkill.FundamentalForcefulArrow, _childless),
+              _skillTree(RogueSkill.PrimaryForcefulArrow, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get heartseeker => _tree(
+  static Tree<Skill> get heartseeker => _skillTree(
         RogueSkill.Heartseeker,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedHeartseeker,
             [
-              _tree(RogueSkill.FundamentalHeartseeker, _childless),
-              _tree(RogueSkill.PrimaryHeartseeker, _childless),
+              _skillTree(RogueSkill.FundamentalHeartseeker, _childless),
+              _skillTree(RogueSkill.PrimaryHeartseeker, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get invigoratingStrike => _tree(
+  static Tree<Skill> get invigoratingStrike => _skillTree(
         RogueSkill.InvigoratingStrike,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedInvigoratingStrike,
             [
-              _tree(RogueSkill.FundamentalInvigoratingStrike, _childless),
-              _tree(RogueSkill.PrimaryInvigoratingStrike, _childless),
+              _skillTree(RogueSkill.FundamentalInvigoratingStrike, _childless),
+              _skillTree(RogueSkill.PrimaryInvigoratingStrike, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get puncture => _tree(
+  static Tree<Skill> get puncture => _skillTree(
         RogueSkill.Puncture,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedPuncture,
             [
-              _tree(RogueSkill.FundamentalPuncture, _childless),
-              _tree(RogueSkill.PrimaryPuncture, _childless),
+              _skillTree(RogueSkill.FundamentalPuncture, _childless),
+              _skillTree(RogueSkill.PrimaryPuncture, _childless),
             ],
           ),
         ],
       );
 
   /* Core */
-  static Tree<Pair<Enum, int>> get barrage => _tree(
+  static Tree<Skill> get barrage => _skillTree(
         RogueSkill.Barrage,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedBarrage,
             [
-              _tree(RogueSkill.AdvancedBarrage, _childless),
-              _tree(RogueSkill.ImprovedBarrage, _childless),
+              _skillTree(RogueSkill.AdvancedBarrage, _childless),
+              _skillTree(RogueSkill.ImprovedBarrage, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get flurry => _tree(
+  static Tree<Skill> get flurry => _skillTree(
         RogueSkill.Flurry,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedFlurry,
             [
-              _tree(RogueSkill.AdvancedFlurry, _childless),
-              _tree(RogueSkill.ImprovedFlurry, _childless),
+              _skillTree(RogueSkill.AdvancedFlurry, _childless),
+              _skillTree(RogueSkill.ImprovedFlurry, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get penetratingShot => _tree(
+  static Tree<Skill> get penetratingShot => _skillTree(
         RogueSkill.PenetratingShot,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedPenetratingShot,
             [
-              _tree(RogueSkill.AdvancedPenetratingShot, _childless),
-              _tree(RogueSkill.ImprovedPenetratingShot, _childless),
+              _skillTree(RogueSkill.AdvancedPenetratingShot, _childless),
+              _skillTree(RogueSkill.ImprovedPenetratingShot, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get rapidFire => _tree(
+  static Tree<Skill> get rapidFire => _skillTree(
         RogueSkill.RapidFire,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedRapidFire,
             [
-              _tree(RogueSkill.AdvancedRapidFire, _childless),
-              _tree(RogueSkill.ImprovedRapidFire, _childless),
+              _skillTree(RogueSkill.AdvancedRapidFire, _childless),
+              _skillTree(RogueSkill.ImprovedRapidFire, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get twistingBlades => _tree(
+  static Tree<Skill> get twistingBlades => _skillTree(
         RogueSkill.TwistingBlades,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedTwistingBlades,
             [
-              _tree(RogueSkill.AdvancedTwistingBlades, _childless),
-              _tree(RogueSkill.ImprovedTwistingBlades, _childless),
+              _skillTree(RogueSkill.AdvancedTwistingBlades, _childless),
+              _skillTree(RogueSkill.ImprovedTwistingBlades, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get sturdy => _tree(
+  static Tree<Skill> get sturdy => _skillTree(
         RogueSkill.Sturdy,
         [
-          _tree(RogueSkill.SiphoningStrikes, _childless),
+          _skillTree(RogueSkill.SiphoningStrikes, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get stutterStep =>
-      _tree(RogueSkill.StutterStep, _childless);
+  static Tree<Skill> get stutterStep =>
+      _skillTree(RogueSkill.StutterStep, _childless);
 
   /* Agility */
-  static Tree<Pair<Enum, int>> get caltrops => _tree(
+  static Tree<Skill> get caltrops => _skillTree(
         RogueSkill.Caltrops,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedCaltrops,
             [
-              _tree(RogueSkill.DisciplinedCaltrops, _childless),
-              _tree(RogueSkill.MethodicalCaltrops, _childless),
+              _skillTree(RogueSkill.DisciplinedCaltrops, _childless),
+              _skillTree(RogueSkill.MethodicalCaltrops, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get dash => _tree(
+  static Tree<Skill> get dash => _skillTree(
         RogueSkill.Dash,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedDash,
             [
-              _tree(RogueSkill.DisciplinedDash, _childless),
-              _tree(RogueSkill.MethodicalDash, _childless),
+              _skillTree(RogueSkill.DisciplinedDash, _childless),
+              _skillTree(RogueSkill.MethodicalDash, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get shadowStep => _tree(
+  static Tree<Skill> get shadowStep => _skillTree(
         RogueSkill.ShadowStep,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedShadowStep,
             [
-              _tree(RogueSkill.DisciplinedShadowStep, _childless),
-              _tree(RogueSkill.MethodicalShadowStep, _childless),
+              _skillTree(RogueSkill.DisciplinedShadowStep, _childless),
+              _skillTree(RogueSkill.MethodicalShadowStep, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get concussive => _tree(
+  static Tree<Skill> get concussive => _skillTree(
         RogueSkill.Concussive,
         [
           // TODO: this one has two parents (see below)
-          _tree(RogueSkill.TrickAttacks, _childless),
+          _skillTree(RogueSkill.TrickAttacks, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get rapidGambits => _tree(
+  static Tree<Skill> get rapidGambits => _skillTree(
         RogueSkill.RapidGambits,
         [
           // TODO: this one has two parents (see above)
-          _tree(RogueSkill.TrickAttacks, _childless),
+          _skillTree(RogueSkill.TrickAttacks, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get rugged => _tree(
+  static Tree<Skill> get rugged => _skillTree(
         RogueSkill.Rugged,
         [
-          _tree(RogueSkill.ReactiveDefense, _childless),
+          _skillTree(RogueSkill.ReactiveDefense, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get weaponMastery =>
-      _tree(RogueSkill.WeaponMastery, _childless);
+  static Tree<Skill> get weaponMastery =>
+      _skillTree(RogueSkill.WeaponMastery, _childless);
 
   /* Subterfuge */
-  static Tree<Pair<Enum, int>> get concealment => _tree(
+  static Tree<Skill> get concealment => _skillTree(
         RogueSkill.Concealment,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedConcealment,
             [
-              _tree(RogueSkill.CounteringConcealment, _childless),
-              _tree(RogueSkill.SubvertingConcealment, _childless),
+              _skillTree(RogueSkill.CounteringConcealment, _childless),
+              _skillTree(RogueSkill.SubvertingConcealment, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get darkShroud => _tree(
+  static Tree<Skill> get darkShroud => _skillTree(
         RogueSkill.DarkShroud,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedDarkShroud,
             [
-              _tree(RogueSkill.CounteringDarkShroud, _childless),
-              _tree(RogueSkill.SubvertingDarkShroud, _childless),
+              _skillTree(RogueSkill.CounteringDarkShroud, _childless),
+              _skillTree(RogueSkill.SubvertingDarkShroud, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get poisonTrap => _tree(
+  static Tree<Skill> get poisonTrap => _skillTree(
         RogueSkill.PoisonTrap,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedPoisonTrap,
             [
-              _tree(RogueSkill.CounteringPoisonTrap, _childless),
-              _tree(RogueSkill.SubvertingPoisonTrap, _childless),
+              _skillTree(RogueSkill.CounteringPoisonTrap, _childless),
+              _skillTree(RogueSkill.SubvertingPoisonTrap, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get smokeGrenade => _tree(
+  static Tree<Skill> get smokeGrenade => _skillTree(
         RogueSkill.SmokeGrenade,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedSmokeGrenade,
             [
-              _tree(RogueSkill.CounteringSmokeGrenade, _childless),
-              _tree(RogueSkill.SubvertingSmokeGrenade, _childless),
+              _skillTree(RogueSkill.CounteringSmokeGrenade, _childless),
+              _skillTree(RogueSkill.SubvertingSmokeGrenade, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get exploit => _tree(
+  static Tree<Skill> get exploit => _skillTree(
         RogueSkill.Exploit,
         [
-          _tree(RogueSkill.Malice, _childless),
+          _skillTree(RogueSkill.Malice, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get agile => _tree(
+  static Tree<Skill> get agile => _skillTree(
         RogueSkill.Agile,
         [
-          _tree(RogueSkill.MendingObscurity, _childless),
+          _skillTree(RogueSkill.MendingObscurity, _childless),
         ],
       );
 
   /* Imbuement */
-  static Tree<Pair<Enum, int>> get coldImbuement => _tree(
+  static Tree<Skill> get coldImbuement => _skillTree(
         RogueSkill.ColdImbuement,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedColdImbuement,
             [
-              _tree(RogueSkill.BlendedColdImbuement, _childless),
-              _tree(RogueSkill.MixedColdImbuement, _childless),
+              _skillTree(RogueSkill.BlendedColdImbuement, _childless),
+              _skillTree(RogueSkill.MixedColdImbuement, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get poisonImbuement => _tree(
+  static Tree<Skill> get poisonImbuement => _skillTree(
         RogueSkill.PoisonImbuement,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedPoisonImbuement,
             [
-              _tree(RogueSkill.BlendedPoisonImbuement, _childless),
-              _tree(RogueSkill.MixedPoisonImbuement, _childless),
+              _skillTree(RogueSkill.BlendedPoisonImbuement, _childless),
+              _skillTree(RogueSkill.MixedPoisonImbuement, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get shadowImbuement => _tree(
+  static Tree<Skill> get shadowImbuement => _skillTree(
         RogueSkill.ShadowImbuement,
         [
-          _tree(
+          _skillTree(
             RogueSkill.EnhancedShadowImbuement,
             [
-              _tree(RogueSkill.BlendedShadowImbuement, _childless),
-              _tree(RogueSkill.MixedShadowImbuement, _childless),
+              _skillTree(RogueSkill.BlendedShadowImbuement, _childless),
+              _skillTree(RogueSkill.MixedShadowImbuement, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get deadlyVenom => _tree(
+  static Tree<Skill> get deadlyVenom => _skillTree(
         RogueSkill.DeadlyVenom,
         [
-          _tree(RogueSkill.DebilitatingToxins, _childless),
-          _tree(RogueSkill.AlchemicalAdvantage, _childless),
+          _skillTree(RogueSkill.DebilitatingToxins, _childless),
+          _skillTree(RogueSkill.AlchemicalAdvantage, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get shadowCrash => _tree(
+  static Tree<Skill> get shadowCrash => _skillTree(
         RogueSkill.ShadowCrash,
         [
-          _tree(RogueSkill.ConsumingShadows, _childless),
+          _skillTree(RogueSkill.ConsumingShadows, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get frigidFinesse => _tree(
+  static Tree<Skill> get frigidFinesse => _skillTree(
         RogueSkill.FrigidFinesse,
         [
-          _tree(RogueSkill.ChillingWeight, _childless),
+          _skillTree(RogueSkill.ChillingWeight, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get precisionImbuement =>
-      _tree(RogueSkill.PrecisionImbuement, _childless);
+  static Tree<Skill> get precisionImbuement =>
+      _skillTree(RogueSkill.PrecisionImbuement, _childless);
 
   /* Ultimate */
-  static Tree<Pair<Enum, int>> get deathTrap => _tree(
+  static Tree<Skill> get deathTrap => _skillTree(
         RogueSkill.DeathTrap,
         [
-          _tree(
+          _skillTree(
             RogueSkill.PrimeDeathTrap,
             [
-              _tree(RogueSkill.SupremeDeathTrap, _childless),
+              _skillTree(RogueSkill.SupremeDeathTrap, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get rainOfArrows => _tree(
+  static Tree<Skill> get rainOfArrows => _skillTree(
         RogueSkill.RainOfArrows,
         [
-          _tree(
+          _skillTree(
             RogueSkill.PrimeRainOfArrows,
             [
-              _tree(RogueSkill.SupremeRainOfArrows, _childless),
+              _skillTree(RogueSkill.SupremeRainOfArrows, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get shadowClone => _tree(
+  static Tree<Skill> get shadowClone => _skillTree(
         RogueSkill.ShadowClone,
         [
-          _tree(
+          _skillTree(
             RogueSkill.PrimeShadowClone,
             [
-              _tree(RogueSkill.SupremeShadowClone, _childless),
+              _skillTree(RogueSkill.SupremeShadowClone, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get innervation => _tree(
+  static Tree<Skill> get innervation => _skillTree(
         RogueSkill.Innervation,
         [
-          _tree(RogueSkill.AlchemistsFortune, _childless),
-          _tree(RogueSkill.SecondWind, _childless),
+          _skillTree(RogueSkill.AlchemistsFortune, _childless),
+          _skillTree(RogueSkill.SecondWind, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get adrenalineRush => _tree(
+  static Tree<Skill> get adrenalineRush => _skillTree(
         RogueSkill.AdrenalineRush,
         [
-          _tree(RogueSkill.Haste, _childless),
-          _tree(RogueSkill.Impetus, _childless),
+          _skillTree(RogueSkill.Haste, _childless),
+          _skillTree(RogueSkill.Impetus, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get trapMastery =>
-      _tree(RogueSkill.TrapMastery, _childless);
+  static Tree<Skill> get trapMastery =>
+      _skillTree(RogueSkill.TrapMastery, _childless);
 
-  static Tree<Pair<Enum, int>> get aftermath =>
-      _tree(RogueSkill.Aftermath, _childless);
+  static Tree<Skill> get aftermath =>
+      _skillTree(RogueSkill.Aftermath, _childless);
 
   /* Key Passive */
-  static Tree<Pair<Enum, int>> get momentum =>
-      _tree(RogueSkill.Momentum, _childless);
+  static Tree<Skill> get momentum =>
+      _skillTree(RogueSkill.Momentum, _childless);
 
-  static Tree<Pair<Enum, int>> get closeQuartersCombat =>
-      _tree(RogueSkill.CloseQuartersCombat, _childless);
+  static Tree<Skill> get closeQuartersCombat =>
+      _skillTree(RogueSkill.CloseQuartersCombat, _childless);
 
-  static Tree<Pair<Enum, int>> get precision =>
-      _tree(RogueSkill.Precision, _childless);
+  static Tree<Skill> get precision =>
+      _skillTree(RogueSkill.Precision, _childless);
 
-  static Tree<Pair<Enum, int>> get victimize =>
-      _tree(RogueSkill.Victimize, _childless);
+  static Tree<Skill> get victimize =>
+      _skillTree(RogueSkill.Victimize, _childless);
 
-  static Tree<Pair<Enum, int>> get exposure =>
-      _tree(RogueSkill.Exposure, _childless);
+  static Tree<Skill> get exposure =>
+      _skillTree(RogueSkill.Exposure, _childless);
 
-  static Tree<Pair<Enum, int>> get basic => _tree(
+  static Tree<Skill> get basic => _skillTree(
         RogueCluster.Basic,
         [
           bladeShift,
@@ -437,7 +436,7 @@ abstract class Rogue {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get core => _tree(
+  static Tree<Skill> get core => _skillTree(
         RogueCluster.Core,
         [
           barrage,
@@ -450,7 +449,7 @@ abstract class Rogue {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get agility => _tree(
+  static Tree<Skill> get agility => _skillTree(
         RogueCluster.Agility,
         [
           caltrops,
@@ -462,7 +461,7 @@ abstract class Rogue {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get subterfuge => _tree(
+  static Tree<Skill> get subterfuge => _skillTree(
         RogueCluster.Subterfuge,
         [
           concealment,
@@ -474,7 +473,7 @@ abstract class Rogue {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get imbuement => _tree(
+  static Tree<Skill> get imbuement => _skillTree(
         RogueCluster.Imbuement,
         [
           coldImbuement,
@@ -487,7 +486,7 @@ abstract class Rogue {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get ultimate => _tree(
+  static Tree<Skill> get ultimate => _skillTree(
         RogueCluster.Ultimate,
         [
           deathTrap,
@@ -500,7 +499,7 @@ abstract class Rogue {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get keyPassive => _tree(
+  static Tree<Skill> get keyPassive => _skillTree(
         RogueCluster.KeyPassive,
         [
           momentum,
@@ -511,7 +510,7 @@ abstract class Rogue {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get rogue => _tree(
+  static Tree<Skill> get rogue => _skillTree(
         CharacterClass.Rogue,
         [
           basic,

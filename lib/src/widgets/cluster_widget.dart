@@ -1,4 +1,4 @@
-import 'package:d4_utils/src/data_structures/pair.dart';
+import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/barbarian_cluster.dart';
 import 'package:d4_utils/src/utils/enum_utils.dart';
@@ -15,7 +15,7 @@ class ClusterWidget extends StatefulWidget {
     required this.decrementCallback,
   });
 
-  final Tree<Pair<Enum, int>> clusterTree;
+  final Tree<Skill> clusterTree;
   final bool isIncrementable;
   final bool isDecrementable;
   final VoidCallback incrementCallback;
@@ -26,8 +26,7 @@ class ClusterWidget extends StatefulWidget {
 }
 
 class _ClusterWidgetState extends State<ClusterWidget> {
-  Tree<Pair<Enum, int>> _clusterTree =
-      Tree(element: Pair(BarbarianCluster.Basic, 0));
+  Tree<Skill> _clusterTree = Tree(element: Skill(BarbarianCluster.Basic));
 
   @override
   void initState() {
@@ -40,8 +39,8 @@ class _ClusterWidgetState extends State<ClusterWidget> {
         shape: Theme.of(context).expansionTileTheme.shape,
         childrenPadding: Theme.of(context).expansionTileTheme.childrenPadding,
         title: Text(
-          '${EnumUtils.enumToNameWithSpaces(_clusterTree.element.fst)}'
-          ' (${_clusterTree.element.snd})',
+          '${EnumUtils.enumToNameWithSpaces(_clusterTree.element.e)}'
+          ' (${_clusterTree.element.assignedSkillPoints})',
         ),
         children: _clusterTree.children
             .map((child) => SkillTreeWidget(
@@ -49,11 +48,11 @@ class _ClusterWidgetState extends State<ClusterWidget> {
                   isIncrementable: widget.isIncrementable,
                   isDecrementable: widget.isDecrementable,
                   incrementCallback: () {
-                    setState(() => _clusterTree.element.snd++);
+                    setState(() => _clusterTree.element.assignedSkillPoints++);
                     widget.incrementCallback();
                   },
                   decrementCallback: () {
-                    setState(() => _clusterTree.element.snd--);
+                    setState(() => _clusterTree.element.assignedSkillPoints--);
                     widget.decrementCallback();
                   },
                 ))

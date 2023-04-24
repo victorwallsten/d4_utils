@@ -1,4 +1,4 @@
-import 'package:d4_utils/src/data_structures/pair.dart';
+import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/barbarian_skill.dart';
 import 'package:d4_utils/src/utils/enum_utils.dart';
@@ -15,7 +15,7 @@ class SkillTreeWidget extends StatefulWidget {
     required this.decrementCallback,
   });
 
-  final Tree<Pair<Enum, int>> skillTree;
+  final Tree<Skill> skillTree;
   final bool isIncrementable;
   final bool isDecrementable;
   final VoidCallback incrementCallback;
@@ -26,8 +26,7 @@ class SkillTreeWidget extends StatefulWidget {
 }
 
 class _SkillTreeWidgetState extends State<SkillTreeWidget> {
-  Tree<Pair<Enum, int>> _skillTree =
-      Tree(element: Pair(BarbarianSkill.Bash, 0));
+  Tree<Skill> _skillTree = Tree(element: Skill(BarbarianSkill.Bash));
 
   @override
   void initState() {
@@ -39,24 +38,28 @@ class _SkillTreeWidgetState extends State<SkillTreeWidget> {
   Widget build(BuildContext context) => ExpansionTile(
         shape: Theme.of(context).expansionTileTheme.shape,
         childrenPadding: Theme.of(context).expansionTileTheme.childrenPadding,
-        title: Text(EnumUtils.enumToNameWithSpaces(_skillTree.element.fst)),
+        title: Text(EnumUtils.enumToNameWithSpaces(_skillTree.element.e)),
         trailing: SkillWidget(
-          _skillTree.element.fst,
-          level: _skillTree.element.snd,
+          _skillTree.element.e,
+          level: _skillTree.element.assignedSkillPoints,
           onMinusPressed: () {
             if (widget.isDecrementable &&
-                (_skillTree.element.snd > 1 ||
-                    _skillTree.element.snd == 1 &&
-                        _skillTree.children.fold(0,
-                                (b, a) => b + a.fold(0, (d, c) => d + c.snd)) ==
+                (_skillTree.element.assignedSkillPoints > 1 ||
+                    _skillTree.element.assignedSkillPoints == 1 &&
+                        _skillTree.children.fold(
+                                0,
+                                (b, a) =>
+                                    b +
+                                    a.fold(0,
+                                        (d, c) => d + c.assignedSkillPoints)) ==
                             0)) {
-              setState(() => _skillTree.element.snd--);
+              setState(() => _skillTree.element.assignedSkillPoints--);
               widget.decrementCallback();
             }
           },
           onPlusPressed: () {
             if (widget.isIncrementable) {
-              setState(() => _skillTree.element.snd++);
+              setState(() => _skillTree.element.assignedSkillPoints++);
               widget.incrementCallback();
             }
           },
@@ -65,8 +68,8 @@ class _SkillTreeWidgetState extends State<SkillTreeWidget> {
             .map(
               (child) => SkillTreeWidget(
                 skillTree: child,
-                isIncrementable:
-                    widget.isIncrementable && _skillTree.element.snd > 0,
+                isIncrementable: widget.isIncrementable &&
+                    _skillTree.element.assignedSkillPoints > 0,
                 isDecrementable: widget.isDecrementable,
                 incrementCallback: widget.incrementCallback,
                 decrementCallback: widget.decrementCallback,

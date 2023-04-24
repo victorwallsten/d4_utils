@@ -1,483 +1,481 @@
-import 'package:d4_utils/src/data_structures/pair.dart';
+import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/druid_cluster.dart';
 import 'package:d4_utils/src/enums/druid_skill.dart';
 import 'package:d4_utils/src/enums/character_class.dart';
 
 abstract class Druid {
-  static Tree<Pair<Enum, int>> _tree(
-          Enum e, List<Tree<Pair<Enum, int>>> children) =>
-      Tree(element: Pair(e, 0), children: children);
+  static Tree<Skill> _skillTree(Enum e, List<Tree<Skill>> children) =>
+      Tree(element: Skill(e), children: children);
 
-  static List<Tree<Pair<Enum, int>>> get _childless => const [];
+  static List<Tree<Skill>> get _childless => const [];
 
-  static Tree<Pair<Enum, int>> get maul => _tree(
+  static Tree<Skill> get maul => _skillTree(
         DruidSkill.Maul,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedMaul,
             [
-              _tree(DruidSkill.FierceMaul, _childless),
-              _tree(DruidSkill.WildMaul, _childless),
+              _skillTree(DruidSkill.FierceMaul, _childless),
+              _skillTree(DruidSkill.WildMaul, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get claw => _tree(
+  static Tree<Skill> get claw => _skillTree(
         DruidSkill.Claw,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedClaw,
             [
-              _tree(DruidSkill.FierceClaw, _childless),
-              _tree(DruidSkill.WildClaw, _childless),
+              _skillTree(DruidSkill.FierceClaw, _childless),
+              _skillTree(DruidSkill.WildClaw, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get stormStrike => _tree(
+  static Tree<Skill> get stormStrike => _skillTree(
         DruidSkill.StormStrike,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedStormStrike,
             [
-              _tree(DruidSkill.FierceStormStrike, _childless),
-              _tree(DruidSkill.WildStormStrike, _childless),
+              _skillTree(DruidSkill.FierceStormStrike, _childless),
+              _skillTree(DruidSkill.WildStormStrike, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get windShear => _tree(
+  static Tree<Skill> get windShear => _skillTree(
         DruidSkill.WindShear,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedWindShear,
             [
-              _tree(DruidSkill.FierceWindShear, _childless),
-              _tree(DruidSkill.WildWindShear, _childless),
+              _skillTree(DruidSkill.FierceWindShear, _childless),
+              _skillTree(DruidSkill.WildWindShear, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get earthSpike => _tree(
+  static Tree<Skill> get earthSpike => _skillTree(
         DruidSkill.EarthSpike,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedEarthSpike,
             [
-              _tree(DruidSkill.FierceEarthSpike, _childless),
-              _tree(DruidSkill.WildEarthSpike, _childless),
+              _skillTree(DruidSkill.FierceEarthSpike, _childless),
+              _skillTree(DruidSkill.WildEarthSpike, _childless),
             ],
           ),
         ],
       );
 
   /* Core */
-  static Tree<Pair<Enum, int>> get lightningStorm => _tree(
+  static Tree<Skill> get lightningStorm => _skillTree(
         DruidSkill.LightningStorm,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedLightningStorm,
             [
-              _tree(DruidSkill.PrimalLightningStorm, _childless),
-              _tree(DruidSkill.RagingLightningStorm, _childless),
+              _skillTree(DruidSkill.PrimalLightningStorm, _childless),
+              _skillTree(DruidSkill.RagingLightningStorm, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get tornado => _tree(
+  static Tree<Skill> get tornado => _skillTree(
         DruidSkill.Tornado,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedTornado,
             [
-              _tree(DruidSkill.PrimalTornado, _childless),
-              _tree(DruidSkill.RagingTornado, _childless),
+              _skillTree(DruidSkill.PrimalTornado, _childless),
+              _skillTree(DruidSkill.RagingTornado, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get pulverize => _tree(
+  static Tree<Skill> get pulverize => _skillTree(
         DruidSkill.Pulverize,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedPulverize,
             [
-              _tree(DruidSkill.PrimalPulverize, _childless),
-              _tree(DruidSkill.RagingPulverize, _childless),
+              _skillTree(DruidSkill.PrimalPulverize, _childless),
+              _skillTree(DruidSkill.RagingPulverize, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get shred => _tree(
+  static Tree<Skill> get shred => _skillTree(
         DruidSkill.Shred,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedShred,
             [
-              _tree(DruidSkill.PrimalShred, _childless),
-              _tree(DruidSkill.RagingShred, _childless),
+              _skillTree(DruidSkill.PrimalShred, _childless),
+              _skillTree(DruidSkill.RagingShred, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get landSlide => _tree(
+  static Tree<Skill> get landSlide => _skillTree(
         DruidSkill.LandSlide,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedLandSlide,
             [
-              _tree(DruidSkill.PrimalLandSlide, _childless),
-              _tree(DruidSkill.RagingLandSlide, _childless),
+              _skillTree(DruidSkill.PrimalLandSlide, _childless),
+              _skillTree(DruidSkill.RagingLandSlide, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get heartOfTheWild => _tree(
+  static Tree<Skill> get heartOfTheWild => _skillTree(
         DruidSkill.HeartOfTheWild,
         [
-          _tree(DruidSkill.WildImpulses, _childless),
-          _tree(DruidSkill.Abundance, _childless),
+          _skillTree(DruidSkill.WildImpulses, _childless),
+          _skillTree(DruidSkill.Abundance, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get predatoryInstinct => _tree(
+  static Tree<Skill> get predatoryInstinct => _skillTree(
         DruidSkill.PredatoryInstinct,
         [
-          _tree(DruidSkill.DigitigradeGait, _childless),
-          _tree(DruidSkill.IronFur, _childless),
+          _skillTree(DruidSkill.DigitigradeGait, _childless),
+          _skillTree(DruidSkill.IronFur, _childless),
         ],
       );
 
   /* Defensive */
-  static Tree<Pair<Enum, int>> get earthenBulwark => _tree(
+  static Tree<Skill> get earthenBulwark => _skillTree(
         DruidSkill.EarthenBulwark,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedEarthenBulwark,
             [
-              _tree(DruidSkill.InnateEarthenBulwark, _childless),
-              _tree(DruidSkill.PreservingEarthenBulwark, _childless),
+              _skillTree(DruidSkill.InnateEarthenBulwark, _childless),
+              _skillTree(DruidSkill.PreservingEarthenBulwark, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get cycloneArmor => _tree(
+  static Tree<Skill> get cycloneArmor => _skillTree(
         DruidSkill.CycloneArmor,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedCycloneArmor,
             [
-              _tree(DruidSkill.InnateCycloneArmor, _childless),
-              _tree(DruidSkill.PreservingCycloneArmor, _childless),
+              _skillTree(DruidSkill.InnateCycloneArmor, _childless),
+              _skillTree(DruidSkill.PreservingCycloneArmor, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get bloodHowl => _tree(
+  static Tree<Skill> get bloodHowl => _skillTree(
         DruidSkill.BloodHowl,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedBloodHowl,
             [
-              _tree(DruidSkill.InnateBloodHowl, _childless),
-              _tree(DruidSkill.PreservingBloodHowl, _childless),
+              _skillTree(DruidSkill.InnateBloodHowl, _childless),
+              _skillTree(DruidSkill.PreservingBloodHowl, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get debilitatingRoar => _tree(
+  static Tree<Skill> get debilitatingRoar => _skillTree(
         DruidSkill.DebilitatingRoar,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedDebilitatingRoar,
             [
-              _tree(DruidSkill.InnateDebilitatingRoar, _childless),
-              _tree(DruidSkill.PreservingDebilitatingRoar, _childless),
+              _skillTree(DruidSkill.InnateDebilitatingRoar, _childless),
+              _skillTree(DruidSkill.PreservingDebilitatingRoar, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get ancestralFortitude => _tree(
+  static Tree<Skill> get ancestralFortitude => _skillTree(
         DruidSkill.AncestralFortitude,
         [
-          _tree(DruidSkill.Vigilance, _childless),
+          _skillTree(DruidSkill.Vigilance, _childless),
         ],
       );
 
   /* Companion */
-  static Tree<Pair<Enum, int>> get wolves => _tree(
+  static Tree<Skill> get wolves => _skillTree(
         DruidSkill.Wolves,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedWolves,
             [
-              _tree(DruidSkill.BrutalWolves, _childless),
-              _tree(DruidSkill.FerociousWolves, _childless),
+              _skillTree(DruidSkill.BrutalWolves, _childless),
+              _skillTree(DruidSkill.FerociousWolves, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get ravens => _tree(
+  static Tree<Skill> get ravens => _skillTree(
         DruidSkill.Ravens,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedRavens,
             [
-              _tree(DruidSkill.BrutalRavens, _childless),
-              _tree(DruidSkill.FerociousRavens, _childless),
+              _skillTree(DruidSkill.BrutalRavens, _childless),
+              _skillTree(DruidSkill.FerociousRavens, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get vineCreeper => _tree(
+  static Tree<Skill> get vineCreeper => _skillTree(
         DruidSkill.VineCreeper,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedVineCreeper,
             [
-              _tree(DruidSkill.BrutalVineCreeper, _childless),
-              _tree(DruidSkill.FerociousVineCreeper, _childless),
+              _skillTree(DruidSkill.BrutalVineCreeper, _childless),
+              _skillTree(DruidSkill.FerociousVineCreeper, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get naturesReach =>
-      _tree(DruidSkill.NaturesReach, _childless);
+  static Tree<Skill> get naturesReach =>
+      _skillTree(DruidSkill.NaturesReach, _childless);
 
-  static Tree<Pair<Enum, int>> get callOfTheWild =>
-      _tree(DruidSkill.CallOfTheWild, _childless);
+  static Tree<Skill> get callOfTheWild =>
+      _skillTree(DruidSkill.CallOfTheWild, _childless);
 
-  static Tree<Pair<Enum, int>> get clarity =>
-      _tree(DruidSkill.Clarity, _childless);
+  static Tree<Skill> get clarity => _skillTree(DruidSkill.Clarity, _childless);
 
   /* Wrath */
-  static Tree<Pair<Enum, int>> get boulder => _tree(
+  static Tree<Skill> get boulder => _skillTree(
         DruidSkill.Boulder,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedBoulder,
             [
-              _tree(DruidSkill.NaturalBoulder, _childless),
-              _tree(DruidSkill.SavageBoulder, _childless),
+              _skillTree(DruidSkill.NaturalBoulder, _childless),
+              _skillTree(DruidSkill.SavageBoulder, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get trample => _tree(
+  static Tree<Skill> get trample => _skillTree(
         DruidSkill.Trample,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedTrample,
             [
-              _tree(DruidSkill.NaturalTrample, _childless),
-              _tree(DruidSkill.SavageTrample, _childless),
+              _skillTree(DruidSkill.NaturalTrample, _childless),
+              _skillTree(DruidSkill.SavageTrample, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get hurricane => _tree(
+  static Tree<Skill> get hurricane => _skillTree(
         DruidSkill.Hurricane,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedHurricane,
             [
-              _tree(DruidSkill.NaturalHurricane, _childless),
-              _tree(DruidSkill.SavageHurricane, _childless),
+              _skillTree(DruidSkill.NaturalHurricane, _childless),
+              _skillTree(DruidSkill.SavageHurricane, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get rabies => _tree(
+  static Tree<Skill> get rabies => _skillTree(
         DruidSkill.Rabies,
         [
-          _tree(
+          _skillTree(
             DruidSkill.EnhancedRabies,
             [
-              _tree(DruidSkill.NaturalRabies, _childless),
-              _tree(DruidSkill.SavageRabies, _childless),
+              _skillTree(DruidSkill.NaturalRabies, _childless),
+              _skillTree(DruidSkill.SavageRabies, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get crushingEarth => _tree(
+  static Tree<Skill> get crushingEarth => _skillTree(
         DruidSkill.CrushingEarth,
         [
-          _tree(DruidSkill.Safeguard, _childless),
-          _tree(DruidSkill.StoneGuard, _childless),
+          _skillTree(DruidSkill.Safeguard, _childless),
+          _skillTree(DruidSkill.StoneGuard, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get neurotoxin => _tree(
+  static Tree<Skill> get neurotoxin => _skillTree(
         DruidSkill.Neurotoxin,
         [
-          _tree(DruidSkill.ToxicClaws, _childless),
-          _tree(DruidSkill.Envenom, _childless),
+          _skillTree(DruidSkill.ToxicClaws, _childless),
+          _skillTree(DruidSkill.Envenom, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get mending => _tree(
+  static Tree<Skill> get mending => _skillTree(
         DruidSkill.Mending,
         [
-          _tree(DruidSkill.Provocation, _childless),
+          _skillTree(DruidSkill.Provocation, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get elementalExposure => _tree(
+  static Tree<Skill> get elementalExposure => _skillTree(
         DruidSkill.ElementalExposure,
         [
-          _tree(
+          _skillTree(
             DruidSkill.ChargedAtmosphere,
             [
               // TODO: this one has two parents (see below)
-              _tree(DruidSkill.BadOmen, _childless),
-              _tree(DruidSkill.ElectricShock, _childless),
+              _skillTree(DruidSkill.BadOmen, _childless),
+              _skillTree(DruidSkill.ElectricShock, _childless),
             ],
           ),
-          _tree(
+          _skillTree(
             DruidSkill.EndlessTempest,
             [
               // TODO: this one has two parents (see above)
-              _tree(DruidSkill.BadOmen, _childless),
+              _skillTree(DruidSkill.BadOmen, _childless),
             ],
           ),
         ],
       );
 
   /* Ultimate */
-  static Tree<Pair<Enum, int>> get grizzlyRage => _tree(
+  static Tree<Skill> get grizzlyRage => _skillTree(
         DruidSkill.GrizzlyRage,
         [
-          _tree(
+          _skillTree(
             DruidSkill.PrimeGrizzlyRage,
             [
-              _tree(DruidSkill.SupremeGrizzlyRage, _childless),
+              _skillTree(DruidSkill.SupremeGrizzlyRage, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get petrify => _tree(
+  static Tree<Skill> get petrify => _skillTree(
         DruidSkill.Petrify,
         [
-          _tree(
+          _skillTree(
             DruidSkill.PrimePetrify,
             [
-              _tree(DruidSkill.SupremePetrify, _childless),
+              _skillTree(DruidSkill.SupremePetrify, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get lacerate => _tree(
+  static Tree<Skill> get lacerate => _skillTree(
         DruidSkill.Lacerate,
         [
-          _tree(
+          _skillTree(
             DruidSkill.PrimeLacerate,
             [
-              _tree(DruidSkill.SupremeLacerate, _childless),
+              _skillTree(DruidSkill.SupremeLacerate, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get cataclysm => _tree(
+  static Tree<Skill> get cataclysm => _skillTree(
         DruidSkill.Cataclysm,
         [
-          _tree(
+          _skillTree(
             DruidSkill.PrimeCataclysm,
             [
-              _tree(DruidSkill.SupremeCataclysm, _childless),
+              _skillTree(DruidSkill.SupremeCataclysm, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get quickShift => _tree(
+  static Tree<Skill> get quickShift => _skillTree(
         DruidSkill.QuickShift,
         [
-          _tree(DruidSkill.NaturalFortitude, _childless),
-          _tree(DruidSkill.HeightenedSenses, _childless),
+          _skillTree(DruidSkill.NaturalFortitude, _childless),
+          _skillTree(DruidSkill.HeightenedSenses, _childless),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get defensivePosture => _tree(
+  static Tree<Skill> get defensivePosture => _skillTree(
         DruidSkill.DefensivePosture,
         [
-          _tree(
+          _skillTree(
             DruidSkill.ThickHide,
             [
               // TODO: this one has two parents (see below)
-              _tree(DruidSkill.Unrestrained, _childless),
+              _skillTree(DruidSkill.Unrestrained, _childless),
             ],
           ),
-          _tree(
+          _skillTree(
             DruidSkill.NaturesResolve,
             [
               // TODO: this one has two parents (see above)
-              _tree(DruidSkill.Unrestrained, _childless),
+              _skillTree(DruidSkill.Unrestrained, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Pair<Enum, int>> get defiance => _tree(
+  static Tree<Skill> get defiance => _skillTree(
         DruidSkill.Defiance,
         [
-          _tree(
+          _skillTree(
             DruidSkill.NaturalDisaster,
             [
               // TODO: this one has two parents (see below)
-              _tree(DruidSkill.Resonance, _childless),
+              _skillTree(DruidSkill.Resonance, _childless),
             ],
           ),
-          _tree(DruidSkill.CircleOfLife, [
+          _skillTree(DruidSkill.CircleOfLife, [
             // TODO: this one has two parents (see above)
-            _tree(DruidSkill.Resonance, _childless),
+            _skillTree(DruidSkill.Resonance, _childless),
           ]),
         ],
       );
 
   /* Key Passive */
-  static Tree<Pair<Enum, int>> get naturesFury =>
-      _tree(DruidSkill.NaturesFury, _childless);
+  static Tree<Skill> get naturesFury =>
+      _skillTree(DruidSkill.NaturesFury, _childless);
 
-  static Tree<Pair<Enum, int>> get earthenMight =>
-      _tree(DruidSkill.EarthenMight, _childless);
+  static Tree<Skill> get earthenMight =>
+      _skillTree(DruidSkill.EarthenMight, _childless);
 
-  static Tree<Pair<Enum, int>> get lupineFerocity =>
-      _tree(DruidSkill.LupineFerocity, _childless);
+  static Tree<Skill> get lupineFerocity =>
+      _skillTree(DruidSkill.LupineFerocity, _childless);
 
-  static Tree<Pair<Enum, int>> get bestialRampage =>
-      _tree(DruidSkill.BestialRampage, _childless);
+  static Tree<Skill> get bestialRampage =>
+      _skillTree(DruidSkill.BestialRampage, _childless);
 
-  static Tree<Pair<Enum, int>> get perfectStorm =>
-      _tree(DruidSkill.PerfectStorm, _childless);
+  static Tree<Skill> get perfectStorm =>
+      _skillTree(DruidSkill.PerfectStorm, _childless);
 
-  static Tree<Pair<Enum, int>> get ursineStrength =>
-      _tree(DruidSkill.UrsineStrength, _childless);
+  static Tree<Skill> get ursineStrength =>
+      _skillTree(DruidSkill.UrsineStrength, _childless);
 
-  static Tree<Pair<Enum, int>> get basic => _tree(
+  static Tree<Skill> get basic => _skillTree(
         DruidCluster.Basic,
         [
           maul,
@@ -488,7 +486,7 @@ abstract class Druid {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get core => _tree(
+  static Tree<Skill> get core => _skillTree(
         DruidCluster.Core,
         [
           lightningStorm,
@@ -501,7 +499,7 @@ abstract class Druid {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get defensive => _tree(
+  static Tree<Skill> get defensive => _skillTree(
         DruidCluster.Defensive,
         [
           earthenBulwark,
@@ -512,7 +510,7 @@ abstract class Druid {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get companion => _tree(
+  static Tree<Skill> get companion => _skillTree(
         DruidCluster.Companion,
         [
           wolves,
@@ -524,7 +522,7 @@ abstract class Druid {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get wrath => _tree(
+  static Tree<Skill> get wrath => _skillTree(
         DruidCluster.Wrath,
         [
           boulder,
@@ -538,7 +536,7 @@ abstract class Druid {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get ultimate => _tree(
+  static Tree<Skill> get ultimate => _skillTree(
         DruidCluster.Ultimate,
         [
           grizzlyRage,
@@ -551,7 +549,7 @@ abstract class Druid {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get keyPassive => _tree(
+  static Tree<Skill> get keyPassive => _skillTree(
         DruidCluster.KeyPassive,
         [
           naturesFury,
@@ -563,7 +561,7 @@ abstract class Druid {
         ],
       );
 
-  static Tree<Pair<Enum, int>> get druid => _tree(
+  static Tree<Skill> get druid => _skillTree(
         CharacterClass.Druid,
         [
           basic,
