@@ -3,12 +3,160 @@ import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/druid_cluster.dart';
 import 'package:d4_utils/src/enums/druid_skill.dart';
 import 'package:d4_utils/src/enums/character_class.dart';
+import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Druid {
   static Tree<Skill> _skillTree(Enum e, List<Tree<Skill>> children) =>
       Tree(element: Skill(e), children: children);
 
   static List<Tree<Skill>> get _childless => const [];
+
+  static SkillType skillTypeOf(DruidSkill druidSkill) {
+    switch (druidSkill) {
+      case DruidSkill.Maul:
+      case DruidSkill.Claw:
+      case DruidSkill.StormStrike:
+      case DruidSkill.WindShear:
+      case DruidSkill.EarthSpike:
+      case DruidSkill.LightningStorm:
+      case DruidSkill.Tornado:
+      case DruidSkill.Pulverize:
+      case DruidSkill.Shred:
+      case DruidSkill.LandSlide:
+      case DruidSkill.EarthenBulwark:
+      case DruidSkill.CycloneArmor:
+      case DruidSkill.BloodHowl:
+      case DruidSkill.DebilitatingRoar:
+      case DruidSkill.Wolves:
+      case DruidSkill.Ravens:
+      case DruidSkill.VineCreeper:
+      case DruidSkill.Boulder:
+      case DruidSkill.Trample:
+      case DruidSkill.Hurricane:
+      case DruidSkill.Rabies:
+      case DruidSkill.GrizzlyRage:
+      case DruidSkill.Petrify:
+      case DruidSkill.Lacerate:
+      case DruidSkill.Cataclysm:
+        return SkillType.Active;
+      case DruidSkill.EnhancedMaul:
+      case DruidSkill.EnhancedClaw:
+      case DruidSkill.EnhancedStormStrike:
+      case DruidSkill.EnhancedWindShear:
+      case DruidSkill.EnhancedEarthSpike:
+      case DruidSkill.EnhancedLightningStorm:
+      case DruidSkill.EnhancedTornado:
+      case DruidSkill.EnhancedPulverize:
+      case DruidSkill.EnhancedShred:
+      case DruidSkill.EnhancedLandSlide:
+      case DruidSkill.EnhancedEarthenBulwark:
+      case DruidSkill.EnhancedCycloneArmor:
+      case DruidSkill.EnhancedBloodHowl:
+      case DruidSkill.EnhancedDebilitatingRoar:
+      case DruidSkill.EnhancedWolves:
+      case DruidSkill.EnhancedRavens:
+      case DruidSkill.EnhancedVineCreeper:
+      case DruidSkill.EnhancedBoulder:
+      case DruidSkill.EnhancedTrample:
+      case DruidSkill.EnhancedHurricane:
+      case DruidSkill.EnhancedRabies:
+      case DruidSkill.PrimeGrizzlyRage:
+      case DruidSkill.PrimePetrify:
+      case DruidSkill.PrimeLacerate:
+      case DruidSkill.PrimeCataclysm:
+        return SkillType.Enhancement;
+      case DruidSkill.FierceMaul:
+      case DruidSkill.WildMaul:
+      case DruidSkill.FierceClaw:
+      case DruidSkill.WildClaw:
+      case DruidSkill.FierceStormStrike:
+      case DruidSkill.WildStormStrike:
+      case DruidSkill.FierceWindShear:
+      case DruidSkill.WildWindShear:
+      case DruidSkill.FierceEarthSpike:
+      case DruidSkill.WildEarthSpike:
+      case DruidSkill.PrimalLightningStorm:
+      case DruidSkill.RagingLightningStorm:
+      case DruidSkill.PrimalTornado:
+      case DruidSkill.RagingTornado:
+      case DruidSkill.PrimalPulverize:
+      case DruidSkill.RagingPulverize:
+      case DruidSkill.PrimalShred:
+      case DruidSkill.RagingShred:
+      case DruidSkill.PrimalLandSlide:
+      case DruidSkill.RagingLandSlide:
+      case DruidSkill.InnateEarthenBulwark:
+      case DruidSkill.PreservingEarthenBulwark:
+      case DruidSkill.InnateCycloneArmor:
+      case DruidSkill.PreservingCycloneArmor:
+      case DruidSkill.InnateBloodHowl:
+      case DruidSkill.PreservingBloodHowl:
+      case DruidSkill.InnateDebilitatingRoar:
+      case DruidSkill.PreservingDebilitatingRoar:
+      case DruidSkill.BrutalWolves:
+      case DruidSkill.FerociousWolves:
+      case DruidSkill.BrutalRavens:
+      case DruidSkill.FerociousRavens:
+      case DruidSkill.BrutalVineCreeper:
+      case DruidSkill.FerociousVineCreeper:
+      case DruidSkill.NaturalBoulder:
+      case DruidSkill.SavageBoulder:
+      case DruidSkill.NaturalTrample:
+      case DruidSkill.SavageTrample:
+      case DruidSkill.NaturalHurricane:
+      case DruidSkill.SavageHurricane:
+      case DruidSkill.NaturalRabies:
+      case DruidSkill.SavageRabies:
+      case DruidSkill.SupremeGrizzlyRage:
+      case DruidSkill.SupremePetrify:
+      case DruidSkill.SupremeLacerate:
+      case DruidSkill.SupremeCataclysm:
+        return SkillType.Upgrade;
+      case DruidSkill.HeartOfTheWild:
+      case DruidSkill.WildImpulses:
+      case DruidSkill.Abundance:
+      case DruidSkill.PredatoryInstinct:
+      case DruidSkill.DigitigradeGait:
+      case DruidSkill.IronFur:
+      case DruidSkill.AncestralFortitude:
+      case DruidSkill.Vigilance:
+      case DruidSkill.NaturesReach:
+      case DruidSkill.CallOfTheWild:
+      case DruidSkill.Clarity:
+      case DruidSkill.CrushingEarth:
+      case DruidSkill.Safeguard:
+      case DruidSkill.StoneGuard:
+      case DruidSkill.Neurotoxin:
+      case DruidSkill.ToxicClaws:
+      case DruidSkill.Envenom:
+      case DruidSkill.Mending:
+      case DruidSkill.Provocation:
+      case DruidSkill.ElementalExposure:
+      case DruidSkill.ChargedAtmosphere:
+      case DruidSkill.EndlessTempest:
+      case DruidSkill.BadOmen:
+      case DruidSkill.ElectricShock:
+      case DruidSkill.QuickShift:
+      case DruidSkill.NaturalFortitude:
+      case DruidSkill.HeightenedSenses:
+      case DruidSkill.DefensivePosture:
+      case DruidSkill.ThickHide:
+      case DruidSkill.NaturesResolve:
+      case DruidSkill.Unrestrained:
+      case DruidSkill.Defiance:
+      case DruidSkill.NaturalDisaster:
+      case DruidSkill.CircleOfLife:
+      case DruidSkill.Resonance:
+        return SkillType.Passive;
+      case DruidSkill.NaturesFury:
+      case DruidSkill.EarthenMight:
+      case DruidSkill.LupineFerocity:
+      case DruidSkill.BestialRampage:
+      case DruidSkill.PerfectStorm:
+      case DruidSkill.UrsineStrength:
+        return SkillType.KeyPassive;
+    }
+  }
 
   static Tree<Skill> get maul => _skillTree(
         DruidSkill.Maul,
@@ -75,7 +223,6 @@ abstract class Druid {
         ],
       );
 
-  /* Core */
   static Tree<Skill> get lightningStorm => _skillTree(
         DruidSkill.LightningStorm,
         [
@@ -157,7 +304,6 @@ abstract class Druid {
         ],
       );
 
-  /* Defensive */
   static Tree<Skill> get earthenBulwark => _skillTree(
         DruidSkill.EarthenBulwark,
         [
@@ -217,7 +363,6 @@ abstract class Druid {
         ],
       );
 
-  /* Companion */
   static Tree<Skill> get wolves => _skillTree(
         DruidSkill.Wolves,
         [
@@ -265,7 +410,6 @@ abstract class Druid {
 
   static Tree<Skill> get clarity => _skillTree(DruidSkill.Clarity, _childless);
 
-  /* Wrath */
   static Tree<Skill> get boulder => _skillTree(
         DruidSkill.Boulder,
         [
@@ -362,7 +506,6 @@ abstract class Druid {
         ],
       );
 
-  /* Ultimate */
   static Tree<Skill> get grizzlyRage => _skillTree(
         DruidSkill.GrizzlyRage,
         [
@@ -456,7 +599,6 @@ abstract class Druid {
         ],
       );
 
-  /* Key Passive */
   static Tree<Skill> get naturesFury =>
       _skillTree(DruidSkill.NaturesFury, _childless);
 

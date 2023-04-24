@@ -3,6 +3,7 @@ import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/rogue_cluster.dart';
 import 'package:d4_utils/src/enums/rogue_skill.dart';
 import 'package:d4_utils/src/enums/character_class.dart';
+import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Rogue {
   static Tree<Skill> _skillTree(Enum e, List<Tree<Skill>> children) =>
@@ -10,7 +11,139 @@ abstract class Rogue {
 
   static List<Tree<Skill>> get _childless => const [];
 
-  /* Basic */
+  static SkillType skillTypeOf(RogueSkill rogueSkill) {
+    switch (rogueSkill) {
+      case RogueSkill.BladeShift:
+      case RogueSkill.ForcefulArrow:
+      case RogueSkill.Heartseeker:
+      case RogueSkill.InvigoratingStrike:
+      case RogueSkill.Puncture:
+      case RogueSkill.Barrage:
+      case RogueSkill.Flurry:
+      case RogueSkill.PenetratingShot:
+      case RogueSkill.RapidFire:
+      case RogueSkill.TwistingBlades:
+      case RogueSkill.Caltrops:
+      case RogueSkill.Dash:
+      case RogueSkill.ShadowStep:
+        return SkillType.Active;
+      case RogueSkill.EnhancedBladeShift:
+      case RogueSkill.EnhancedForcefulArrow:
+      case RogueSkill.EnhancedHeartseeker:
+      case RogueSkill.EnhancedInvigoratingStrike:
+      case RogueSkill.EnhancedPuncture:
+      case RogueSkill.EnhancedBarrage:
+      case RogueSkill.EnhancedFlurry:
+      case RogueSkill.EnhancedPenetratingShot:
+      case RogueSkill.EnhancedRapidFire:
+      case RogueSkill.EnhancedTwistingBlades:
+      case RogueSkill.EnhancedCaltrops:
+      case RogueSkill.EnhancedDash:
+      case RogueSkill.EnhancedShadowStep:
+      case RogueSkill.EnhancedConcealment:
+      case RogueSkill.EnhancedDarkShroud:
+      case RogueSkill.EnhancedPoisonTrap:
+      case RogueSkill.EnhancedSmokeGrenade:
+      case RogueSkill.EnhancedColdImbuement:
+      case RogueSkill.EnhancedPoisonImbuement:
+      case RogueSkill.EnhancedShadowImbuement:
+      case RogueSkill.PrimeDeathTrap:
+      case RogueSkill.PrimeRainOfArrows:
+      case RogueSkill.PrimeShadowClone:
+        return SkillType.Enhancement;
+      case RogueSkill.FundamentalBladeShift:
+      case RogueSkill.PrimaryBladeShift:
+      case RogueSkill.FundamentalForcefulArrow:
+      case RogueSkill.PrimaryForcefulArrow:
+      case RogueSkill.FundamentalHeartseeker:
+      case RogueSkill.PrimaryHeartseeker:
+      case RogueSkill.FundamentalInvigoratingStrike:
+      case RogueSkill.PrimaryInvigoratingStrike:
+      case RogueSkill.FundamentalPuncture:
+      case RogueSkill.PrimaryPuncture:
+      case RogueSkill.AdvancedBarrage:
+      case RogueSkill.ImprovedBarrage:
+      case RogueSkill.AdvancedFlurry:
+      case RogueSkill.ImprovedFlurry:
+      case RogueSkill.AdvancedPenetratingShot:
+      case RogueSkill.ImprovedPenetratingShot:
+      case RogueSkill.AdvancedRapidFire:
+      case RogueSkill.ImprovedRapidFire:
+      case RogueSkill.AdvancedTwistingBlades:
+      case RogueSkill.ImprovedTwistingBlades:
+      case RogueSkill.DisciplinedCaltrops:
+      case RogueSkill.MethodicalCaltrops:
+      case RogueSkill.DisciplinedDash:
+      case RogueSkill.MethodicalDash:
+      case RogueSkill.DisciplinedShadowStep:
+      case RogueSkill.MethodicalShadowStep:
+      case RogueSkill.CounteringConcealment:
+      case RogueSkill.SubvertingConcealment:
+      case RogueSkill.CounteringDarkShroud:
+      case RogueSkill.SubvertingDarkShroud:
+      case RogueSkill.CounteringPoisonTrap:
+      case RogueSkill.SubvertingPoisonTrap:
+      case RogueSkill.CounteringSmokeGrenade:
+      case RogueSkill.SubvertingSmokeGrenade:
+      case RogueSkill.BlendedColdImbuement:
+      case RogueSkill.MixedColdImbuement:
+      case RogueSkill.BlendedPoisonImbuement:
+      case RogueSkill.MixedPoisonImbuement:
+      case RogueSkill.BlendedShadowImbuement:
+      case RogueSkill.MixedShadowImbuement:
+      case RogueSkill.SupremeDeathTrap:
+      case RogueSkill.SupremeRainOfArrows:
+      case RogueSkill.SupremeShadowClone:
+        return SkillType.Upgrade;
+      case RogueSkill.Sturdy:
+      case RogueSkill.SiphoningStrikes:
+      case RogueSkill.StutterStep:
+      case RogueSkill.Concussive:
+      case RogueSkill.RapidGambits:
+      case RogueSkill.TrickAttacks:
+      case RogueSkill.Rugged:
+      case RogueSkill.Concealment:
+      case RogueSkill.DarkShroud:
+      case RogueSkill.PoisonTrap:
+      case RogueSkill.SmokeGrenade:
+      case RogueSkill.ColdImbuement:
+      case RogueSkill.PoisonImbuement:
+      case RogueSkill.ShadowImbuement:
+      case RogueSkill.DeathTrap:
+      case RogueSkill.RainOfArrows:
+      case RogueSkill.ShadowClone:
+      case RogueSkill.ReactiveDefense:
+      case RogueSkill.WeaponMastery:
+      case RogueSkill.Exploit:
+      case RogueSkill.Malice:
+      case RogueSkill.Agile:
+      case RogueSkill.MendingObscurity:
+      case RogueSkill.DeadlyVenom:
+      case RogueSkill.DebilitatingToxins:
+      case RogueSkill.AlchemicalAdvantage:
+      case RogueSkill.ShadowCrash:
+      case RogueSkill.ConsumingShadows:
+      case RogueSkill.FrigidFinesse:
+      case RogueSkill.ChillingWeight:
+      case RogueSkill.PrecisionImbuement:
+      case RogueSkill.Innervation:
+      case RogueSkill.AlchemistsFortune:
+      case RogueSkill.SecondWind:
+      case RogueSkill.AdrenalineRush:
+      case RogueSkill.Haste:
+      case RogueSkill.Impetus:
+      case RogueSkill.TrapMastery:
+      case RogueSkill.Aftermath:
+        return SkillType.Passive;
+      case RogueSkill.Momentum:
+      case RogueSkill.CloseQuartersCombat:
+      case RogueSkill.Precision:
+      case RogueSkill.Victimize:
+      case RogueSkill.Exposure:
+        return SkillType.KeyPassive;
+    }
+  }
+
   static Tree<Skill> get bladeShift => _skillTree(
         RogueSkill.BladeShift,
         [
@@ -76,7 +209,6 @@ abstract class Rogue {
         ],
       );
 
-  /* Core */
   static Tree<Skill> get barrage => _skillTree(
         RogueSkill.Barrage,
         [
@@ -152,7 +284,6 @@ abstract class Rogue {
   static Tree<Skill> get stutterStep =>
       _skillTree(RogueSkill.StutterStep, _childless);
 
-  /* Agility */
   static Tree<Skill> get caltrops => _skillTree(
         RogueSkill.Caltrops,
         [
@@ -218,7 +349,6 @@ abstract class Rogue {
   static Tree<Skill> get weaponMastery =>
       _skillTree(RogueSkill.WeaponMastery, _childless);
 
-  /* Subterfuge */
   static Tree<Skill> get concealment => _skillTree(
         RogueSkill.Concealment,
         [
@@ -285,7 +415,6 @@ abstract class Rogue {
         ],
       );
 
-  /* Imbuement */
   static Tree<Skill> get coldImbuement => _skillTree(
         RogueSkill.ColdImbuement,
         [
@@ -350,7 +479,6 @@ abstract class Rogue {
   static Tree<Skill> get precisionImbuement =>
       _skillTree(RogueSkill.PrecisionImbuement, _childless);
 
-  /* Ultimate */
   static Tree<Skill> get deathTrap => _skillTree(
         RogueSkill.DeathTrap,
         [
@@ -409,7 +537,6 @@ abstract class Rogue {
   static Tree<Skill> get aftermath =>
       _skillTree(RogueSkill.Aftermath, _childless);
 
-  /* Key Passive */
   static Tree<Skill> get momentum =>
       _skillTree(RogueSkill.Momentum, _childless);
 

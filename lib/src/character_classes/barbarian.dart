@@ -3,12 +3,147 @@ import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/barbarian_cluster.dart';
 import 'package:d4_utils/src/enums/barbarian_skill.dart';
 import 'package:d4_utils/src/enums/character_class.dart';
+import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Barbarian {
   static Tree<Skill> _skillTree(Enum e, List<Tree<Skill>> children) =>
       Tree(element: Skill(e), children: children);
 
   static List<Tree<Skill>> get _childless => const [];
+
+  static SkillType skillTypeOf(BarbarianSkill barbarianSkill) {
+    switch (barbarianSkill) {
+      case BarbarianSkill.Bash:
+      case BarbarianSkill.Flay:
+      case BarbarianSkill.Frenzy:
+      case BarbarianSkill.LungingStrike:
+      case BarbarianSkill.DoubleSwing:
+      case BarbarianSkill.HammerOfTheAncients:
+      case BarbarianSkill.Rend:
+      case BarbarianSkill.Upheaval:
+      case BarbarianSkill.Whirlwind:
+      case BarbarianSkill.ChallengingShout:
+      case BarbarianSkill.GroundStomp:
+      case BarbarianSkill.IronSkin:
+      case BarbarianSkill.RallyingCry:
+      case BarbarianSkill.Charge:
+      case BarbarianSkill.Kick:
+      case BarbarianSkill.Leap:
+      case BarbarianSkill.WarCry:
+      case BarbarianSkill.DeathBlow:
+      case BarbarianSkill.Rupture:
+      case BarbarianSkill.SteelGrasp:
+      case BarbarianSkill.CallOfTheAncients:
+      case BarbarianSkill.IronMaelstrom:
+      case BarbarianSkill.WrathOfTheBerserker:
+        return SkillType.Active;
+      case BarbarianSkill.EnhancedBash:
+      case BarbarianSkill.EnhancedFlay:
+      case BarbarianSkill.EnhancedFrenzy:
+      case BarbarianSkill.EnhancedLungingStrike:
+      case BarbarianSkill.EnhancedDoubleSwing:
+      case BarbarianSkill.EnhancedHammerOfTheAncients:
+      case BarbarianSkill.EnhancedRend:
+      case BarbarianSkill.EnhancedUpheaval:
+      case BarbarianSkill.EnhancedWhirlwind:
+      case BarbarianSkill.EnhancedChallengingShout:
+      case BarbarianSkill.EnhancedGroundStomp:
+      case BarbarianSkill.EnhancedIronSkin:
+      case BarbarianSkill.EnhancedRallyingCry:
+      case BarbarianSkill.EnhancedCharge:
+      case BarbarianSkill.EnhancedKick:
+      case BarbarianSkill.EnhancedLeap:
+      case BarbarianSkill.EnhancedWarCry:
+      case BarbarianSkill.EnhancedDeathBlow:
+      case BarbarianSkill.EnhancedRupture:
+      case BarbarianSkill.EnhancedSteelGrasp:
+      case BarbarianSkill.PrimeCallOfTheAncients:
+      case BarbarianSkill.PrimeIronMaelstrom:
+      case BarbarianSkill.PrimeWrathOfTheBerserker:
+        return SkillType.Enhancement;
+      case BarbarianSkill.BattleBash:
+      case BarbarianSkill.CombatBash:
+      case BarbarianSkill.BattleFlay:
+      case BarbarianSkill.CombatFlay:
+      case BarbarianSkill.BattleFrenzy:
+      case BarbarianSkill.CombatFrenzy:
+      case BarbarianSkill.BattleLungingStrike:
+      case BarbarianSkill.CombatLungingStrike:
+      case BarbarianSkill.FuriousDoubleSwing:
+      case BarbarianSkill.ViolentDoubleSwing:
+      case BarbarianSkill.FuriousHammerOfTheAncients:
+      case BarbarianSkill.ViolentHammerOfTheAncients:
+      case BarbarianSkill.FuriousRend:
+      case BarbarianSkill.ViolentRend:
+      case BarbarianSkill.FuriousUpheaval:
+      case BarbarianSkill.ViolentUpheaval:
+      case BarbarianSkill.FuriousWhirlwind:
+      case BarbarianSkill.ViolentWhirlwind:
+      case BarbarianSkill.StrategicChallengingShout:
+      case BarbarianSkill.TacticalChallengingShout:
+      case BarbarianSkill.StrategicGroundStomp:
+      case BarbarianSkill.TacticalGroundStomp:
+      case BarbarianSkill.StrategicIronSkin:
+      case BarbarianSkill.TacticalIronSkin:
+      case BarbarianSkill.StrategicRallyingCry:
+      case BarbarianSkill.TacticalRallyingCry:
+      case BarbarianSkill.MightyCharge:
+      case BarbarianSkill.PowerCharge:
+      case BarbarianSkill.MightyKick:
+      case BarbarianSkill.PowerKick:
+      case BarbarianSkill.MightyLeap:
+      case BarbarianSkill.PowerLeap:
+      case BarbarianSkill.MightyWarCry:
+      case BarbarianSkill.PowerWarCry:
+      case BarbarianSkill.FightersDeathBlow:
+      case BarbarianSkill.WarriorsDeathBlow:
+      case BarbarianSkill.FightersRupture:
+      case BarbarianSkill.WarriorsRupture:
+      case BarbarianSkill.FightersSteelGrasp:
+      case BarbarianSkill.WarriorsSteelGrasp:
+      case BarbarianSkill.SupremeCallOfTheAncients:
+      case BarbarianSkill.SupremeIronMaelstrom:
+      case BarbarianSkill.SupremeWrathOfTheBerserker:
+        return SkillType.Upgrade;
+      case BarbarianSkill.PressurePoint:
+      case BarbarianSkill.EndlessFury:
+      case BarbarianSkill.ImposingPresence:
+      case BarbarianSkill.MartialVigor:
+      case BarbarianSkill.Outburst:
+      case BarbarianSkill.ToughAsNails:
+      case BarbarianSkill.BoomingVoice:
+      case BarbarianSkill.RaidLeader:
+      case BarbarianSkill.GutturalYell:
+      case BarbarianSkill.AggressiveResistance:
+      case BarbarianSkill.BattleFervor:
+      case BarbarianSkill.ProlificFury:
+      case BarbarianSkill.Swiftness:
+      case BarbarianSkill.QuickImpulses:
+      case BarbarianSkill.PitFighter:
+      case BarbarianSkill.NoMercy:
+      case BarbarianSkill.SlayingStrike:
+      case BarbarianSkill.ExposeVulnerability:
+      case BarbarianSkill.ThickSkin:
+      case BarbarianSkill.DefensiveStance:
+      case BarbarianSkill.Counteroffensive:
+      case BarbarianSkill.Hamstring:
+      case BarbarianSkill.CutToTheBone:
+      case BarbarianSkill.HeavyHanded:
+      case BarbarianSkill.Wallop:
+      case BarbarianSkill.BruteForce:
+      case BarbarianSkill.Concussion:
+      case BarbarianSkill.TemperedFury:
+      case BarbarianSkill.FuriousImpulse:
+      case BarbarianSkill.InvigoratingFury:
+      case BarbarianSkill.Duelist:
+        return SkillType.Passive;
+      case BarbarianSkill.Unconstrained:
+      case BarbarianSkill.WalkingArsenal:
+      case BarbarianSkill.UnbridledRage:
+      case BarbarianSkill.GushingWounds:
+        return SkillType.KeyPassive;
+    }
+  }
 
   static Tree<Skill> get bash => _skillTree(
         BarbarianSkill.Bash,

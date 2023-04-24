@@ -3,6 +3,7 @@ import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/necromancer_cluster.dart';
 import 'package:d4_utils/src/enums/necromancer_skill.dart';
 import 'package:d4_utils/src/enums/character_class.dart';
+import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Necromancer {
   static Tree<Skill> _skillTree(Enum e, List<Tree<Skill>> children) =>
@@ -10,7 +11,125 @@ abstract class Necromancer {
 
   static List<Tree<Skill>> get _childless => const [];
 
-  /* Basic */
+  static SkillType skillTypeOf(NecromancerSkill necromancerSkill) {
+    switch (necromancerSkill) {
+      case NecromancerSkill.BoneSplinters:
+      case NecromancerSkill.Decompose:
+      case NecromancerSkill.Hemorrhage:
+      case NecromancerSkill.Reap:
+      case NecromancerSkill.Blight:
+      case NecromancerSkill.BloodLance:
+      case NecromancerSkill.BloodSurge:
+      case NecromancerSkill.BoneSpear:
+      case NecromancerSkill.Sever:
+      case NecromancerSkill.BloodMist:
+      case NecromancerSkill.BonePrison:
+      case NecromancerSkill.CorpseExplosion:
+      case NecromancerSkill.Decrepify:
+      case NecromancerSkill.IronMaiden:
+      case NecromancerSkill.BoneSpirit:
+      case NecromancerSkill.CorpseTendrils:
+      case NecromancerSkill.ArmyOfTheDead:
+      case NecromancerSkill.BloodWave:
+      case NecromancerSkill.BoneStorm:
+        return SkillType.Active;
+      case NecromancerSkill.EnhancedBoneSplinters:
+      case NecromancerSkill.EnhancedDecompose:
+      case NecromancerSkill.EnhancedHemorrhage:
+      case NecromancerSkill.EnhancedReap:
+      case NecromancerSkill.EnhancedBlight:
+      case NecromancerSkill.EnhancedBloodLance:
+      case NecromancerSkill.EnhancedBloodSurge:
+      case NecromancerSkill.EnhancedBoneSpear:
+      case NecromancerSkill.EnhancedSever:
+      case NecromancerSkill.EnhancedBloodMist:
+      case NecromancerSkill.EnhancedBonePrison:
+      case NecromancerSkill.EnhancedCorpseExplosion:
+      case NecromancerSkill.EnhancedDecrepify:
+      case NecromancerSkill.EnhancedIronMaiden:
+      case NecromancerSkill.EnhancedBoneSpirit:
+      case NecromancerSkill.EnhancedCorpseTendrils:
+      case NecromancerSkill.PrimeArmyOfTheDead:
+      case NecromancerSkill.PrimeBloodWave:
+      case NecromancerSkill.PrimeBoneStorm:
+        return SkillType.Enhancement;
+      case NecromancerSkill.AcolytesBoneSplinters:
+      case NecromancerSkill.InitiatesBoneSplinters:
+      case NecromancerSkill.AcolytesDecompose:
+      case NecromancerSkill.InitiatesDecompose:
+      case NecromancerSkill.AcolytesHemorrhage:
+      case NecromancerSkill.InitiatesHemorrhage:
+      case NecromancerSkill.AcolytesReap:
+      case NecromancerSkill.InitiatesReap:
+      case NecromancerSkill.ParanormalBlight:
+      case NecromancerSkill.SupernaturalBlight:
+      case NecromancerSkill.ParanormalBloodLance:
+      case NecromancerSkill.SupernaturalBloodLance:
+      case NecromancerSkill.ParanormalBloodSurge:
+      case NecromancerSkill.SupernaturalBloodSurge:
+      case NecromancerSkill.ParanormalBoneSpear:
+      case NecromancerSkill.SupernaturalBoneSpear:
+      case NecromancerSkill.ParanormalSever:
+      case NecromancerSkill.SupernaturalSever:
+      case NecromancerSkill.DreadfulBloodMist:
+      case NecromancerSkill.GhastlyBloodMist:
+      case NecromancerSkill.DreadfulBonePrison:
+      case NecromancerSkill.GhastlyBonePrison:
+      case NecromancerSkill.BlightedCorpseExplosion:
+      case NecromancerSkill.PlaguedCorpseExplosion:
+      case NecromancerSkill.AbhorrentDecrepify:
+      case NecromancerSkill.HorridDecrepify:
+      case NecromancerSkill.AbhorrentIronMaiden:
+      case NecromancerSkill.HorridIronMaiden:
+      case NecromancerSkill.DreadfulBoneSpirit:
+      case NecromancerSkill.GhastlyBoneSpirit:
+      case NecromancerSkill.BlightedCorpseTendrils:
+      case NecromancerSkill.PlaguedCorpseTendrils:
+      case NecromancerSkill.SupremeArmyOfTheDead:
+      case NecromancerSkill.SupremeBloodWave:
+      case NecromancerSkill.SupremeBoneStorm:
+        return SkillType.Upgrade;
+      case NecromancerSkill.UnlivingEnergy:
+      case NecromancerSkill.ImperfectlyBalanced:
+      case NecromancerSkill.HewedFlesh:
+      case NecromancerSkill.GrimHarvest:
+      case NecromancerSkill.FueledByDeath:
+      case NecromancerSkill.SpikedArmor:
+      case NecromancerSkill.SkeletalWarriorMastery:
+      case NecromancerSkill.DeathsEmbrace:
+      case NecromancerSkill.DeathsReach:
+      case NecromancerSkill.AmplifyDamage:
+      case NecromancerSkill.SkeletalMageMastery:
+      case NecromancerSkill.GruesomeMending:
+      case NecromancerSkill.Transfusion:
+      case NecromancerSkill.CoalescedBlood:
+      case NecromancerSkill.TidesOfBlood:
+      case NecromancerSkill.DrainVitality:
+      case NecromancerSkill.Serration:
+      case NecromancerSkill.CompoundFracture:
+      case NecromancerSkill.RapidOssification:
+      case NecromancerSkill.Evulsion:
+      case NecromancerSkill.ReapersPursuit:
+      case NecromancerSkill.Gloom:
+      case NecromancerSkill.CripplingDarkness:
+      case NecromancerSkill.Terror:
+      case NecromancerSkill.NecroticCarapace:
+      case NecromancerSkill.StandAlone:
+      case NecromancerSkill.MementoMori:
+      case NecromancerSkill.InspiringLeader:
+      case NecromancerSkill.BondedInEssence:
+      case NecromancerSkill.DeathsDefense:
+      case NecromancerSkill.HellbentCommander:
+      case NecromancerSkill.GolemMastery:
+        return SkillType.Passive;
+      case NecromancerSkill.OssifiedEssence:
+      case NecromancerSkill.RathmasVigor:
+      case NecromancerSkill.Shadowblight:
+      case NecromancerSkill.KalansEdict:
+        return SkillType.KeyPassive;
+    }
+  }
+
   static Tree<Skill> get boneSplinters => _skillTree(
         NecromancerSkill.BoneSplinters,
         [
@@ -63,7 +182,6 @@ abstract class Necromancer {
         ],
       );
 
-  /* Core */
   static Tree<Skill> get blight => _skillTree(
         NecromancerSkill.Blight,
         [
@@ -139,7 +257,6 @@ abstract class Necromancer {
   static Tree<Skill> get hewedFlesh =>
       _skillTree(NecromancerSkill.HewedFlesh, _childless);
 
-  /* First Corpse and Macabre */
   static Tree<Skill> get bloodMist => _skillTree(
         NecromancerSkill.BloodMist,
         [
@@ -192,7 +309,6 @@ abstract class Necromancer {
   static Tree<Skill> get skeletalWarriorMastery =>
       _skillTree(NecromancerSkill.SkeletalWarriorMastery, _childless);
 
-  /* Curse */
   static Tree<Skill> get decrepify => _skillTree(
         NecromancerSkill.Decrepify,
         [
@@ -231,7 +347,6 @@ abstract class Necromancer {
   static Tree<Skill> get skeletalMageMastery =>
       _skillTree(NecromancerSkill.SkeletalMageMastery, _childless);
 
-  /* Second Corpse and Macabre */
   static Tree<Skill> get boneSpirit => _skillTree(
         NecromancerSkill.BoneSpirit,
         [
@@ -322,7 +437,6 @@ abstract class Necromancer {
   static Tree<Skill> get necroticCarapace =>
       _skillTree(NecromancerSkill.NecroticCarapace, _childless);
 
-  /* Ultimate */
   static Tree<Skill> get armyOfTheDead => _skillTree(
         NecromancerSkill.ArmyOfTheDead,
         [
@@ -384,7 +498,6 @@ abstract class Necromancer {
   static Tree<Skill> get golemMastery =>
       _skillTree(NecromancerSkill.GolemMastery, _childless);
 
-  /* Key Passive */
   static Tree<Skill> get ossifiedEssence =>
       _skillTree(NecromancerSkill.OssifiedEssence, _childless);
 

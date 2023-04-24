@@ -1,5 +1,6 @@
 import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
+import 'package:d4_utils/src/enums/skill_type.dart';
 import 'package:d4_utils/src/enums/sorcerer_cluster.dart';
 import 'package:d4_utils/src/enums/sorcerer_skill.dart';
 import 'package:d4_utils/src/enums/character_class.dart';
@@ -10,7 +11,146 @@ abstract class Sorcerer {
 
   static List<Tree<Skill>> get _childless => const [];
 
-  /* Basic */
+  static SkillType skillTypeOf(SorcererSkill sorcererSkill) {
+    switch (sorcererSkill) {
+      case SorcererSkill.Spark:
+      case SorcererSkill.FrostBolt:
+      case SorcererSkill.FireBolt:
+      case SorcererSkill.ArcLash:
+      case SorcererSkill.ChainLightning:
+      case SorcererSkill.ChargedBolts:
+      case SorcererSkill.Fireball:
+      case SorcererSkill.FrozenOrb:
+      case SorcererSkill.Incinerate:
+      case SorcererSkill.IceShards:
+      case SorcererSkill.FlameShield:
+      case SorcererSkill.IceArmor:
+      case SorcererSkill.Teleport:
+      case SorcererSkill.FrostNova:
+      case SorcererSkill.Hydra:
+      case SorcererSkill.IceBlades:
+      case SorcererSkill.LightningSpear:
+      case SorcererSkill.Blizzard:
+      case SorcererSkill.Firewall:
+      case SorcererSkill.Meteor:
+      case SorcererSkill.BallLightning:
+      case SorcererSkill.DeepFreeze:
+      case SorcererSkill.Inferno:
+      case SorcererSkill.UnstableCurrents:
+        return SkillType.Active;
+      case SorcererSkill.EnhancedSpark:
+      case SorcererSkill.EnhancedFrostBolt:
+      case SorcererSkill.EnhancedFireBolt:
+      case SorcererSkill.EnhancedArcLash:
+      case SorcererSkill.EnhancedChainLightning:
+      case SorcererSkill.EnhancedChargedBolts:
+      case SorcererSkill.EnhancedFireball:
+      case SorcererSkill.EnhancedFrozenOrb:
+      case SorcererSkill.EnhancedIncinerate:
+      case SorcererSkill.EnhancedIceShards:
+      case SorcererSkill.EnhancedFlameShield:
+      case SorcererSkill.EnhancedIceArmor:
+      case SorcererSkill.EnhancedTeleport:
+      case SorcererSkill.EnhancedFrostNova:
+      case SorcererSkill.EnhancedHydra:
+      case SorcererSkill.EnhancedIceBlades:
+      case SorcererSkill.EnhancedLightningSpear:
+      case SorcererSkill.EnhancedBlizzard:
+      case SorcererSkill.EnhancedFirewall:
+      case SorcererSkill.EnhancedMeteor:
+      case SorcererSkill.EnhancedBallLightning:
+      case SorcererSkill.PrimeDeepFreeze:
+      case SorcererSkill.PrimeInferno:
+      case SorcererSkill.PrimeUnstableCurrents:
+        return SkillType.Enhancement;
+      case SorcererSkill.FlickeringSpark:
+      case SorcererSkill.GlintingSpark:
+      case SorcererSkill.FlickeringFrostBolt:
+      case SorcererSkill.GlintingFrostBolt:
+      case SorcererSkill.FlickeringFireBolt:
+      case SorcererSkill.GlintingFireBolt:
+      case SorcererSkill.FlickeringArcLash:
+      case SorcererSkill.GlintingArcLash:
+      case SorcererSkill.DestructiveChainLightning:
+      case SorcererSkill.GreaterChainLightning:
+      case SorcererSkill.DestructiveChargedBolts:
+      case SorcererSkill.GreaterChargedBolts:
+      case SorcererSkill.DestructiveFireball:
+      case SorcererSkill.GreaterFireball:
+      case SorcererSkill.DestructiveFrozenOrb:
+      case SorcererSkill.GreaterFrozenOrb:
+      case SorcererSkill.DestructiveIncinerate:
+      case SorcererSkill.GreaterIncinerate:
+      case SorcererSkill.DestructiveIceShards:
+      case SorcererSkill.GreaterIceShards:
+      case SorcererSkill.MysticalFlameShield:
+      case SorcererSkill.ShimmeringFlameShield:
+      case SorcererSkill.MysticalIceArmor:
+      case SorcererSkill.ShimmeringIceArmor:
+      case SorcererSkill.MysticalTeleport:
+      case SorcererSkill.ShimmeringTeleport:
+      case SorcererSkill.MysticalFrostNova:
+      case SorcererSkill.ShimmeringFrostNova:
+      case SorcererSkill.InvokedHydra:
+      case SorcererSkill.SummonedHydra:
+      case SorcererSkill.InvokedIceBlades:
+      case SorcererSkill.SummonedIceBlades:
+      case SorcererSkill.InvokedLightningSpear:
+      case SorcererSkill.SummonedLightningSpear:
+      case SorcererSkill.MagesBlizzard:
+      case SorcererSkill.WizardsBlizzard:
+      case SorcererSkill.MagesFirewall:
+      case SorcererSkill.WizardsFirewall:
+      case SorcererSkill.MagesMeteor:
+      case SorcererSkill.WizardsMeteor:
+      case SorcererSkill.MagesBallLightning:
+      case SorcererSkill.WizardsBallLightning:
+      case SorcererSkill.SupremeDeepFreeze:
+      case SorcererSkill.SupremeInferno:
+      case SorcererSkill.SupremeUnstableCurrents:
+        return SkillType.Upgrade;
+      case SorcererSkill.Devastation:
+      case SorcererSkill.ElementalDominance:
+      case SorcererSkill.PotentWarding:
+      case SorcererSkill.ElementalAttunement:
+      case SorcererSkill.GlassCannon:
+      case SorcererSkill.AlignTheElements:
+      case SorcererSkill.ManaShield:
+      case SorcererSkill.Protection:
+      case SorcererSkill.PrecisionMagic:
+      case SorcererSkill.ConjurationMastery:
+      case SorcererSkill.IcyVeil:
+      case SorcererSkill.ColdFront:
+      case SorcererSkill.SnapFreeze:
+      case SorcererSkill.InnerFlames:
+      case SorcererSkill.CripplingFlames:
+      case SorcererSkill.DevouringBlaze:
+      case SorcererSkill.StaticDischarge:
+      case SorcererSkill.ShockingImpact:
+      case SorcererSkill.InvigoratingConduit:
+      case SorcererSkill.Permafrost:
+      case SorcererSkill.Hoarfrost:
+      case SorcererSkill.IcyTouch:
+      case SorcererSkill.FrigidBreeze:
+      case SorcererSkill.FierySurge:
+      case SorcererSkill.EndlessPyre:
+      case SorcererSkill.Soulfire:
+      case SorcererSkill.Warmth:
+      case SorcererSkill.CoursingCurrents:
+      case SorcererSkill.Conduction:
+      case SorcererSkill.Electrocution:
+      case SorcererSkill.Convulsions:
+        return SkillType.Passive;
+      case SorcererSkill.Avalanche:
+      case SorcererSkill.Shatter:
+      case SorcererSkill.OverflowingEnergy:
+      case SorcererSkill.VyrsMastery:
+      case SorcererSkill.EsusFerocity:
+      case SorcererSkill.Combustion:
+        return SkillType.KeyPassive;
+    }
+  }
+
   static Tree<Skill> get spark => _skillTree(
         SorcererSkill.Spark,
         [
@@ -63,7 +203,6 @@ abstract class Sorcerer {
         ],
       );
 
-  /* Core */
   static Tree<Skill> get chainLightning => _skillTree(
         SorcererSkill.ChainLightning,
         [
@@ -152,7 +291,6 @@ abstract class Sorcerer {
   static Tree<Skill> get potentWarding =>
       _skillTree(SorcererSkill.PotentWarding, _childless);
 
-  /* Defensive */
   static Tree<Skill> get flameShield => _skillTree(
         SorcererSkill.FlameShield,
         [
@@ -211,7 +349,6 @@ abstract class Sorcerer {
   static Tree<Skill> get glassCannon =>
       _skillTree(SorcererSkill.GlassCannon, _childless);
 
-  /* Conjuration */
   static Tree<Skill> get hydra => _skillTree(
         SorcererSkill.Hydra,
         [
@@ -265,7 +402,6 @@ abstract class Sorcerer {
   static Tree<Skill> get conjurationMastery =>
       _skillTree(SorcererSkill.ConjurationMastery, _childless);
 
-  /* Mastery */
   static Tree<Skill> get blizzard => _skillTree(
         SorcererSkill.Blizzard,
         [
@@ -342,7 +478,6 @@ abstract class Sorcerer {
         ],
       );
 
-  /* Ultimate */
   static Tree<Skill> get deepFreeze => _skillTree(
         SorcererSkill.DeepFreeze,
         [
@@ -439,7 +574,6 @@ abstract class Sorcerer {
         ],
       );
 
-  /* Key Passive */
   static Tree<Skill> get avalanche =>
       _skillTree(SorcererSkill.Avalanche, _childless);
 
