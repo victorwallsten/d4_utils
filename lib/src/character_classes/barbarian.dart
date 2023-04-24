@@ -11,6 +11,145 @@ abstract class Barbarian {
 
   static List<Tree<Skill>> get _childless => const [];
 
+  static BarbarianCluster clusterOf(BarbarianSkill barbarianSkill) {
+    switch (barbarianSkill) {
+      case BarbarianSkill.Bash:
+      case BarbarianSkill.EnhancedBash:
+      case BarbarianSkill.BattleBash:
+      case BarbarianSkill.CombatBash:
+      case BarbarianSkill.Flay:
+      case BarbarianSkill.EnhancedFlay:
+      case BarbarianSkill.BattleFlay:
+      case BarbarianSkill.CombatFlay:
+      case BarbarianSkill.Frenzy:
+      case BarbarianSkill.EnhancedFrenzy:
+      case BarbarianSkill.BattleFrenzy:
+      case BarbarianSkill.CombatFrenzy:
+      case BarbarianSkill.LungingStrike:
+      case BarbarianSkill.EnhancedLungingStrike:
+      case BarbarianSkill.BattleLungingStrike:
+      case BarbarianSkill.CombatLungingStrike:
+        return BarbarianCluster.Basic;
+      case BarbarianSkill.DoubleSwing:
+      case BarbarianSkill.EnhancedDoubleSwing:
+      case BarbarianSkill.FuriousDoubleSwing:
+      case BarbarianSkill.ViolentDoubleSwing:
+      case BarbarianSkill.HammerOfTheAncients:
+      case BarbarianSkill.EnhancedHammerOfTheAncients:
+      case BarbarianSkill.FuriousHammerOfTheAncients:
+      case BarbarianSkill.ViolentHammerOfTheAncients:
+      case BarbarianSkill.Rend:
+      case BarbarianSkill.EnhancedRend:
+      case BarbarianSkill.FuriousRend:
+      case BarbarianSkill.ViolentRend:
+      case BarbarianSkill.Upheaval:
+      case BarbarianSkill.EnhancedUpheaval:
+      case BarbarianSkill.FuriousUpheaval:
+      case BarbarianSkill.ViolentUpheaval:
+      case BarbarianSkill.Whirlwind:
+      case BarbarianSkill.EnhancedWhirlwind:
+      case BarbarianSkill.FuriousWhirlwind:
+      case BarbarianSkill.ViolentWhirlwind:
+      case BarbarianSkill.PressurePoint:
+      case BarbarianSkill.EndlessFury:
+        return BarbarianCluster.Core;
+      case BarbarianSkill.ChallengingShout:
+      case BarbarianSkill.EnhancedChallengingShout:
+      case BarbarianSkill.StrategicChallengingShout:
+      case BarbarianSkill.TacticalChallengingShout:
+      case BarbarianSkill.GroundStomp:
+      case BarbarianSkill.EnhancedGroundStomp:
+      case BarbarianSkill.StrategicGroundStomp:
+      case BarbarianSkill.TacticalGroundStomp:
+      case BarbarianSkill.IronSkin:
+      case BarbarianSkill.EnhancedIronSkin:
+      case BarbarianSkill.StrategicIronSkin:
+      case BarbarianSkill.TacticalIronSkin:
+      case BarbarianSkill.RallyingCry:
+      case BarbarianSkill.EnhancedRallyingCry:
+      case BarbarianSkill.StrategicRallyingCry:
+      case BarbarianSkill.TacticalRallyingCry:
+      case BarbarianSkill.ImposingPresence:
+      case BarbarianSkill.MartialVigor:
+      case BarbarianSkill.Outburst:
+      case BarbarianSkill.ToughAsNails:
+        return BarbarianCluster.Defensive;
+      case BarbarianSkill.Charge:
+      case BarbarianSkill.EnhancedCharge:
+      case BarbarianSkill.MightyCharge:
+      case BarbarianSkill.PowerCharge:
+      case BarbarianSkill.Kick:
+      case BarbarianSkill.EnhancedKick:
+      case BarbarianSkill.MightyKick:
+      case BarbarianSkill.PowerKick:
+      case BarbarianSkill.Leap:
+      case BarbarianSkill.EnhancedLeap:
+      case BarbarianSkill.MightyLeap:
+      case BarbarianSkill.PowerLeap:
+      case BarbarianSkill.WarCry:
+      case BarbarianSkill.EnhancedWarCry:
+      case BarbarianSkill.MightyWarCry:
+      case BarbarianSkill.PowerWarCry:
+      case BarbarianSkill.BoomingVoice:
+      case BarbarianSkill.RaidLeader:
+      case BarbarianSkill.GutturalYell:
+      case BarbarianSkill.AggressiveResistance:
+      case BarbarianSkill.BattleFervor:
+      case BarbarianSkill.ProlificFury:
+      case BarbarianSkill.Swiftness:
+      case BarbarianSkill.QuickImpulses:
+        return BarbarianCluster.Brawling;
+      case BarbarianSkill.DeathBlow:
+      case BarbarianSkill.EnhancedDeathBlow:
+      case BarbarianSkill.FightersDeathBlow:
+      case BarbarianSkill.WarriorsDeathBlow:
+      case BarbarianSkill.Rupture:
+      case BarbarianSkill.EnhancedRupture:
+      case BarbarianSkill.FightersRupture:
+      case BarbarianSkill.WarriorsRupture:
+      case BarbarianSkill.SteelGrasp:
+      case BarbarianSkill.EnhancedSteelGrasp:
+      case BarbarianSkill.FightersSteelGrasp:
+      case BarbarianSkill.WarriorsSteelGrasp:
+      case BarbarianSkill.PitFighter:
+      case BarbarianSkill.NoMercy:
+      case BarbarianSkill.SlayingStrike:
+      case BarbarianSkill.ExposeVulnerability:
+      case BarbarianSkill.ThickSkin:
+      case BarbarianSkill.DefensiveStance:
+      case BarbarianSkill.Counteroffensive:
+      case BarbarianSkill.Hamstring:
+      case BarbarianSkill.CutToTheBone:
+        return BarbarianCluster.WeaponMastery;
+      case BarbarianSkill.CallOfTheAncients:
+      case BarbarianSkill.PrimeCallOfTheAncients:
+      case BarbarianSkill.SupremeCallOfTheAncients:
+      case BarbarianSkill.IronMaelstrom:
+      case BarbarianSkill.PrimeIronMaelstrom:
+      case BarbarianSkill.SupremeIronMaelstrom:
+      case BarbarianSkill.WrathOfTheBerserker:
+      case BarbarianSkill.PrimeWrathOfTheBerserker:
+      case BarbarianSkill.SupremeWrathOfTheBerserker:
+      case BarbarianSkill.HeavyHanded:
+      case BarbarianSkill.Wallop:
+      case BarbarianSkill.BruteForce:
+      case BarbarianSkill.Concussion:
+      case BarbarianSkill.TemperedFury:
+      case BarbarianSkill.FuriousImpulse:
+      case BarbarianSkill.InvigoratingFury:
+      case BarbarianSkill.Duelist:
+        return BarbarianCluster.Ultimate;
+      case BarbarianSkill.Unconstrained:
+      case BarbarianSkill.WalkingArsenal:
+      case BarbarianSkill.UnbridledRage:
+      case BarbarianSkill.GushingWounds:
+        return BarbarianCluster.KeyPassive;
+      default:
+        assert(false, 'case $barbarianSkill missing');
+        return BarbarianCluster.Basic;
+    }
+  }
+
   static SkillType skillTypeOf(BarbarianSkill barbarianSkill) {
     switch (barbarianSkill) {
       case BarbarianSkill.Bash:
@@ -136,12 +275,11 @@ abstract class Barbarian {
       case BarbarianSkill.FuriousImpulse:
       case BarbarianSkill.InvigoratingFury:
       case BarbarianSkill.Duelist:
-        return SkillType.Passive;
       case BarbarianSkill.Unconstrained:
       case BarbarianSkill.WalkingArsenal:
       case BarbarianSkill.UnbridledRage:
       case BarbarianSkill.GushingWounds:
-        return SkillType.KeyPassive;
+        return SkillType.Passive;
     }
   }
 

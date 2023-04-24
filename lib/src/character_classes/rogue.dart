@@ -11,6 +11,144 @@ abstract class Rogue {
 
   static List<Tree<Skill>> get _childless => const [];
 
+  static RogueCluster clusterOf(RogueSkill rogueSkill) {
+    switch (rogueSkill) {
+      case RogueSkill.BladeShift:
+      case RogueSkill.EnhancedBladeShift:
+      case RogueSkill.FundamentalBladeShift:
+      case RogueSkill.PrimaryBladeShift:
+      case RogueSkill.ForcefulArrow:
+      case RogueSkill.EnhancedForcefulArrow:
+      case RogueSkill.FundamentalForcefulArrow:
+      case RogueSkill.PrimaryForcefulArrow:
+      case RogueSkill.Heartseeker:
+      case RogueSkill.EnhancedHeartseeker:
+      case RogueSkill.FundamentalHeartseeker:
+      case RogueSkill.PrimaryHeartseeker:
+      case RogueSkill.InvigoratingStrike:
+      case RogueSkill.EnhancedInvigoratingStrike:
+      case RogueSkill.FundamentalInvigoratingStrike:
+      case RogueSkill.PrimaryInvigoratingStrike:
+      case RogueSkill.Puncture:
+      case RogueSkill.EnhancedPuncture:
+      case RogueSkill.FundamentalPuncture:
+      case RogueSkill.PrimaryPuncture:
+        return RogueCluster.Basic;
+      case RogueSkill.Barrage:
+      case RogueSkill.EnhancedBarrage:
+      case RogueSkill.AdvancedBarrage:
+      case RogueSkill.ImprovedBarrage:
+      case RogueSkill.Flurry:
+      case RogueSkill.EnhancedFlurry:
+      case RogueSkill.AdvancedFlurry:
+      case RogueSkill.ImprovedFlurry:
+      case RogueSkill.PenetratingShot:
+      case RogueSkill.EnhancedPenetratingShot:
+      case RogueSkill.AdvancedPenetratingShot:
+      case RogueSkill.ImprovedPenetratingShot:
+      case RogueSkill.RapidFire:
+      case RogueSkill.EnhancedRapidFire:
+      case RogueSkill.AdvancedRapidFire:
+      case RogueSkill.ImprovedRapidFire:
+      case RogueSkill.TwistingBlades:
+      case RogueSkill.EnhancedTwistingBlades:
+      case RogueSkill.AdvancedTwistingBlades:
+      case RogueSkill.ImprovedTwistingBlades:
+      case RogueSkill.Sturdy:
+      case RogueSkill.SiphoningStrikes:
+      case RogueSkill.StutterStep:
+        return RogueCluster.Core;
+      case RogueSkill.Caltrops:
+      case RogueSkill.EnhancedCaltrops:
+      case RogueSkill.DisciplinedCaltrops:
+      case RogueSkill.MethodicalCaltrops:
+      case RogueSkill.Dash:
+      case RogueSkill.EnhancedDash:
+      case RogueSkill.DisciplinedDash:
+      case RogueSkill.MethodicalDash:
+      case RogueSkill.ShadowStep:
+      case RogueSkill.EnhancedShadowStep:
+      case RogueSkill.DisciplinedShadowStep:
+      case RogueSkill.MethodicalShadowStep:
+      case RogueSkill.Concussive:
+      case RogueSkill.RapidGambits:
+      case RogueSkill.TrickAttacks:
+      case RogueSkill.Rugged:
+      case RogueSkill.ReactiveDefense:
+      case RogueSkill.WeaponMastery:
+        return RogueCluster.Agility;
+      case RogueSkill.Concealment:
+      case RogueSkill.EnhancedConcealment:
+      case RogueSkill.CounteringConcealment:
+      case RogueSkill.SubvertingConcealment:
+      case RogueSkill.DarkShroud:
+      case RogueSkill.EnhancedDarkShroud:
+      case RogueSkill.CounteringDarkShroud:
+      case RogueSkill.SubvertingDarkShroud:
+      case RogueSkill.PoisonTrap:
+      case RogueSkill.EnhancedPoisonTrap:
+      case RogueSkill.CounteringPoisonTrap:
+      case RogueSkill.SubvertingPoisonTrap:
+      case RogueSkill.SmokeGrenade:
+      case RogueSkill.EnhancedSmokeGrenade:
+      case RogueSkill.CounteringSmokeGrenade:
+      case RogueSkill.SubvertingSmokeGrenade:
+      case RogueSkill.Exploit:
+      case RogueSkill.Malice:
+      case RogueSkill.Agile:
+      case RogueSkill.MendingObscurity:
+        return RogueCluster.Subterfuge;
+      case RogueSkill.ColdImbuement:
+      case RogueSkill.EnhancedColdImbuement:
+      case RogueSkill.BlendedColdImbuement:
+      case RogueSkill.MixedColdImbuement:
+      case RogueSkill.PoisonImbuement:
+      case RogueSkill.EnhancedPoisonImbuement:
+      case RogueSkill.BlendedPoisonImbuement:
+      case RogueSkill.MixedPoisonImbuement:
+      case RogueSkill.ShadowImbuement:
+      case RogueSkill.EnhancedShadowImbuement:
+      case RogueSkill.BlendedShadowImbuement:
+      case RogueSkill.MixedShadowImbuement:
+      case RogueSkill.DeadlyVenom:
+      case RogueSkill.DebilitatingToxins:
+      case RogueSkill.AlchemicalAdvantage:
+      case RogueSkill.ShadowCrash:
+      case RogueSkill.ConsumingShadows:
+      case RogueSkill.FrigidFinesse:
+      case RogueSkill.ChillingWeight:
+      case RogueSkill.PrecisionImbuement:
+        return RogueCluster.Imbuement;
+      case RogueSkill.DeathTrap:
+      case RogueSkill.PrimeDeathTrap:
+      case RogueSkill.SupremeDeathTrap:
+      case RogueSkill.RainOfArrows:
+      case RogueSkill.PrimeRainOfArrows:
+      case RogueSkill.SupremeRainOfArrows:
+      case RogueSkill.ShadowClone:
+      case RogueSkill.PrimeShadowClone:
+      case RogueSkill.SupremeShadowClone:
+      case RogueSkill.Innervation:
+      case RogueSkill.AlchemistsFortune:
+      case RogueSkill.SecondWind:
+      case RogueSkill.AdrenalineRush:
+      case RogueSkill.Haste:
+      case RogueSkill.Impetus:
+      case RogueSkill.TrapMastery:
+      case RogueSkill.Aftermath:
+        return RogueCluster.Ultimate;
+      case RogueSkill.Momentum:
+      case RogueSkill.CloseQuartersCombat:
+      case RogueSkill.Precision:
+      case RogueSkill.Victimize:
+      case RogueSkill.Exposure:
+        return RogueCluster.KeyPassive;
+      default:
+        assert(false, 'case $rogueSkill missing');
+        return RogueCluster.Basic;
+    }
+  }
+
   static SkillType skillTypeOf(RogueSkill rogueSkill) {
     switch (rogueSkill) {
       case RogueSkill.BladeShift:
@@ -134,13 +272,12 @@ abstract class Rogue {
       case RogueSkill.Impetus:
       case RogueSkill.TrapMastery:
       case RogueSkill.Aftermath:
-        return SkillType.Passive;
       case RogueSkill.Momentum:
       case RogueSkill.CloseQuartersCombat:
       case RogueSkill.Precision:
       case RogueSkill.Victimize:
       case RogueSkill.Exposure:
-        return SkillType.KeyPassive;
+        return SkillType.Passive;
     }
   }
 

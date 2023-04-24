@@ -1,6 +1,21 @@
+import 'package:d4_utils/src/character_classes/barbarian.dart';
+import 'package:d4_utils/src/character_classes/druid.dart';
+import 'package:d4_utils/src/character_classes/necromancer.dart';
+import 'package:d4_utils/src/character_classes/rogue.dart';
+import 'package:d4_utils/src/character_classes/sorcerer.dart';
 import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
+import 'package:d4_utils/src/enums/barbarian_cluster.dart';
 import 'package:d4_utils/src/enums/barbarian_skill.dart';
+import 'package:d4_utils/src/enums/druid_cluster.dart';
+import 'package:d4_utils/src/enums/druid_skill.dart';
+import 'package:d4_utils/src/enums/necromancer_cluster.dart';
+import 'package:d4_utils/src/enums/necromancer_skill.dart';
+import 'package:d4_utils/src/enums/rogue_cluster.dart';
+import 'package:d4_utils/src/enums/rogue_skill.dart';
+import 'package:d4_utils/src/enums/skill_type.dart';
+import 'package:d4_utils/src/enums/sorcerer_cluster.dart';
+import 'package:d4_utils/src/enums/sorcerer_skill.dart';
 import 'package:d4_utils/src/utils/enum_utils.dart';
 import 'package:d4_utils/src/widgets/skill_widget.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +49,69 @@ class _SkillTreeWidgetState extends State<SkillTreeWidget> {
     super.initState();
   }
 
+  Enum _clusterOf(Enum e) {
+    if (e is BarbarianSkill) {
+      return Barbarian.clusterOf(e);
+    } else if (e is DruidSkill) {
+      return Druid.clusterOf(e);
+    } else if (e is NecromancerSkill) {
+      return Necromancer.clusterOf(e);
+    } else if (e is RogueSkill) {
+      return Rogue.clusterOf(e);
+    } else if (e is SorcererSkill) {
+      return Sorcerer.clusterOf(e);
+    } else {
+      assert(false, 'cluster of $e missing');
+      return BarbarianCluster.Basic;
+    }
+  }
+
+  SkillType _skillTypeOf(Enum e) {
+    if (e is BarbarianSkill) {
+      return Barbarian.skillTypeOf(e);
+    } else if (e is DruidSkill) {
+      return Druid.skillTypeOf(e);
+    } else if (e is NecromancerSkill) {
+      return Necromancer.skillTypeOf(e);
+    } else if (e is RogueSkill) {
+      return Rogue.skillTypeOf(e);
+    } else if (e is SorcererSkill) {
+      return Sorcerer.skillTypeOf(e);
+    } else {
+      assert(false, 'skillType of $e missing');
+      return SkillType.Active;
+    }
+  }
+
+  int _maxAssignedOf(Enum e) {
+    SkillType skillType = _skillTypeOf(e);
+    Enum cluster = _clusterOf(e);
+
+    switch (cluster) {
+      case BarbarianCluster.Ultimate:
+      case BarbarianCluster.KeyPassive:
+      case DruidCluster.Ultimate:
+      case DruidCluster.KeyPassive:
+      case NecromancerCluster.Ultimate:
+      case NecromancerCluster.KeyPassive:
+      case RogueCluster.Ultimate:
+      case RogueCluster.KeyPassive:
+      case SorcererCluster.Ultimate:
+      case SorcererCluster.KeyPassive:
+        return 1;
+    }
+
+    switch (skillType) {
+      case SkillType.Active:
+        return 5;
+      case SkillType.Passive:
+        return 3;
+      case SkillType.Enhancement:
+      case SkillType.Upgrade:
+        return 1;
+    }
+  }
+
   @override
   Widget build(BuildContext context) => ExpansionTile(
         shape: Theme.of(context).expansionTileTheme.shape,
@@ -58,7 +136,9 @@ class _SkillTreeWidgetState extends State<SkillTreeWidget> {
             }
           },
           onPlusPressed: () {
-            if (widget.isIncrementable) {
+            if (widget.isIncrementable &&
+                _skillTree.element.assignedSkillPoints <
+                    _maxAssignedOf(_skillTree.element.e)) {
               setState(() => _skillTree.element.assignedSkillPoints++);
               widget.incrementCallback();
             }

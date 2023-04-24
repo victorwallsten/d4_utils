@@ -11,6 +11,158 @@ abstract class Druid {
 
   static List<Tree<Skill>> get _childless => const [];
 
+  static DruidCluster clusterOf(DruidSkill druidSkill) {
+    switch (druidSkill) {
+      case DruidSkill.Maul:
+      case DruidSkill.EnhancedMaul:
+      case DruidSkill.FierceMaul:
+      case DruidSkill.WildMaul:
+      case DruidSkill.Claw:
+      case DruidSkill.EnhancedClaw:
+      case DruidSkill.FierceClaw:
+      case DruidSkill.WildClaw:
+      case DruidSkill.StormStrike:
+      case DruidSkill.EnhancedStormStrike:
+      case DruidSkill.FierceStormStrike:
+      case DruidSkill.WildStormStrike:
+      case DruidSkill.WindShear:
+      case DruidSkill.EnhancedWindShear:
+      case DruidSkill.FierceWindShear:
+      case DruidSkill.WildWindShear:
+      case DruidSkill.EarthSpike:
+      case DruidSkill.EnhancedEarthSpike:
+      case DruidSkill.FierceEarthSpike:
+      case DruidSkill.WildEarthSpike:
+        return DruidCluster.Basic;
+      case DruidSkill.LightningStorm:
+      case DruidSkill.EnhancedLightningStorm:
+      case DruidSkill.PrimalLightningStorm:
+      case DruidSkill.RagingLightningStorm:
+      case DruidSkill.Tornado:
+      case DruidSkill.EnhancedTornado:
+      case DruidSkill.PrimalTornado:
+      case DruidSkill.RagingTornado:
+      case DruidSkill.Pulverize:
+      case DruidSkill.EnhancedPulverize:
+      case DruidSkill.PrimalPulverize:
+      case DruidSkill.RagingPulverize:
+      case DruidSkill.Shred:
+      case DruidSkill.EnhancedShred:
+      case DruidSkill.PrimalShred:
+      case DruidSkill.RagingShred:
+      case DruidSkill.LandSlide:
+      case DruidSkill.EnhancedLandSlide:
+      case DruidSkill.PrimalLandSlide:
+      case DruidSkill.RagingLandSlide:
+      case DruidSkill.HeartOfTheWild:
+      case DruidSkill.WildImpulses:
+      case DruidSkill.Abundance:
+      case DruidSkill.PredatoryInstinct:
+      case DruidSkill.DigitigradeGait:
+      case DruidSkill.IronFur:
+        return DruidCluster.Core;
+      case DruidSkill.EarthenBulwark:
+      case DruidSkill.EnhancedEarthenBulwark:
+      case DruidSkill.InnateEarthenBulwark:
+      case DruidSkill.PreservingEarthenBulwark:
+      case DruidSkill.CycloneArmor:
+      case DruidSkill.EnhancedCycloneArmor:
+      case DruidSkill.InnateCycloneArmor:
+      case DruidSkill.PreservingCycloneArmor:
+      case DruidSkill.BloodHowl:
+      case DruidSkill.EnhancedBloodHowl:
+      case DruidSkill.InnateBloodHowl:
+      case DruidSkill.PreservingBloodHowl:
+      case DruidSkill.DebilitatingRoar:
+      case DruidSkill.EnhancedDebilitatingRoar:
+      case DruidSkill.InnateDebilitatingRoar:
+      case DruidSkill.PreservingDebilitatingRoar:
+      case DruidSkill.AncestralFortitude:
+      case DruidSkill.Vigilance:
+        return DruidCluster.Defensive;
+      case DruidSkill.Wolves:
+      case DruidSkill.EnhancedWolves:
+      case DruidSkill.BrutalWolves:
+      case DruidSkill.FerociousWolves:
+      case DruidSkill.Ravens:
+      case DruidSkill.EnhancedRavens:
+      case DruidSkill.BrutalRavens:
+      case DruidSkill.FerociousRavens:
+      case DruidSkill.VineCreeper:
+      case DruidSkill.EnhancedVineCreeper:
+      case DruidSkill.BrutalVineCreeper:
+      case DruidSkill.FerociousVineCreeper:
+      case DruidSkill.NaturesReach:
+      case DruidSkill.CallOfTheWild:
+      case DruidSkill.Clarity:
+        return DruidCluster.Companion;
+      case DruidSkill.Boulder:
+      case DruidSkill.EnhancedBoulder:
+      case DruidSkill.NaturalBoulder:
+      case DruidSkill.SavageBoulder:
+      case DruidSkill.Trample:
+      case DruidSkill.EnhancedTrample:
+      case DruidSkill.NaturalTrample:
+      case DruidSkill.SavageTrample:
+      case DruidSkill.Hurricane:
+      case DruidSkill.EnhancedHurricane:
+      case DruidSkill.NaturalHurricane:
+      case DruidSkill.SavageHurricane:
+      case DruidSkill.Rabies:
+      case DruidSkill.EnhancedRabies:
+      case DruidSkill.NaturalRabies:
+      case DruidSkill.SavageRabies:
+      case DruidSkill.CrushingEarth:
+      case DruidSkill.Safeguard:
+      case DruidSkill.StoneGuard:
+      case DruidSkill.Neurotoxin:
+      case DruidSkill.ToxicClaws:
+      case DruidSkill.Envenom:
+      case DruidSkill.Mending:
+      case DruidSkill.Provocation:
+      case DruidSkill.ElementalExposure:
+      case DruidSkill.ChargedAtmosphere:
+      case DruidSkill.EndlessTempest:
+      case DruidSkill.BadOmen:
+      case DruidSkill.ElectricShock:
+        return DruidCluster.Wrath;
+      case DruidSkill.GrizzlyRage:
+      case DruidSkill.PrimeGrizzlyRage:
+      case DruidSkill.SupremeGrizzlyRage:
+      case DruidSkill.Petrify:
+      case DruidSkill.PrimePetrify:
+      case DruidSkill.SupremePetrify:
+      case DruidSkill.Lacerate:
+      case DruidSkill.PrimeLacerate:
+      case DruidSkill.SupremeLacerate:
+      case DruidSkill.Cataclysm:
+      case DruidSkill.PrimeCataclysm:
+      case DruidSkill.SupremeCataclysm:
+      case DruidSkill.QuickShift:
+      case DruidSkill.NaturalFortitude:
+      case DruidSkill.HeightenedSenses:
+      case DruidSkill.DefensivePosture:
+      case DruidSkill.ThickHide:
+      case DruidSkill.NaturesResolve:
+      case DruidSkill.Unrestrained:
+      case DruidSkill.Defiance:
+      case DruidSkill.NaturalDisaster:
+      case DruidSkill.CircleOfLife:
+      case DruidSkill.Resonance:
+        return DruidCluster.Ultimate;
+      case DruidSkill.NaturesFury:
+      case DruidSkill.EarthenMight:
+      case DruidSkill.LupineFerocity:
+      case DruidSkill.BestialRampage:
+      case DruidSkill.PerfectStorm:
+      case DruidSkill.UrsineStrength:
+        return DruidCluster.KeyPassive;
+      default:
+        assert(false, 'case $druidSkill missing');
+        return DruidCluster.Basic;
+    }
+  }
+
   static SkillType skillTypeOf(DruidSkill druidSkill) {
     switch (druidSkill) {
       case DruidSkill.Maul:
@@ -147,14 +299,13 @@ abstract class Druid {
       case DruidSkill.NaturalDisaster:
       case DruidSkill.CircleOfLife:
       case DruidSkill.Resonance:
-        return SkillType.Passive;
       case DruidSkill.NaturesFury:
       case DruidSkill.EarthenMight:
       case DruidSkill.LupineFerocity:
       case DruidSkill.BestialRampage:
       case DruidSkill.PerfectStorm:
       case DruidSkill.UrsineStrength:
-        return SkillType.KeyPassive;
+        return SkillType.Passive;
     }
   }
 
