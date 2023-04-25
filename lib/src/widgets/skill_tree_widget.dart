@@ -23,29 +23,35 @@ import 'package:flutter/material.dart';
 class SkillTreeWidget extends StatefulWidget {
   const SkillTreeWidget({
     super.key,
-    required this.skillTree,
-    required this.isIncrementable,
-    required this.isDecrementable,
+    required this.parent,
+    required this.isClusterUnlocked,
+    required this.isClusterDecrementable,
+    required this.skill,
+    required this.skills,
     required this.incrementCallback,
     required this.decrementCallback,
   });
 
-  final Tree<Skill> skillTree;
-  final bool isIncrementable;
-  final bool isDecrementable;
-  final VoidCallback incrementCallback;
-  final VoidCallback decrementCallback;
+  final Enum parent;
+  final bool isClusterUnlocked;
+  final bool isClusterDecrementable;
+  final Tree<Enum> skill;
+  final Map<Enum, Skill> skills;
+  final Function(Enum) incrementCallback;
+  final Function(Enum) decrementCallback;
 
   @override
   State<SkillTreeWidget> createState() => _SkillTreeWidgetState();
 }
 
 class _SkillTreeWidgetState extends State<SkillTreeWidget> {
-  Tree<Skill> _skillTree = Tree(element: Skill(BarbarianSkill.Bash));
+  Tree<Enum> _skill = Tree(element: BarbarianSkill.Bash);
+  Map<Enum, Skill> _skills = {};
 
   @override
   void initState() {
-    _skillTree = widget.skillTree;
+    _skill = widget.skill;
+    _skills = widget.skills;
     super.initState();
   }
 
@@ -112,45 +118,133 @@ class _SkillTreeWidgetState extends State<SkillTreeWidget> {
     }
   }
 
+  bool _isNotCluster(Enum e) => !(e is BarbarianCluster ||
+      e is DruidCluster ||
+      e is NecromancerCluster ||
+      e is RogueCluster ||
+      e is SorcererCluster);
+
+  bool get _parentsThresholdIsMet {
+    switch (_skill.element) {
+      case BarbarianSkill.ExposeVulnerability:
+        return (_skills[BarbarianSkill.NoMercy]?.assignedSkillPoints ?? 0) >
+                0 ||
+            (_skills[BarbarianSkill.SlayingStrike]?.assignedSkillPoints ?? 0) >
+                0;
+      case BarbarianSkill.BruteForce:
+        return (_skills[BarbarianSkill.HeavyHanded]?.assignedSkillPoints ?? 0) >
+                0 ||
+            (_skills[BarbarianSkill.Wallop]?.assignedSkillPoints ?? 0) > 0;
+      case DruidSkill.BadOmen:
+        return (_skills[DruidSkill.ChargedAtmosphere]?.assignedSkillPoints ??
+                    0) >
+                0 ||
+            (_skills[DruidSkill.EndlessTempest]?.assignedSkillPoints ?? 0) > 0;
+      case DruidSkill.Unrestrained:
+        return (_skills[DruidSkill.ThickHide]?.assignedSkillPoints ?? 0) > 0 ||
+            (_skills[DruidSkill.NaturesResolve]?.assignedSkillPoints ?? 0) > 0;
+      case DruidSkill.Resonance:
+        return (_skills[DruidSkill.NaturalDisaster]?.assignedSkillPoints ?? 0) >
+                0 ||
+            (_skills[DruidSkill.CircleOfLife]?.assignedSkillPoints ?? 0) > 0;
+      case NecromancerSkill.TidesOfBlood:
+        return (_skills[NecromancerSkill.Transfusion]?.assignedSkillPoints ??
+                    0) >
+                0 ||
+            (_skills[NecromancerSkill.CoalescedBlood]?.assignedSkillPoints ??
+                    0) >
+                0;
+      case NecromancerSkill.Evulsion:
+        return (_skills[NecromancerSkill.CompoundFracture]
+                        ?.assignedSkillPoints ??
+                    0) >
+                0 ||
+            (_skills[NecromancerSkill.RapidOssification]?.assignedSkillPoints ??
+                    0) >
+                0;
+      case NecromancerSkill.Terror:
+        return (_skills[NecromancerSkill.Gloom]?.assignedSkillPoints ?? 0) >
+                0 ||
+            (_skills[NecromancerSkill.CripplingDarkness]?.assignedSkillPoints ??
+                    0) >
+                0;
+      case RogueSkill.TrickAttacks:
+        return (_skills[RogueSkill.Concussive]?.assignedSkillPoints ?? 0) > 0 ||
+            (_skills[RogueSkill.RapidGambits]?.assignedSkillPoints ?? 0) > 0;
+      case SorcererSkill.FrigidBreeze:
+        return (_skills[SorcererSkill.Hoarfrost]?.assignedSkillPoints ?? 0) >
+                0 ||
+            (_skills[SorcererSkill.IcyTouch]?.assignedSkillPoints ?? 0) > 0;
+      case SorcererSkill.Warmth:
+        return (_skills[SorcererSkill.EndlessPyre]?.assignedSkillPoints ?? 0) >
+                0 ||
+            (_skills[SorcererSkill.Soulfire]?.assignedSkillPoints ?? 0) > 0;
+      case SorcererSkill.Convulsions:
+        return (_skills[SorcererSkill.Conduction]?.assignedSkillPoints ?? 0) >
+                0 ||
+            (_skills[SorcererSkill.Electrocution]?.assignedSkillPoints ?? 0) >
+                0;
+      default:
+        if (_isNotCluster(widget.parent)) {
+          return (_skills[widget.parent]?.assignedSkillPoints ?? 0) > 0;
+        } else {
+          return true;
+        }
+    }
+  }
+
+  bool get _isDecrementable =>
+      widget.isClusterDecrementable &&
+      ((_skills[_skill.element]?.assignedSkillPoints ?? 0) > 1 ||
+          (_skills[_skill.element]?.assignedSkillPoints ?? 0) == 1 &&
+              _skill.children.fold(
+                      0,
+                      (b, a) =>
+                          b +
+                          a.fold(
+                              0,
+                              (d, c) =>
+                                  d +
+                                  (_skills[c]?.assignedSkillPoints ?? 0))) ==
+                  0);
+
+  bool get _isIncrementable =>
+      widget.isClusterUnlocked &&
+      (_skills[_skill.element]?.assignedSkillPoints ?? 0) <
+          _maxAssignedOf(_skill.element) &&
+      _parentsThresholdIsMet;
+
   @override
   Widget build(BuildContext context) => ExpansionTile(
         shape: Theme.of(context).expansionTileTheme.shape,
         childrenPadding: Theme.of(context).expansionTileTheme.childrenPadding,
-        title: Text(EnumUtils.enumToNameWithSpaces(_skillTree.element.e)),
+        title: Text(EnumUtils.enumToNameWithSpaces(_skill.element)),
         trailing: SkillWidget(
-          _skillTree.element.e,
-          level: _skillTree.element.assignedSkillPoints,
+          _skill.element,
+          level: _skills[_skill.element]?.assignedSkillPoints ?? 0,
           onMinusPressed: () {
-            if (widget.isDecrementable &&
-                (_skillTree.element.assignedSkillPoints > 1 ||
-                    _skillTree.element.assignedSkillPoints == 1 &&
-                        _skillTree.children.fold(
-                                0,
-                                (b, a) =>
-                                    b +
-                                    a.fold(0,
-                                        (d, c) => d + c.assignedSkillPoints)) ==
-                            0)) {
-              setState(() => _skillTree.element.assignedSkillPoints--);
-              widget.decrementCallback();
+            if (_isDecrementable) {
+              setState(() {
+                widget.decrementCallback(_skill.element);
+              });
             }
           },
           onPlusPressed: () {
-            if (widget.isIncrementable &&
-                _skillTree.element.assignedSkillPoints <
-                    _maxAssignedOf(_skillTree.element.e)) {
-              setState(() => _skillTree.element.assignedSkillPoints++);
-              widget.incrementCallback();
+            if (_isIncrementable) {
+              setState(() {
+                widget.incrementCallback(_skill.element);
+              });
             }
           },
         ),
-        children: _skillTree.children
+        children: _skill.children
             .map(
               (child) => SkillTreeWidget(
-                skillTree: child,
-                isIncrementable: widget.isIncrementable &&
-                    _skillTree.element.assignedSkillPoints > 0,
-                isDecrementable: widget.isDecrementable,
+                parent: _skill.element,
+                isClusterUnlocked: widget.isClusterUnlocked,
+                isClusterDecrementable: widget.isClusterDecrementable,
+                skill: child,
+                skills: _skills,
                 incrementCallback: widget.incrementCallback,
                 decrementCallback: widget.decrementCallback,
               ),

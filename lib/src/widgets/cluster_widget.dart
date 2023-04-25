@@ -8,29 +8,35 @@ import 'package:flutter/material.dart';
 class ClusterWidget extends StatefulWidget {
   const ClusterWidget({
     super.key,
-    required this.clusterTree,
-    required this.isIncrementable,
-    required this.isDecrementable,
+    required this.parent,
+    required this.cluster,
+    required this.skills,
+    required this.isClusterUnlocked,
+    required this.isClusterDecrementable,
     required this.incrementCallback,
     required this.decrementCallback,
   });
 
-  final Tree<Skill> clusterTree;
-  final bool isIncrementable;
-  final bool isDecrementable;
-  final VoidCallback incrementCallback;
-  final VoidCallback decrementCallback;
+  final Enum parent;
+  final Tree<Enum> cluster;
+  final Map<Enum, Skill> skills;
+  final bool isClusterUnlocked;
+  final bool isClusterDecrementable;
+  final Function(Set<Enum>) incrementCallback;
+  final Function(Set<Enum>) decrementCallback;
 
   @override
   State<ClusterWidget> createState() => _ClusterWidgetState();
 }
 
 class _ClusterWidgetState extends State<ClusterWidget> {
-  Tree<Skill> _clusterTree = Tree(element: Skill(BarbarianCluster.Basic));
+  Tree<Enum> _cluster = Tree(element: BarbarianCluster.Basic);
+  Map<Enum, Skill> _skills = {};
 
   @override
   void initState() {
-    _clusterTree = widget.clusterTree;
+    _cluster = widget.cluster;
+    _skills = widget.skills;
     super.initState();
   }
 
@@ -39,22 +45,20 @@ class _ClusterWidgetState extends State<ClusterWidget> {
         shape: Theme.of(context).expansionTileTheme.shape,
         childrenPadding: Theme.of(context).expansionTileTheme.childrenPadding,
         title: Text(
-          '${EnumUtils.enumToNameWithSpaces(_clusterTree.element.e)}'
-          ' (${_clusterTree.element.assignedSkillPoints})',
+          '${EnumUtils.enumToNameWithSpaces(_cluster.element)}'
+          ' (${_skills[_cluster.element]?.assignedSkillPoints ?? 0})',
         ),
-        children: _clusterTree.children
+        children: _cluster.children
             .map((child) => SkillTreeWidget(
-                  skillTree: child,
-                  isIncrementable: widget.isIncrementable,
-                  isDecrementable: widget.isDecrementable,
-                  incrementCallback: () {
-                    setState(() => _clusterTree.element.assignedSkillPoints++);
-                    widget.incrementCallback();
-                  },
-                  decrementCallback: () {
-                    setState(() => _clusterTree.element.assignedSkillPoints--);
-                    widget.decrementCallback();
-                  },
+                  parent: _cluster.element,
+                  isClusterUnlocked: widget.isClusterUnlocked,
+                  isClusterDecrementable: widget.isClusterDecrementable,
+                  skill: child,
+                  skills: _skills,
+                  incrementCallback: (Enum e) => setState(
+                      () => widget.incrementCallback({_cluster.element, e})),
+                  decrementCallback: (Enum e) => setState(
+                      () => widget.decrementCallback({_cluster.element, e})),
                 ))
             .toList(growable: false),
       );

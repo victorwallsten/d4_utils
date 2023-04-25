@@ -1,4 +1,3 @@
-import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/necromancer_cluster.dart';
 import 'package:d4_utils/src/enums/necromancer_skill.dart';
@@ -6,10 +5,10 @@ import 'package:d4_utils/src/enums/character_class.dart';
 import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Necromancer {
-  static Tree<Skill> _skillTree(Enum e, List<Tree<Skill>> children) =>
-      Tree(element: Skill(e), children: children);
+  static Tree<Enum> _skillTree(Enum e, List<Tree<Enum>> children) =>
+      Tree(element: e, children: children);
 
-  static List<Tree<Skill>> get _childless => const [];
+  static List<Tree<Enum>> get _childless => const [];
 
   static NecromancerCluster clusterOf(NecromancerSkill necromancerSkill) {
     switch (necromancerSkill) {
@@ -253,7 +252,7 @@ abstract class Necromancer {
     }
   }
 
-  static Tree<Skill> get boneSplinters => _skillTree(
+  static Tree<Enum> get boneSplinters => _skillTree(
         NecromancerSkill.BoneSplinters,
         [
           _skillTree(
@@ -266,7 +265,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get decompose => _skillTree(
+  static Tree<Enum> get decompose => _skillTree(
         NecromancerSkill.Decompose,
         [
           _skillTree(
@@ -279,7 +278,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get hemorrhage => _skillTree(
+  static Tree<Enum> get hemorrhage => _skillTree(
         NecromancerSkill.Hemorrhage,
         [
           _skillTree(
@@ -292,7 +291,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get reap => _skillTree(
+  static Tree<Enum> get reap => _skillTree(
         NecromancerSkill.Reap,
         [
           _skillTree(
@@ -305,7 +304,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get blight => _skillTree(
+  static Tree<Enum> get blight => _skillTree(
         NecromancerSkill.Blight,
         [
           _skillTree(
@@ -318,7 +317,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get bloodLance => _skillTree(
+  static Tree<Enum> get bloodLance => _skillTree(
         NecromancerSkill.BloodLance,
         [
           _skillTree(
@@ -331,7 +330,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get bloodSurge => _skillTree(
+  static Tree<Enum> get bloodSurge => _skillTree(
         NecromancerSkill.BloodSurge,
         [
           _skillTree(
@@ -344,7 +343,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get boneSpear => _skillTree(
+  static Tree<Enum> get boneSpear => _skillTree(
         NecromancerSkill.BoneSpear,
         [
           _skillTree(
@@ -357,7 +356,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get sever => _skillTree(
+  static Tree<Enum> get sever => _skillTree(
         NecromancerSkill.Sever,
         [
           _skillTree(
@@ -370,17 +369,17 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get unlivingEnergy => _skillTree(
+  static Tree<Enum> get unlivingEnergy => _skillTree(
         NecromancerSkill.UnlivingEnergy,
         [
           _skillTree(NecromancerSkill.ImperfectlyBalanced, _childless),
         ],
       );
 
-  static Tree<Skill> get hewedFlesh =>
+  static Tree<Enum> get hewedFlesh =>
       _skillTree(NecromancerSkill.HewedFlesh, _childless);
 
-  static Tree<Skill> get bloodMist => _skillTree(
+  static Tree<Enum> get bloodMist => _skillTree(
         NecromancerSkill.BloodMist,
         [
           _skillTree(
@@ -393,7 +392,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get bonePrison => _skillTree(
+  static Tree<Enum> get bonePrison => _skillTree(
         NecromancerSkill.BonePrison,
         [
           _skillTree(
@@ -406,7 +405,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get corpseExplosion => _skillTree(
+  static Tree<Enum> get corpseExplosion => _skillTree(
         NecromancerSkill.CorpseExplosion,
         [
           _skillTree(
@@ -419,20 +418,20 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get grimHarvest => _skillTree(
+  static Tree<Enum> get grimHarvest => _skillTree(
         NecromancerSkill.GrimHarvest,
         [
           _skillTree(NecromancerSkill.FueledByDeath, _childless),
         ],
       );
 
-  static Tree<Skill> get spikedArmor =>
+  static Tree<Enum> get spikedArmor =>
       _skillTree(NecromancerSkill.SpikedArmor, _childless);
 
-  static Tree<Skill> get skeletalWarriorMastery =>
+  static Tree<Enum> get skeletalWarriorMastery =>
       _skillTree(NecromancerSkill.SkeletalWarriorMastery, _childless);
 
-  static Tree<Skill> get decrepify => _skillTree(
+  static Tree<Enum> get decrepify => _skillTree(
         NecromancerSkill.Decrepify,
         [
           _skillTree(
@@ -445,7 +444,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get ironMaiden => _skillTree(
+  static Tree<Enum> get ironMaiden => _skillTree(
         NecromancerSkill.IronMaiden,
         [
           _skillTree(
@@ -458,19 +457,19 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get deathsEmbrace =>
+  static Tree<Enum> get deathsEmbrace =>
       _skillTree(NecromancerSkill.DeathsEmbrace, _childless);
 
-  static Tree<Skill> get deathsReach =>
+  static Tree<Enum> get deathsReach =>
       _skillTree(NecromancerSkill.DeathsReach, _childless);
 
-  static Tree<Skill> get amplifyDamage =>
+  static Tree<Enum> get amplifyDamage =>
       _skillTree(NecromancerSkill.AmplifyDamage, _childless);
 
-  static Tree<Skill> get skeletalMageMastery =>
+  static Tree<Enum> get skeletalMageMastery =>
       _skillTree(NecromancerSkill.SkeletalMageMastery, _childless);
 
-  static Tree<Skill> get boneSpirit => _skillTree(
+  static Tree<Enum> get boneSpirit => _skillTree(
         NecromancerSkill.BoneSpirit,
         [
           _skillTree(
@@ -483,7 +482,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get corpseTendrils => _skillTree(
+  static Tree<Enum> get corpseTendrils => _skillTree(
         NecromancerSkill.CorpseTendrils,
         [
           _skillTree(
@@ -496,20 +495,18 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get gruesomeMending => _skillTree(
+  static Tree<Enum> get gruesomeMending => _skillTree(
         NecromancerSkill.GruesomeMending,
         [
           _skillTree(
             NecromancerSkill.Transfusion,
             [
-              // TODO: this one has two parents (see below)
               _skillTree(NecromancerSkill.TidesOfBlood, _childless),
             ],
           ),
           _skillTree(
             NecromancerSkill.CoalescedBlood,
             [
-              // TODO: this one has two parents (see above)
               _skillTree(NecromancerSkill.TidesOfBlood, _childless),
               _skillTree(NecromancerSkill.DrainVitality, _childless),
             ],
@@ -517,50 +514,46 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get serration => _skillTree(
+  static Tree<Enum> get serration => _skillTree(
         NecromancerSkill.Serration,
         [
           _skillTree(
             NecromancerSkill.CompoundFracture,
             [
-              // TODO: this one has two parents (see below)
               _skillTree(NecromancerSkill.Evulsion, _childless),
             ],
           ),
           _skillTree(
             NecromancerSkill.RapidOssification,
             [
-              // TODO: this one has two parents (see above)
               _skillTree(NecromancerSkill.Evulsion, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Skill> get reapersPursuit => _skillTree(
+  static Tree<Enum> get reapersPursuit => _skillTree(
         NecromancerSkill.ReapersPursuit,
         [
           _skillTree(
             NecromancerSkill.Gloom,
             [
-              // TODO: this one has two parents (see below)
               _skillTree(NecromancerSkill.Terror, _childless),
             ],
           ),
           _skillTree(
             NecromancerSkill.CripplingDarkness,
             [
-              // TODO: this one has two parents (see above)
               _skillTree(NecromancerSkill.Terror, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Skill> get necroticCarapace =>
+  static Tree<Enum> get necroticCarapace =>
       _skillTree(NecromancerSkill.NecroticCarapace, _childless);
 
-  static Tree<Skill> get armyOfTheDead => _skillTree(
+  static Tree<Enum> get armyOfTheDead => _skillTree(
         NecromancerSkill.ArmyOfTheDead,
         [
           _skillTree(
@@ -572,7 +565,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get bloodWave => _skillTree(
+  static Tree<Enum> get bloodWave => _skillTree(
         NecromancerSkill.BloodWave,
         [
           _skillTree(
@@ -584,7 +577,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get boneStorm => _skillTree(
+  static Tree<Enum> get boneStorm => _skillTree(
         NecromancerSkill.BoneStorm,
         [
           _skillTree(
@@ -596,14 +589,14 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get standAlone => _skillTree(
+  static Tree<Enum> get standAlone => _skillTree(
         NecromancerSkill.StandAlone,
         [
           _skillTree(NecromancerSkill.MementoMori, _childless),
         ],
       );
 
-  static Tree<Skill> get inspiringLeader => _skillTree(
+  static Tree<Enum> get inspiringLeader => _skillTree(
         NecromancerSkill.InspiringLeader,
         [
           _skillTree(NecromancerSkill.HellbentCommander, _childless),
@@ -611,29 +604,29 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get bondedInEssence => _skillTree(
+  static Tree<Enum> get bondedInEssence => _skillTree(
         NecromancerSkill.BondedInEssence,
         [
           _skillTree(NecromancerSkill.DeathsDefense, _childless),
         ],
       );
 
-  static Tree<Skill> get golemMastery =>
+  static Tree<Enum> get golemMastery =>
       _skillTree(NecromancerSkill.GolemMastery, _childless);
 
-  static Tree<Skill> get ossifiedEssence =>
+  static Tree<Enum> get ossifiedEssence =>
       _skillTree(NecromancerSkill.OssifiedEssence, _childless);
 
-  static Tree<Skill> get rathmasVigor =>
+  static Tree<Enum> get rathmasVigor =>
       _skillTree(NecromancerSkill.RathmasVigor, _childless);
 
-  static Tree<Skill> get shadowblight =>
+  static Tree<Enum> get shadowblight =>
       _skillTree(NecromancerSkill.Shadowblight, _childless);
 
-  static Tree<Skill> get kalansEdict =>
+  static Tree<Enum> get kalansEdict =>
       _skillTree(NecromancerSkill.KalansEdict, _childless);
 
-  static Tree<Skill> get basic => _skillTree(
+  static Tree<Enum> get basic => _skillTree(
         NecromancerCluster.Basic,
         [
           boneSplinters,
@@ -643,7 +636,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get core => _skillTree(
+  static Tree<Enum> get core => _skillTree(
         NecromancerCluster.Core,
         [
           blight,
@@ -656,7 +649,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get firstCorpseAndMacabre => _skillTree(
+  static Tree<Enum> get firstCorpseAndMacabre => _skillTree(
         NecromancerCluster.FirstCorpseAndMacabre,
         [
           bloodMist,
@@ -668,7 +661,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get curse => _skillTree(
+  static Tree<Enum> get curse => _skillTree(
         NecromancerCluster.Curse,
         [
           decrepify,
@@ -680,7 +673,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get secondCorpseAndMacabre => _skillTree(
+  static Tree<Enum> get secondCorpseAndMacabre => _skillTree(
         NecromancerCluster.SecondCorpseAndMacabre,
         [
           boneSpirit,
@@ -692,7 +685,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get ultimate => _skillTree(
+  static Tree<Enum> get ultimate => _skillTree(
         NecromancerCluster.Ultimate,
         [
           armyOfTheDead,
@@ -705,7 +698,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get keyPassive => _skillTree(
+  static Tree<Enum> get keyPassive => _skillTree(
         NecromancerCluster.KeyPassive,
         [
           ossifiedEssence,
@@ -715,7 +708,7 @@ abstract class Necromancer {
         ],
       );
 
-  static Tree<Skill> get necromancer => _skillTree(
+  static Tree<Enum> get necromancer => _skillTree(
         CharacterClass.Necromancer,
         [
           basic,

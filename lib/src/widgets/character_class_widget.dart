@@ -13,22 +13,25 @@ import 'package:flutter/material.dart';
 class CharacterClassWidget extends StatefulWidget {
   const CharacterClassWidget({
     super.key,
-    required this.characterClassTree,
+    required this.characterClass,
+    required this.skills,
   });
 
-  final Tree<Skill> characterClassTree;
+  final Tree<Enum> characterClass;
+  final Map<Enum, Skill> skills;
 
   @override
   State<CharacterClassWidget> createState() => _CharacterClassWidgetState();
 }
 
 class _CharacterClassWidgetState extends State<CharacterClassWidget> {
-  Tree<Skill> _characterClassTree =
-      Tree(element: Skill(CharacterClass.Barbarian));
+  Tree<Enum> _characterClass = Tree(element: CharacterClass.Barbarian);
+  Map<Enum, Skill> _skills = {};
 
   @override
   void initState() {
-    _characterClassTree = widget.characterClassTree;
+    _characterClass = widget.characterClass;
+    _skills = widget.skills;
     super.initState();
   }
 
@@ -82,22 +85,28 @@ class _CharacterClassWidgetState extends State<CharacterClassWidget> {
     }
   }
 
-  bool _isDecrementable(Skill cluster, Iterable<Skill> clusters) {
+  bool _isClusterUnlocked(Enum cluster) =>
+      (_skills[_characterClass.element]?.assignedSkillPoints ?? 0) >=
+      _thresholdOf(cluster);
+
+  bool _isClusterDecrementable(Enum cluster) {
+    Iterable<Enum> clusters =
+        _characterClass.children.map((child) => child.element);
     int runningSum = 0;
-    if (cluster.assignedSkillPoints == 0 || clusters.isEmpty) {
+    if ((_skills[cluster]?.assignedSkillPoints ?? 0) == 0 || clusters.isEmpty) {
       return false;
     }
-    Iterable<Skill> clustersWithPoints =
-        clusters.where((element) => element.assignedSkillPoints > 0);
+    Iterable<Enum> clustersWithPoints = clusters
+        .where((element) => (_skills[element]?.assignedSkillPoints ?? 0) > 0);
     runningSum = clustersWithPoints
-        .takeWhile((value) => value.e.index <= cluster.e.index)
-        .fold(0, (b, a) => b + a.assignedSkillPoints);
-    for (Skill c in clustersWithPoints
-        .skipWhile((value) => value.e.index <= cluster.e.index)) {
-      if (runningSum <= _thresholdOf(c.e)) {
+        .takeWhile((value) => value.index <= cluster.index)
+        .fold(0, (b, a) => b + (_skills[a]?.assignedSkillPoints ?? 0));
+    for (Enum e in clustersWithPoints
+        .skipWhile((value) => value.index <= cluster.index)) {
+      if (runningSum <= _thresholdOf(e)) {
         return false;
       }
-      runningSum += c.assignedSkillPoints;
+      runningSum += (_skills[e]?.assignedSkillPoints ?? 0);
     }
     return true;
   }
@@ -107,25 +116,31 @@ class _CharacterClassWidgetState extends State<CharacterClassWidget> {
         children: <Widget>[
               ListTile(
                 title: Text(
-                  '${EnumUtils.enumToNameWithSpaces(_characterClassTree.element.e)}'
-                  ' total: ${_characterClassTree.element.assignedSkillPoints}',
+                  '${EnumUtils.enumToNameWithSpaces(_characterClass.element)} total:'
+                  ' ${_skills[_characterClass.element]?.assignedSkillPoints ?? 0}',
                 ),
               ),
             ] +
-            _characterClassTree.children
+            _characterClass.children
                 .map((child) => ClusterWidget(
-                      clusterTree: child,
-                      isIncrementable:
-                          _characterClassTree.element.assignedSkillPoints >=
-                              _thresholdOf(child.element.e),
-                      isDecrementable: _isDecrementable(
-                        child.element,
-                        _characterClassTree.children.map((c) => c.element),
-                      ),
-                      incrementCallback: () => setState(() =>
-                          _characterClassTree.element.assignedSkillPoints++),
-                      decrementCallback: () => setState(() =>
-                          _characterClassTree.element.assignedSkillPoints--),
+                      parent: _characterClass.element,
+                      cluster: child,
+                      skills: _skills,
+                      isClusterUnlocked: _isClusterUnlocked(child.element),
+                      isClusterDecrementable:
+                          _isClusterDecrementable(child.element),
+                      incrementCallback: (Set<Enum> es) => setState(() {
+                        _skills[_characterClass.element]?.assignedSkillPoints++;
+                        for (Enum e in es) {
+                          _skills[e]?.assignedSkillPoints++;
+                        }
+                      }),
+                      decrementCallback: (Set<Enum> es) => setState(() {
+                        _skills[_characterClass.element]?.assignedSkillPoints--;
+                        for (Enum e in es) {
+                          _skills[e]?.assignedSkillPoints--;
+                        }
+                      }),
                     ))
                 .toList(growable: false),
       );

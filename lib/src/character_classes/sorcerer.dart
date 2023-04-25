@@ -1,4 +1,3 @@
-import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/skill_type.dart';
 import 'package:d4_utils/src/enums/sorcerer_cluster.dart';
@@ -6,10 +5,10 @@ import 'package:d4_utils/src/enums/sorcerer_skill.dart';
 import 'package:d4_utils/src/enums/character_class.dart';
 
 abstract class Sorcerer {
-  static Tree<Skill> _skillTree(Enum e, List<Tree<Skill>> children) =>
-      Tree(element: Skill(e), children: children);
+  static Tree<Enum> _skillTree(Enum e, List<Tree<Enum>> children) =>
+      Tree(element: e, children: children);
 
-  static List<Tree<Skill>> get _childless => const [];
+  static List<Tree<Enum>> get _childless => const [];
 
   static SorcererCluster clusterOf(SorcererSkill sorcererSkill) {
     switch (sorcererSkill) {
@@ -295,7 +294,7 @@ abstract class Sorcerer {
     }
   }
 
-  static Tree<Skill> get spark => _skillTree(
+  static Tree<Enum> get spark => _skillTree(
         SorcererSkill.Spark,
         [
           _skillTree(
@@ -308,7 +307,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get frostBolt => _skillTree(
+  static Tree<Enum> get frostBolt => _skillTree(
         SorcererSkill.FrostBolt,
         [
           _skillTree(
@@ -321,7 +320,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get fireBolt => _skillTree(
+  static Tree<Enum> get fireBolt => _skillTree(
         SorcererSkill.FireBolt,
         [
           _skillTree(
@@ -334,7 +333,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get arcLash => _skillTree(
+  static Tree<Enum> get arcLash => _skillTree(
         SorcererSkill.ArcLash,
         [
           _skillTree(
@@ -347,7 +346,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get chainLightning => _skillTree(
+  static Tree<Enum> get chainLightning => _skillTree(
         SorcererSkill.ChainLightning,
         [
           _skillTree(
@@ -360,7 +359,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get chargedBolts => _skillTree(
+  static Tree<Enum> get chargedBolts => _skillTree(
         SorcererSkill.ChargedBolts,
         [
           _skillTree(
@@ -373,7 +372,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get fireball => _skillTree(
+  static Tree<Enum> get fireball => _skillTree(
         SorcererSkill.Fireball,
         [
           _skillTree(
@@ -386,7 +385,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get frozenOrb => _skillTree(
+  static Tree<Enum> get frozenOrb => _skillTree(
         SorcererSkill.FrozenOrb,
         [
           _skillTree(
@@ -399,7 +398,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get incinerate => _skillTree(
+  static Tree<Enum> get incinerate => _skillTree(
         SorcererSkill.Incinerate,
         [
           _skillTree(
@@ -412,7 +411,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get iceShards => _skillTree(
+  static Tree<Enum> get iceShards => _skillTree(
         SorcererSkill.IceShards,
         [
           _skillTree(
@@ -425,17 +424,17 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get devastation => _skillTree(
+  static Tree<Enum> get devastation => _skillTree(
         SorcererSkill.Devastation,
         [
           _skillTree(SorcererSkill.ElementalDominance, _childless),
         ],
       );
 
-  static Tree<Skill> get potentWarding =>
+  static Tree<Enum> get potentWarding =>
       _skillTree(SorcererSkill.PotentWarding, _childless);
 
-  static Tree<Skill> get flameShield => _skillTree(
+  static Tree<Enum> get flameShield => _skillTree(
         SorcererSkill.FlameShield,
         [
           _skillTree(
@@ -448,7 +447,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get iceArmor => _skillTree(
+  static Tree<Enum> get iceArmor => _skillTree(
         SorcererSkill.IceArmor,
         [
           _skillTree(
@@ -461,7 +460,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get teleport => _skillTree(
+  static Tree<Enum> get teleport => _skillTree(
         SorcererSkill.Teleport,
         [
           _skillTree(
@@ -474,7 +473,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get frostNova => _skillTree(
+  static Tree<Enum> get frostNova => _skillTree(
         SorcererSkill.FrostNova,
         [
           _skillTree(
@@ -487,13 +486,13 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get elementalAttunement =>
+  static Tree<Enum> get elementalAttunement =>
       _skillTree(SorcererSkill.ElementalAttunement, _childless);
 
-  static Tree<Skill> get glassCannon =>
+  static Tree<Enum> get glassCannon =>
       _skillTree(SorcererSkill.GlassCannon, _childless);
 
-  static Tree<Skill> get hydra => _skillTree(
+  static Tree<Enum> get hydra => _skillTree(
         SorcererSkill.Hydra,
         [
           _skillTree(
@@ -506,7 +505,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get iceBlades => _skillTree(
+  static Tree<Enum> get iceBlades => _skillTree(
         SorcererSkill.IceBlades,
         [
           _skillTree(
@@ -519,7 +518,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get lightningSpear => _skillTree(
+  static Tree<Enum> get lightningSpear => _skillTree(
         SorcererSkill.LightningSpear,
         [
           _skillTree(
@@ -532,7 +531,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get alignTheElements => _skillTree(
+  static Tree<Enum> get alignTheElements => _skillTree(
         SorcererSkill.AlignTheElements,
         [
           _skillTree(SorcererSkill.ManaShield, _childless),
@@ -540,13 +539,13 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get precisionMagic =>
+  static Tree<Enum> get precisionMagic =>
       _skillTree(SorcererSkill.PrecisionMagic, _childless);
 
-  static Tree<Skill> get conjurationMastery =>
+  static Tree<Enum> get conjurationMastery =>
       _skillTree(SorcererSkill.ConjurationMastery, _childless);
 
-  static Tree<Skill> get blizzard => _skillTree(
+  static Tree<Enum> get blizzard => _skillTree(
         SorcererSkill.Blizzard,
         [
           _skillTree(
@@ -559,7 +558,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get firewall => _skillTree(
+  static Tree<Enum> get firewall => _skillTree(
         SorcererSkill.Firewall,
         [
           _skillTree(
@@ -572,7 +571,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get meteor => _skillTree(
+  static Tree<Enum> get meteor => _skillTree(
         SorcererSkill.Meteor,
         [
           _skillTree(
@@ -585,7 +584,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get ballLightning => _skillTree(
+  static Tree<Enum> get ballLightning => _skillTree(
         SorcererSkill.BallLightning,
         [
           _skillTree(
@@ -598,7 +597,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get icyVeil => _skillTree(
+  static Tree<Enum> get icyVeil => _skillTree(
         SorcererSkill.IcyVeil,
         [
           _skillTree(SorcererSkill.ColdFront, _childless),
@@ -606,7 +605,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get innerFlames => _skillTree(
+  static Tree<Enum> get innerFlames => _skillTree(
         SorcererSkill.InnerFlames,
         [
           _skillTree(SorcererSkill.CripplingFlames, _childless),
@@ -614,7 +613,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get staticDischarge => _skillTree(
+  static Tree<Enum> get staticDischarge => _skillTree(
         SorcererSkill.StaticDischarge,
         [
           _skillTree(SorcererSkill.ShockingImpact, _childless),
@@ -622,7 +621,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get deepFreeze => _skillTree(
+  static Tree<Enum> get deepFreeze => _skillTree(
         SorcererSkill.DeepFreeze,
         [
           _skillTree(
@@ -634,7 +633,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get inferno => _skillTree(
+  static Tree<Enum> get inferno => _skillTree(
         SorcererSkill.Inferno,
         [
           _skillTree(
@@ -646,7 +645,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get unstableCurrents => _skillTree(
+  static Tree<Enum> get unstableCurrents => _skillTree(
         SorcererSkill.UnstableCurrents,
         [
           _skillTree(
@@ -658,85 +657,79 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get permafrost => _skillTree(
+  static Tree<Enum> get permafrost => _skillTree(
         SorcererSkill.Permafrost,
         [
           _skillTree(
             SorcererSkill.Hoarfrost,
             [
-              // TODO: this one has two parents (see below)
               _skillTree(SorcererSkill.FrigidBreeze, _childless),
             ],
           ),
           _skillTree(
             SorcererSkill.IcyTouch,
             [
-              // TODO: this one has two parents (see above)
               _skillTree(SorcererSkill.FrigidBreeze, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Skill> get fierySurge => _skillTree(
+  static Tree<Enum> get fierySurge => _skillTree(
         SorcererSkill.FierySurge,
         [
           _skillTree(
             SorcererSkill.EndlessPyre,
             [
-              // TODO: this one has two parents (see below)
               _skillTree(SorcererSkill.Warmth, _childless),
             ],
           ),
           _skillTree(
             SorcererSkill.Soulfire,
             [
-              // TODO: this one has two parents (see above)
               _skillTree(SorcererSkill.Warmth, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Skill> get coursingCurrents => _skillTree(
+  static Tree<Enum> get coursingCurrents => _skillTree(
         SorcererSkill.CoursingCurrents,
         [
           _skillTree(
             SorcererSkill.Conduction,
             [
-              // TODO: this one has two parents (see below)
               _skillTree(SorcererSkill.Convulsions, _childless),
             ],
           ),
           _skillTree(
             SorcererSkill.Electrocution,
             [
-              // TODO: this one has two parents (see above)
               _skillTree(SorcererSkill.Convulsions, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Skill> get avalanche =>
+  static Tree<Enum> get avalanche =>
       _skillTree(SorcererSkill.Avalanche, _childless);
 
-  static Tree<Skill> get shatter =>
+  static Tree<Enum> get shatter =>
       _skillTree(SorcererSkill.Shatter, _childless);
 
-  static Tree<Skill> get overflowingEnergy =>
+  static Tree<Enum> get overflowingEnergy =>
       _skillTree(SorcererSkill.OverflowingEnergy, _childless);
 
-  static Tree<Skill> get vyrsMastery =>
+  static Tree<Enum> get vyrsMastery =>
       _skillTree(SorcererSkill.VyrsMastery, _childless);
 
-  static Tree<Skill> get esusFerocity =>
+  static Tree<Enum> get esusFerocity =>
       _skillTree(SorcererSkill.EsusFerocity, _childless);
 
-  static Tree<Skill> get combustion =>
+  static Tree<Enum> get combustion =>
       _skillTree(SorcererSkill.Combustion, _childless);
 
-  static Tree<Skill> get basic => _skillTree(
+  static Tree<Enum> get basic => _skillTree(
         SorcererCluster.Basic,
         [
           spark,
@@ -746,7 +739,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get core => _skillTree(
+  static Tree<Enum> get core => _skillTree(
         SorcererCluster.Core,
         [
           chainLightning,
@@ -760,7 +753,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get defensive => _skillTree(
+  static Tree<Enum> get defensive => _skillTree(
         SorcererCluster.Defensive,
         [
           flameShield,
@@ -772,7 +765,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get conjuration => _skillTree(
+  static Tree<Enum> get conjuration => _skillTree(
         SorcererCluster.Conjuration,
         [
           hydra,
@@ -784,7 +777,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get mastery => _skillTree(
+  static Tree<Enum> get mastery => _skillTree(
         SorcererCluster.Mastery,
         [
           blizzard,
@@ -797,7 +790,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get ultimate => _skillTree(
+  static Tree<Enum> get ultimate => _skillTree(
         SorcererCluster.Ultimate,
         [
           deepFreeze,
@@ -809,7 +802,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get keyPassive => _skillTree(
+  static Tree<Enum> get keyPassive => _skillTree(
         SorcererCluster.KeyPassive,
         [
           avalanche,
@@ -821,7 +814,7 @@ abstract class Sorcerer {
         ],
       );
 
-  static Tree<Skill> get sorcerer => _skillTree(
+  static Tree<Enum> get sorcerer => _skillTree(
         CharacterClass.Sorcerer,
         [
           basic,

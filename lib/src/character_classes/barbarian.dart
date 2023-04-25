@@ -1,4 +1,3 @@
-import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/barbarian_cluster.dart';
 import 'package:d4_utils/src/enums/barbarian_skill.dart';
@@ -6,10 +5,10 @@ import 'package:d4_utils/src/enums/character_class.dart';
 import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Barbarian {
-  static Tree<Skill> _skillTree(Enum e, List<Tree<Skill>> children) =>
-      Tree(element: Skill(e), children: children);
+  static Tree<Enum> _skillTree(Enum e, List<Tree<Enum>> children) =>
+      Tree(element: e, children: children);
 
-  static List<Tree<Skill>> get _childless => const [];
+  static List<Tree<Enum>> get _childless => const [];
 
   static BarbarianCluster clusterOf(BarbarianSkill barbarianSkill) {
     switch (barbarianSkill) {
@@ -283,7 +282,7 @@ abstract class Barbarian {
     }
   }
 
-  static Tree<Skill> get bash => _skillTree(
+  static Tree<Enum> get bash => _skillTree(
         BarbarianSkill.Bash,
         [
           _skillTree(
@@ -296,7 +295,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get flay => _skillTree(
+  static Tree<Enum> get flay => _skillTree(
         BarbarianSkill.Flay,
         [
           _skillTree(
@@ -309,7 +308,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get frenzy => _skillTree(
+  static Tree<Enum> get frenzy => _skillTree(
         BarbarianSkill.Frenzy,
         [
           _skillTree(
@@ -322,7 +321,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get lungingStrike => _skillTree(
+  static Tree<Enum> get lungingStrike => _skillTree(
         BarbarianSkill.LungingStrike,
         [
           _skillTree(
@@ -335,7 +334,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get doubleSwing => _skillTree(
+  static Tree<Enum> get doubleSwing => _skillTree(
         BarbarianSkill.DoubleSwing,
         [
           _skillTree(
@@ -348,7 +347,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get hammerOfTheAncients => _skillTree(
+  static Tree<Enum> get hammerOfTheAncients => _skillTree(
         BarbarianSkill.HammerOfTheAncients,
         [
           _skillTree(
@@ -361,7 +360,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get rend => _skillTree(
+  static Tree<Enum> get rend => _skillTree(
         BarbarianSkill.Rend,
         [
           _skillTree(
@@ -374,7 +373,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get upheaval => _skillTree(
+  static Tree<Enum> get upheaval => _skillTree(
         BarbarianSkill.Upheaval,
         [
           _skillTree(
@@ -387,7 +386,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get whirlwind => _skillTree(
+  static Tree<Enum> get whirlwind => _skillTree(
         BarbarianSkill.Whirlwind,
         [
           _skillTree(
@@ -400,13 +399,13 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get pressurePoint =>
+  static Tree<Enum> get pressurePoint =>
       _skillTree(BarbarianSkill.PressurePoint, _childless);
 
-  static Tree<Skill> get endlessFury =>
+  static Tree<Enum> get endlessFury =>
       _skillTree(BarbarianSkill.EndlessFury, _childless);
 
-  static Tree<Skill> get challengingShout => _skillTree(
+  static Tree<Enum> get challengingShout => _skillTree(
         BarbarianSkill.ChallengingShout,
         [
           _skillTree(
@@ -419,7 +418,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get groundStomp => _skillTree(
+  static Tree<Enum> get groundStomp => _skillTree(
         BarbarianSkill.GroundStomp,
         [
           _skillTree(
@@ -432,7 +431,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get ironSkin => _skillTree(
+  static Tree<Enum> get ironSkin => _skillTree(
         BarbarianSkill.IronSkin,
         [
           _skillTree(
@@ -445,7 +444,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get rallyingCry => _skillTree(
+  static Tree<Enum> get rallyingCry => _skillTree(
         BarbarianSkill.RallyingCry,
         [
           _skillTree(
@@ -458,21 +457,21 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get imposingPresence => _skillTree(
+  static Tree<Enum> get imposingPresence => _skillTree(
         BarbarianSkill.ImposingPresence,
         [
           _skillTree(BarbarianSkill.MartialVigor, _childless),
         ],
       );
 
-  static Tree<Skill> get outburst => _skillTree(
+  static Tree<Enum> get outburst => _skillTree(
         BarbarianSkill.Outburst,
         [
           _skillTree(BarbarianSkill.ToughAsNails, _childless),
         ],
       );
 
-  static Tree<Skill> get charge => _skillTree(
+  static Tree<Enum> get charge => _skillTree(
         BarbarianSkill.Charge,
         [
           _skillTree(
@@ -485,7 +484,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get kick => _skillTree(
+  static Tree<Enum> get kick => _skillTree(
         BarbarianSkill.Kick,
         [
           _skillTree(
@@ -498,7 +497,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get leap => _skillTree(
+  static Tree<Enum> get leap => _skillTree(
         BarbarianSkill.Leap,
         [
           _skillTree(
@@ -511,7 +510,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get warCry => _skillTree(
+  static Tree<Enum> get warCry => _skillTree(
         BarbarianSkill.WarCry,
         [
           _skillTree(
@@ -524,7 +523,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get boomingVoice => _skillTree(
+  static Tree<Enum> get boomingVoice => _skillTree(
         BarbarianSkill.BoomingVoice,
         [
           _skillTree(BarbarianSkill.RaidLeader, _childless),
@@ -532,7 +531,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get aggressiveResistance => _skillTree(
+  static Tree<Enum> get aggressiveResistance => _skillTree(
         BarbarianSkill.AggressiveResistance,
         [
           _skillTree(BarbarianSkill.BattleFervor, _childless),
@@ -540,14 +539,14 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get swiftness => _skillTree(
+  static Tree<Enum> get swiftness => _skillTree(
         BarbarianSkill.Swiftness,
         [
           _skillTree(BarbarianSkill.QuickImpulses, _childless),
         ],
       );
 
-  static Tree<Skill> get deathBlow => _skillTree(
+  static Tree<Enum> get deathBlow => _skillTree(
         BarbarianSkill.DeathBlow,
         [
           _skillTree(
@@ -560,7 +559,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get rupture => _skillTree(
+  static Tree<Enum> get rupture => _skillTree(
         BarbarianSkill.Rupture,
         [
           _skillTree(
@@ -573,7 +572,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get steelGrasp => _skillTree(
+  static Tree<Enum> get steelGrasp => _skillTree(
         BarbarianSkill.SteelGrasp,
         [
           _skillTree(
@@ -586,27 +585,25 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get pitFighter => _skillTree(
+  static Tree<Enum> get pitFighter => _skillTree(
         BarbarianSkill.PitFighter,
         [
           _skillTree(
             BarbarianSkill.NoMercy,
             [
-              // TODO: this one has two parents (see below)
               _skillTree(BarbarianSkill.ExposeVulnerability, _childless),
             ],
           ),
           _skillTree(
             BarbarianSkill.SlayingStrike,
             [
-              // TODO: this one has two parents (see above)
               _skillTree(BarbarianSkill.ExposeVulnerability, _childless),
             ],
           ),
         ],
       );
 
-  static Tree<Skill> get thickSkin => _skillTree(
+  static Tree<Enum> get thickSkin => _skillTree(
         BarbarianSkill.ThickSkin,
         [
           _skillTree(BarbarianSkill.DefensiveStance, _childless),
@@ -614,14 +611,14 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get hamstring => _skillTree(
+  static Tree<Enum> get hamstring => _skillTree(
         BarbarianSkill.Hamstring,
         [
           _skillTree(BarbarianSkill.CutToTheBone, _childless),
         ],
       );
 
-  static Tree<Skill> get callOfTheAncients => _skillTree(
+  static Tree<Enum> get callOfTheAncients => _skillTree(
         BarbarianSkill.CallOfTheAncients,
         [
           _skillTree(
@@ -633,7 +630,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get ironMaelstrom => _skillTree(
+  static Tree<Enum> get ironMaelstrom => _skillTree(
         BarbarianSkill.IronMaelstrom,
         [
           _skillTree(
@@ -645,7 +642,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get wrathOfTheBerserker => _skillTree(
+  static Tree<Enum> get wrathOfTheBerserker => _skillTree(
         BarbarianSkill.WrathOfTheBerserker,
         [
           _skillTree(
@@ -657,24 +654,22 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get heavyHanded => _skillTree(
+  static Tree<Enum> get heavyHanded => _skillTree(
         BarbarianSkill.HeavyHanded,
         [
-          // TODO: this one has two parents (see below)
           _skillTree(BarbarianSkill.BruteForce, _childless),
         ],
       );
 
-  static Tree<Skill> get wallop => _skillTree(
+  static Tree<Enum> get wallop => _skillTree(
         BarbarianSkill.Wallop,
         [
-          // TODO: this one has two parents (see above)
           _skillTree(BarbarianSkill.BruteForce, _childless),
           _skillTree(BarbarianSkill.Concussion, _childless),
         ],
       );
 
-  static Tree<Skill> get temperedFury => _skillTree(
+  static Tree<Enum> get temperedFury => _skillTree(
         BarbarianSkill.TemperedFury,
         [
           _skillTree(BarbarianSkill.FuriousImpulse, _childless),
@@ -682,22 +677,22 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get duelist =>
+  static Tree<Enum> get duelist =>
       _skillTree(BarbarianSkill.Duelist, _childless);
 
-  static Tree<Skill> get unconstrained =>
+  static Tree<Enum> get unconstrained =>
       _skillTree(BarbarianSkill.Unconstrained, _childless);
 
-  static Tree<Skill> get walkingArsenal =>
+  static Tree<Enum> get walkingArsenal =>
       _skillTree(BarbarianSkill.WalkingArsenal, _childless);
 
-  static Tree<Skill> get unbridledRage =>
+  static Tree<Enum> get unbridledRage =>
       _skillTree(BarbarianSkill.UnbridledRage, _childless);
 
-  static Tree<Skill> get gushingWounds =>
+  static Tree<Enum> get gushingWounds =>
       _skillTree(BarbarianSkill.GushingWounds, _childless);
 
-  static Tree<Skill> get basic => _skillTree(
+  static Tree<Enum> get basic => _skillTree(
         BarbarianCluster.Basic,
         [
           bash,
@@ -707,7 +702,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get core => _skillTree(
+  static Tree<Enum> get core => _skillTree(
         BarbarianCluster.Core,
         [
           doubleSwing,
@@ -718,7 +713,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get defensive => _skillTree(
+  static Tree<Enum> get defensive => _skillTree(
         BarbarianCluster.Defensive,
         [
           challengingShout,
@@ -730,7 +725,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get brawling => _skillTree(
+  static Tree<Enum> get brawling => _skillTree(
         BarbarianCluster.Brawling,
         [
           charge,
@@ -743,7 +738,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get weaponMastery => _skillTree(
+  static Tree<Enum> get weaponMastery => _skillTree(
         BarbarianCluster.WeaponMastery,
         [
           deathBlow,
@@ -755,7 +750,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get ultimate => _skillTree(
+  static Tree<Enum> get ultimate => _skillTree(
         BarbarianCluster.Ultimate,
         [
           callOfTheAncients,
@@ -768,7 +763,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get keyPassive => _skillTree(
+  static Tree<Enum> get keyPassive => _skillTree(
         BarbarianCluster.KeyPassive,
         [
           unconstrained,
@@ -778,7 +773,7 @@ abstract class Barbarian {
         ],
       );
 
-  static Tree<Skill> get barbarian => _skillTree(
+  static Tree<Enum> get barbarian => _skillTree(
         CharacterClass.Barbarian,
         [
           basic,

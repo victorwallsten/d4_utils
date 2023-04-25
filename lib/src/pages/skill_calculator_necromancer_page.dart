@@ -1,4 +1,5 @@
 import 'package:d4_utils/src/character_classes/necromancer.dart';
+import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/pages/skill_calculator_page.dart';
 import 'package:d4_utils/src/widgets/character_class_widget.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,12 @@ class SkillCalculatorNecromancerPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(title),
       ),
-      body: CharacterClassWidget(characterClassTree: Necromancer.necromancer),
+      body: CharacterClassWidget(
+          characterClass: Necromancer.necromancer,
+          skills: Necromancer.necromancer.fold({}, (b, a) {
+            b.putIfAbsent(a, () => Skill(a));
+            return b;
+          })),
     );
   }
 }
-
