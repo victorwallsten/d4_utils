@@ -8,8 +8,10 @@ class Tree<E> {
   List<Tree<E>> children;
 
   T fold<T>(T initialValue, T Function(T previousValue, E element) combine) =>
-      children.fold(combine(initialValue, this.element),
-          (acc, child) => combine(acc, child.element));
+      children.fold(
+          combine(initialValue, this.element),
+          (acc, child) =>
+              child.fold(combine(acc, child.element), (b, a) => combine(b, a)));
 
   Tree<T> map<T>(T Function(E element) morph) => Tree(
         element: morph(this.element),
