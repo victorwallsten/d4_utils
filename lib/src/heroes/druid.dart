@@ -1,7 +1,7 @@
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/druid_cluster.dart';
 import 'package:d4_utils/src/enums/druid_skill.dart';
-import 'package:d4_utils/src/enums/character_class.dart';
+import 'package:d4_utils/src/enums/hero.dart';
 import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Druid {
@@ -851,7 +851,7 @@ abstract class Druid {
       );
 
   static Tree<Enum> get druid => _skillTree(
-        CharacterClass.Druid,
+        Hero.Druid,
         [
           basic,
           core,

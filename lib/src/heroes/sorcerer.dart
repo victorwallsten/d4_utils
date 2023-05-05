@@ -2,7 +2,7 @@ import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/skill_type.dart';
 import 'package:d4_utils/src/enums/sorcerer_cluster.dart';
 import 'package:d4_utils/src/enums/sorcerer_skill.dart';
-import 'package:d4_utils/src/enums/character_class.dart';
+import 'package:d4_utils/src/enums/hero.dart';
 
 abstract class Sorcerer {
   static Tree<Enum> _skillTree(Enum e, List<Tree<Enum>> children) =>
@@ -815,7 +815,7 @@ abstract class Sorcerer {
       );
 
   static Tree<Enum> get sorcerer => _skillTree(
-        CharacterClass.Sorcerer,
+        Hero.Sorcerer,
         [
           basic,
           core,

@@ -1,7 +1,7 @@
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/necromancer_cluster.dart';
 import 'package:d4_utils/src/enums/necromancer_skill.dart';
-import 'package:d4_utils/src/enums/character_class.dart';
+import 'package:d4_utils/src/enums/hero.dart';
 import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Necromancer {
@@ -709,7 +709,7 @@ abstract class Necromancer {
       );
 
   static Tree<Enum> get necromancer => _skillTree(
-        CharacterClass.Necromancer,
+        Hero.Necromancer,
         [
           basic,
           core,

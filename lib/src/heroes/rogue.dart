@@ -1,7 +1,7 @@
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/rogue_cluster.dart';
 import 'package:d4_utils/src/enums/rogue_skill.dart';
-import 'package:d4_utils/src/enums/character_class.dart';
+import 'package:d4_utils/src/enums/hero.dart';
 import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Rogue {
@@ -770,7 +770,7 @@ abstract class Rogue {
       );
 
   static Tree<Enum> get rogue => _skillTree(
-        CharacterClass.Rogue,
+        Hero.Rogue,
         [
           basic,
           core,

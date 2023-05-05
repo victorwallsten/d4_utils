@@ -1,7 +1,7 @@
-import 'package:d4_utils/src/character_classes/rogue.dart';
+import 'package:d4_utils/src/heroes/rogue.dart';
 import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/pages/skill_calculator_page.dart';
-import 'package:d4_utils/src/widgets/character_class_widget.dart';
+import 'package:d4_utils/src/widgets/hero_widget.dart';
 import 'package:flutter/material.dart';
 
 class SkillCalculatorRoguePage extends StatelessWidget {
@@ -16,9 +16,9 @@ class SkillCalculatorRoguePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(title),
       ),
-      body: CharacterClassWidget(
-          characterClass: Rogue.rogue,
-          skills: Rogue.rogue.fold({}, (b, a) {
+      body: HeroWidget(
+          skillTree: Rogue.rogue,
+          skillMap: Rogue.rogue.fold({}, (b, a) {
             b.putIfAbsent(a, () => Skill(a));
             return b;
           })),

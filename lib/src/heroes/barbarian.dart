@@ -1,7 +1,7 @@
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/enums/barbarian_cluster.dart';
 import 'package:d4_utils/src/enums/barbarian_skill.dart';
-import 'package:d4_utils/src/enums/character_class.dart';
+import 'package:d4_utils/src/enums/hero.dart';
 import 'package:d4_utils/src/enums/skill_type.dart';
 
 abstract class Barbarian {
@@ -774,7 +774,7 @@ abstract class Barbarian {
       );
 
   static Tree<Enum> get barbarian => _skillTree(
-        CharacterClass.Barbarian,
+        Hero.Barbarian,
         [
           basic,
           core,

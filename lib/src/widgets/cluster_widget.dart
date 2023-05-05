@@ -1,15 +1,15 @@
 import 'package:d4_utils/src/data_structures/skill.dart';
 import 'package:d4_utils/src/data_structures/tree.dart';
 import 'package:d4_utils/src/utils/enum_utils.dart';
-import 'package:d4_utils/src/widgets/skill_tree_widget.dart';
+import 'package:d4_utils/src/widgets/skill_widget.dart';
 import 'package:flutter/material.dart';
 
 class ClusterWidget extends StatelessWidget {
   const ClusterWidget({
     super.key,
     required this.parent,
-    required this.cluster,
-    required this.skills,
+    required this.skillTree,
+    required this.skillMap,
     required this.isClusterUnlocked,
     required this.isClusterDecrementable,
     required this.incrementCallback,
@@ -17,8 +17,8 @@ class ClusterWidget extends StatelessWidget {
   });
 
   final Enum parent;
-  final Tree<Enum> cluster;
-  final Map<Enum, Skill> skills;
+  final Tree<Enum> skillTree;
+  final Map<Enum, Skill> skillMap;
   final bool isClusterUnlocked;
   final bool isClusterDecrementable;
   final Function(Set<Enum>) incrementCallback;
@@ -29,20 +29,20 @@ class ClusterWidget extends StatelessWidget {
         shape: Theme.of(context).expansionTileTheme.shape,
         childrenPadding: Theme.of(context).expansionTileTheme.childrenPadding,
         title: Text(
-          '${EnumUtils.enumToNameWithSpaces(cluster.element)}'
-          ' (${skills[cluster.element]?.assignedSkillPoints ?? 0})',
+          '${EnumUtils.enumToNameWithSpaces(skillTree.element)}'
+          ' (${skillMap[skillTree.element]?.assignedSkillPoints ?? 0})',
         ),
-        children: cluster.children
-            .map((child) => SkillTreeWidget(
-                  parent: cluster.element,
+        children: skillTree.children
+            .map((child) => SkillWidget(
+                  parent: skillTree.element,
                   isClusterUnlocked: isClusterUnlocked,
                   isClusterDecrementable: isClusterDecrementable,
-                  skill: child,
-                  skills: skills,
+                  skillTree: child,
+                  skillMap: skillMap,
                   incrementCallback: (Enum e) =>
-                      incrementCallback({cluster.element, e}),
+                      incrementCallback({skillTree.element, e}),
                   decrementCallback: (Enum e) =>
-                      decrementCallback({cluster.element, e}),
+                      decrementCallback({skillTree.element, e}),
                 ))
             .toList(growable: false),
       );
