@@ -113,16 +113,20 @@ class SkillWidget extends StatelessWidget {
     switch (skillTree.element) {
       /* Upgrade */
       case BarbarianSkill.BattleBash:
-        return (skillMap[BarbarianSkill.CombatBash]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.CombatBash]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.CombatBash:
-        return (skillMap[BarbarianSkill.BattleBash]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.BattleBash]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.BattleFlay:
-        return (skillMap[BarbarianSkill.CombatFlay]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.CombatFlay]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.CombatFlay:
-        return (skillMap[BarbarianSkill.BattleFlay]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.BattleFlay]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.BattleFrenzy:
         return (skillMap[BarbarianSkill.CombatFrenzy]?.assignedSkillPoints ??
@@ -163,10 +167,12 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case BarbarianSkill.FuriousRend:
-        return (skillMap[BarbarianSkill.ViolentRend]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.ViolentRend]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.ViolentRend:
-        return (skillMap[BarbarianSkill.FuriousRend]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.FuriousRend]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.FuriousUpheaval:
         return (skillMap[BarbarianSkill.ViolentUpheaval]?.assignedSkillPoints ??
@@ -177,11 +183,13 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case BarbarianSkill.FuriousWhirlwind:
-        return (skillMap[BarbarianSkill.ViolentWhirlwind]?.assignedSkillPoints ??
+        return (skillMap[BarbarianSkill.ViolentWhirlwind]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case BarbarianSkill.ViolentWhirlwind:
-        return (skillMap[BarbarianSkill.FuriousWhirlwind]?.assignedSkillPoints ??
+        return (skillMap[BarbarianSkill.FuriousWhirlwind]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case BarbarianSkill.StrategicChallengingShout:
@@ -205,11 +213,13 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case BarbarianSkill.StrategicIronSkin:
-        return (skillMap[BarbarianSkill.TacticalIronSkin]?.assignedSkillPoints ??
+        return (skillMap[BarbarianSkill.TacticalIronSkin]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case BarbarianSkill.TacticalIronSkin:
-        return (skillMap[BarbarianSkill.StrategicIronSkin]?.assignedSkillPoints ??
+        return (skillMap[BarbarianSkill.StrategicIronSkin]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case BarbarianSkill.StrategicRallyingCry:
@@ -223,7 +233,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case BarbarianSkill.MightyCharge:
-        return (skillMap[BarbarianSkill.PowerCharge]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.PowerCharge]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.PowerCharge:
         return (skillMap[BarbarianSkill.MightyCharge]?.assignedSkillPoints ??
@@ -233,27 +244,32 @@ class SkillWidget extends StatelessWidget {
         return (skillMap[BarbarianSkill.PowerKick]?.assignedSkillPoints ?? 0) ==
             0;
       case BarbarianSkill.PowerKick:
-        return (skillMap[BarbarianSkill.MightyKick]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.MightyKick]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.MightyLeap:
         return (skillMap[BarbarianSkill.PowerLeap]?.assignedSkillPoints ?? 0) ==
             0;
       case BarbarianSkill.PowerLeap:
-        return (skillMap[BarbarianSkill.MightyLeap]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.MightyLeap]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.MightyWarCry:
-        return (skillMap[BarbarianSkill.PowerWarCry]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[BarbarianSkill.PowerWarCry]?.assignedSkillPoints ??
+                0) ==
             0;
       case BarbarianSkill.PowerWarCry:
         return (skillMap[BarbarianSkill.MightyWarCry]?.assignedSkillPoints ??
                 0) ==
             0;
       case BarbarianSkill.FightersDeathBlow:
-        return (skillMap[BarbarianSkill.WarriorsDeathBlow]?.assignedSkillPoints ??
+        return (skillMap[BarbarianSkill.WarriorsDeathBlow]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case BarbarianSkill.WarriorsDeathBlow:
-        return (skillMap[BarbarianSkill.FightersDeathBlow]?.assignedSkillPoints ??
+        return (skillMap[BarbarianSkill.FightersDeathBlow]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case BarbarianSkill.FightersRupture:
@@ -283,7 +299,8 @@ class SkillWidget extends StatelessWidget {
       case DruidSkill.WildClaw:
         return (skillMap[DruidSkill.FierceClaw]?.assignedSkillPoints ?? 0) == 0;
       case DruidSkill.FierceStormStrike:
-        return (skillMap[DruidSkill.WildStormStrike]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.WildStormStrike]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.WildStormStrike:
         return (skillMap[DruidSkill.FierceStormStrike]?.assignedSkillPoints ??
@@ -293,21 +310,25 @@ class SkillWidget extends StatelessWidget {
         return (skillMap[DruidSkill.WildWindShear]?.assignedSkillPoints ?? 0) ==
             0;
       case DruidSkill.WildWindShear:
-        return (skillMap[DruidSkill.FierceWindShear]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.FierceWindShear]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.FierceEarthSpike:
-        return (skillMap[DruidSkill.WildEarthSpike]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.WildEarthSpike]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.WildEarthSpike:
         return (skillMap[DruidSkill.FierceEarthSpike]?.assignedSkillPoints ??
                 0) ==
             0;
       case DruidSkill.PrimalLightningStorm:
-        return (skillMap[DruidSkill.RagingLightningStorm]?.assignedSkillPoints ??
+        return (skillMap[DruidSkill.RagingLightningStorm]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case DruidSkill.RagingLightningStorm:
-        return (skillMap[DruidSkill.PrimalLightningStorm]?.assignedSkillPoints ??
+        return (skillMap[DruidSkill.PrimalLightningStorm]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case DruidSkill.PrimalTornado:
@@ -317,20 +338,26 @@ class SkillWidget extends StatelessWidget {
         return (skillMap[DruidSkill.PrimalTornado]?.assignedSkillPoints ?? 0) ==
             0;
       case DruidSkill.PrimalPulverize:
-        return (skillMap[DruidSkill.RagingPulverize]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.RagingPulverize]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.RagingPulverize:
-        return (skillMap[DruidSkill.PrimalPulverize]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.PrimalPulverize]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.PrimalShred:
-        return (skillMap[DruidSkill.RagingShred]?.assignedSkillPoints ?? 0) == 0;
+        return (skillMap[DruidSkill.RagingShred]?.assignedSkillPoints ?? 0) ==
+            0;
       case DruidSkill.RagingShred:
-        return (skillMap[DruidSkill.PrimalShred]?.assignedSkillPoints ?? 0) == 0;
+        return (skillMap[DruidSkill.PrimalShred]?.assignedSkillPoints ?? 0) ==
+            0;
       case DruidSkill.PrimalLandSlide:
-        return (skillMap[DruidSkill.RagingLandSlide]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.RagingLandSlide]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.RagingLandSlide:
-        return (skillMap[DruidSkill.PrimalLandSlide]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.PrimalLandSlide]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.InnateEarthenBulwark:
         return (skillMap[DruidSkill.PreservingEarthenBulwark]
@@ -338,7 +365,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case DruidSkill.PreservingEarthenBulwark:
-        return (skillMap[DruidSkill.InnateEarthenBulwark]?.assignedSkillPoints ??
+        return (skillMap[DruidSkill.InnateEarthenBulwark]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case DruidSkill.InnateCycloneArmor:
@@ -355,7 +383,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case DruidSkill.PreservingBloodHowl:
-        return (skillMap[DruidSkill.InnateBloodHowl]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.InnateBloodHowl]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.InnateDebilitatingRoar:
         return (skillMap[DruidSkill.PreservingDebilitatingRoar]
@@ -368,17 +397,22 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case DruidSkill.BrutalWolves:
-        return (skillMap[DruidSkill.FerociousWolves]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.FerociousWolves]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.FerociousWolves:
-        return (skillMap[DruidSkill.BrutalWolves]?.assignedSkillPoints ?? 0) == 0;
+        return (skillMap[DruidSkill.BrutalWolves]?.assignedSkillPoints ?? 0) ==
+            0;
       case DruidSkill.BrutalRavens:
-        return (skillMap[DruidSkill.FerociousRavens]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.FerociousRavens]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.FerociousRavens:
-        return (skillMap[DruidSkill.BrutalRavens]?.assignedSkillPoints ?? 0) == 0;
+        return (skillMap[DruidSkill.BrutalRavens]?.assignedSkillPoints ?? 0) ==
+            0;
       case DruidSkill.BrutalVineCreeper:
-        return (skillMap[DruidSkill.FerociousVineCreeper]?.assignedSkillPoints ??
+        return (skillMap[DruidSkill.FerociousVineCreeper]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case DruidSkill.FerociousVineCreeper:
@@ -389,23 +423,27 @@ class SkillWidget extends StatelessWidget {
         return (skillMap[DruidSkill.SavageBoulder]?.assignedSkillPoints ?? 0) ==
             0;
       case DruidSkill.SavageBoulder:
-        return (skillMap[DruidSkill.NaturalBoulder]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.NaturalBoulder]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.NaturalTrample:
         return (skillMap[DruidSkill.SavageTrample]?.assignedSkillPoints ?? 0) ==
             0;
       case DruidSkill.SavageTrample:
-        return (skillMap[DruidSkill.NaturalTrample]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.NaturalTrample]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.NaturalHurricane:
-        return (skillMap[DruidSkill.SavageHurricane]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[DruidSkill.SavageHurricane]?.assignedSkillPoints ??
+                0) ==
             0;
       case DruidSkill.SavageHurricane:
         return (skillMap[DruidSkill.NaturalHurricane]?.assignedSkillPoints ??
                 0) ==
             0;
       case DruidSkill.NaturalRabies:
-        return (skillMap[DruidSkill.SavageRabies]?.assignedSkillPoints ?? 0) == 0;
+        return (skillMap[DruidSkill.SavageRabies]?.assignedSkillPoints ?? 0) ==
+            0;
       case DruidSkill.SavageRabies:
         return (skillMap[DruidSkill.NaturalRabies]?.assignedSkillPoints ?? 0) ==
             0;
@@ -493,7 +531,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case NecromancerSkill.SupernaturalSever:
-        return (skillMap[NecromancerSkill.ParanormalSever]?.assignedSkillPoints ??
+        return (skillMap[NecromancerSkill.ParanormalSever]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case NecromancerSkill.DreadfulBloodMist:
@@ -527,7 +566,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case NecromancerSkill.AbhorrentDecrepify:
-        return (skillMap[NecromancerSkill.HorridDecrepify]?.assignedSkillPoints ??
+        return (skillMap[NecromancerSkill.HorridDecrepify]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case NecromancerSkill.HorridDecrepify:
@@ -570,11 +610,13 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case RogueSkill.PrimaryBladeShift:
-        return (skillMap[RogueSkill.FundamentalBladeShift]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.FundamentalBladeShift]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.FundamentalForcefulArrow:
-        return (skillMap[RogueSkill.PrimaryForcefulArrow]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.PrimaryForcefulArrow]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.PrimaryForcefulArrow:
@@ -602,23 +644,28 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case RogueSkill.FundamentalPuncture:
-        return (skillMap[RogueSkill.PrimaryPuncture]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[RogueSkill.PrimaryPuncture]?.assignedSkillPoints ??
+                0) ==
             0;
       case RogueSkill.PrimaryPuncture:
         return (skillMap[RogueSkill.FundamentalPuncture]?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.AdvancedBarrage:
-        return (skillMap[RogueSkill.ImprovedBarrage]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[RogueSkill.ImprovedBarrage]?.assignedSkillPoints ??
+                0) ==
             0;
       case RogueSkill.ImprovedBarrage:
-        return (skillMap[RogueSkill.AdvancedBarrage]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[RogueSkill.AdvancedBarrage]?.assignedSkillPoints ??
+                0) ==
             0;
       case RogueSkill.AdvancedFlurry:
-        return (skillMap[RogueSkill.ImprovedFlurry]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[RogueSkill.ImprovedFlurry]?.assignedSkillPoints ??
+                0) ==
             0;
       case RogueSkill.ImprovedFlurry:
-        return (skillMap[RogueSkill.AdvancedFlurry]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[RogueSkill.AdvancedFlurry]?.assignedSkillPoints ??
+                0) ==
             0;
       case RogueSkill.AdvancedPenetratingShot:
         return (skillMap[RogueSkill.ImprovedPenetratingShot]
@@ -657,41 +704,51 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case RogueSkill.DisciplinedDash:
-        return (skillMap[RogueSkill.MethodicalDash]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[RogueSkill.MethodicalDash]?.assignedSkillPoints ??
+                0) ==
             0;
       case RogueSkill.MethodicalDash:
-        return (skillMap[RogueSkill.DisciplinedDash]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[RogueSkill.DisciplinedDash]?.assignedSkillPoints ??
+                0) ==
             0;
       case RogueSkill.DisciplinedShadowStep:
-        return (skillMap[RogueSkill.MethodicalShadowStep]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.MethodicalShadowStep]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.MethodicalShadowStep:
-        return (skillMap[RogueSkill.DisciplinedShadowStep]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.DisciplinedShadowStep]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.CounteringConcealment:
-        return (skillMap[RogueSkill.SubvertingConcealment]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.SubvertingConcealment]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.SubvertingConcealment:
-        return (skillMap[RogueSkill.CounteringConcealment]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.CounteringConcealment]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.CounteringDarkShroud:
-        return (skillMap[RogueSkill.SubvertingDarkShroud]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.SubvertingDarkShroud]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.SubvertingDarkShroud:
-        return (skillMap[RogueSkill.CounteringDarkShroud]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.CounteringDarkShroud]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.CounteringPoisonTrap:
-        return (skillMap[RogueSkill.SubvertingPoisonTrap]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.SubvertingPoisonTrap]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.SubvertingPoisonTrap:
-        return (skillMap[RogueSkill.CounteringPoisonTrap]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.CounteringPoisonTrap]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.CounteringSmokeGrenade:
@@ -709,11 +766,13 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case RogueSkill.MixedColdImbuement:
-        return (skillMap[RogueSkill.BlendedColdImbuement]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.BlendedColdImbuement]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.BlendedPoisonImbuement:
-        return (skillMap[RogueSkill.MixedPoisonImbuement]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.MixedPoisonImbuement]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.MixedPoisonImbuement:
@@ -722,7 +781,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case RogueSkill.BlendedShadowImbuement:
-        return (skillMap[RogueSkill.MixedShadowImbuement]?.assignedSkillPoints ??
+        return (skillMap[RogueSkill.MixedShadowImbuement]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case RogueSkill.MixedShadowImbuement:
@@ -739,7 +799,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.FlickeringFrostBolt:
-        return (skillMap[SorcererSkill.GlintingFrostBolt]?.assignedSkillPoints ??
+        return (skillMap[SorcererSkill.GlintingFrostBolt]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case SorcererSkill.GlintingFrostBolt:
@@ -752,7 +813,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.GlintingFireBolt:
-        return (skillMap[SorcererSkill.FlickeringFireBolt]?.assignedSkillPoints ??
+        return (skillMap[SorcererSkill.FlickeringFireBolt]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case SorcererSkill.FlickeringArcLash:
@@ -760,7 +822,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.GlintingArcLash:
-        return (skillMap[SorcererSkill.FlickeringArcLash]?.assignedSkillPoints ??
+        return (skillMap[SorcererSkill.FlickeringArcLash]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case SorcererSkill.DestructiveChainLightning:
@@ -802,7 +865,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.DestructiveIncinerate:
-        return (skillMap[SorcererSkill.GreaterIncinerate]?.assignedSkillPoints ??
+        return (skillMap[SorcererSkill.GreaterIncinerate]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case SorcererSkill.GreaterIncinerate:
@@ -830,7 +894,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.MysticalIceArmor:
-        return (skillMap[SorcererSkill.ShimmeringIceArmor]?.assignedSkillPoints ??
+        return (skillMap[SorcererSkill.ShimmeringIceArmor]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case SorcererSkill.ShimmeringIceArmor:
@@ -838,7 +903,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.MysticalTeleport:
-        return (skillMap[SorcererSkill.ShimmeringTeleport]?.assignedSkillPoints ??
+        return (skillMap[SorcererSkill.ShimmeringTeleport]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case SorcererSkill.ShimmeringTeleport:
@@ -851,7 +917,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.ShimmeringFrostNova:
-        return (skillMap[SorcererSkill.MysticalFrostNova]?.assignedSkillPoints ??
+        return (skillMap[SorcererSkill.MysticalFrostNova]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case SorcererSkill.InvokedHydra:
@@ -859,10 +926,12 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.SummonedHydra:
-        return (skillMap[SorcererSkill.InvokedHydra]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[SorcererSkill.InvokedHydra]?.assignedSkillPoints ??
+                0) ==
             0;
       case SorcererSkill.InvokedIceBlades:
-        return (skillMap[SorcererSkill.SummonedIceBlades]?.assignedSkillPoints ??
+        return (skillMap[SorcererSkill.SummonedIceBlades]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
       case SorcererSkill.SummonedIceBlades:
@@ -900,7 +969,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.WizardsMeteor:
-        return (skillMap[SorcererSkill.MagesMeteor]?.assignedSkillPoints ?? 0) ==
+        return (skillMap[SorcererSkill.MagesMeteor]?.assignedSkillPoints ??
+                0) ==
             0;
       case SorcererSkill.MagesBallLightning:
         return (skillMap[SorcererSkill.WizardsBallLightning]
@@ -908,7 +978,8 @@ class SkillWidget extends StatelessWidget {
                 0) ==
             0;
       case SorcererSkill.WizardsBallLightning:
-        return (skillMap[SorcererSkill.MagesBallLightning]?.assignedSkillPoints ??
+        return (skillMap[SorcererSkill.MagesBallLightning]
+                    ?.assignedSkillPoints ??
                 0) ==
             0;
 
@@ -921,14 +992,16 @@ class SkillWidget extends StatelessWidget {
                     0) ==
             0;
       case BarbarianSkill.IronMaelstrom:
-        return (skillMap[BarbarianSkill.CallOfTheAncients]?.assignedSkillPoints ??
+        return (skillMap[BarbarianSkill.CallOfTheAncients]
+                        ?.assignedSkillPoints ??
                     0) +
                 (skillMap[BarbarianSkill.WrathOfTheBerserker]
                         ?.assignedSkillPoints ??
                     0) ==
             0;
       case BarbarianSkill.WrathOfTheBerserker:
-        return (skillMap[BarbarianSkill.CallOfTheAncients]?.assignedSkillPoints ??
+        return (skillMap[BarbarianSkill.CallOfTheAncients]
+                        ?.assignedSkillPoints ??
                     0) +
                 (skillMap[BarbarianSkill.IronMaelstrom]?.assignedSkillPoints ??
                     0) ==
@@ -954,7 +1027,8 @@ class SkillWidget extends StatelessWidget {
                 (skillMap[DruidSkill.Lacerate]?.assignedSkillPoints ?? 0) ==
             0;
       case NecromancerSkill.ArmyOfTheDead:
-        return (skillMap[NecromancerSkill.BloodWave]?.assignedSkillPoints ?? 0) +
+        return (skillMap[NecromancerSkill.BloodWave]?.assignedSkillPoints ??
+                    0) +
                 (skillMap[NecromancerSkill.BoneStorm]?.assignedSkillPoints ??
                     0) ==
             0;
@@ -984,12 +1058,14 @@ class SkillWidget extends StatelessWidget {
             0;
       case SorcererSkill.DeepFreeze:
         return (skillMap[SorcererSkill.Inferno]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.UnstableCurrents]?.assignedSkillPoints ??
+                (skillMap[SorcererSkill.UnstableCurrents]
+                        ?.assignedSkillPoints ??
                     0) ==
             0;
       case SorcererSkill.Inferno:
         return (skillMap[SorcererSkill.DeepFreeze]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.UnstableCurrents]?.assignedSkillPoints ??
+                (skillMap[SorcererSkill.UnstableCurrents]
+                        ?.assignedSkillPoints ??
                     0) ==
             0;
       case SorcererSkill.UnstableCurrents:
@@ -1034,44 +1110,59 @@ class SkillWidget extends StatelessWidget {
             0;
       case DruidSkill.NaturesFury:
         return (skillMap[DruidSkill.EarthenMight]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ?? 0) +
+                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ??
+                    0) +
                 (skillMap[DruidSkill.PerfectStorm]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ?? 0) ==
+                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ??
+                    0) ==
             0;
       case DruidSkill.EarthenMight:
         return (skillMap[DruidSkill.NaturesFury]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ?? 0) +
+                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ??
+                    0) +
                 (skillMap[DruidSkill.PerfectStorm]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ?? 0) ==
+                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ??
+                    0) ==
             0;
       case DruidSkill.LupineFerocity:
         return (skillMap[DruidSkill.NaturesFury]?.assignedSkillPoints ?? 0) +
                 (skillMap[DruidSkill.EarthenMight]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ?? 0) +
+                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ??
+                    0) +
                 (skillMap[DruidSkill.PerfectStorm]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ?? 0) ==
+                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ??
+                    0) ==
             0;
       case DruidSkill.BestialRampage:
         return (skillMap[DruidSkill.NaturesFury]?.assignedSkillPoints ?? 0) +
                 (skillMap[DruidSkill.EarthenMight]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ?? 0) +
+                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ??
+                    0) +
                 (skillMap[DruidSkill.PerfectStorm]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ?? 0) ==
+                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ??
+                    0) ==
             0;
       case DruidSkill.PerfectStorm:
         return (skillMap[DruidSkill.NaturesFury]?.assignedSkillPoints ?? 0) +
                 (skillMap[DruidSkill.EarthenMight]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ?? 0) ==
+                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[DruidSkill.UrsineStrength]?.assignedSkillPoints ??
+                    0) ==
             0;
       case DruidSkill.UrsineStrength:
         return (skillMap[DruidSkill.NaturesFury]?.assignedSkillPoints ?? 0) +
                 (skillMap[DruidSkill.EarthenMight]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ?? 0) +
-                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ?? 0) +
+                (skillMap[DruidSkill.LupineFerocity]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[DruidSkill.BestialRampage]?.assignedSkillPoints ??
+                    0) +
                 (skillMap[DruidSkill.PerfectStorm]?.assignedSkillPoints ?? 0) ==
             0;
       case NecromancerSkill.OssifiedEssence:
@@ -1083,7 +1174,8 @@ class SkillWidget extends StatelessWidget {
                     0) ==
             0;
       case NecromancerSkill.RathmasVigor:
-        return (skillMap[NecromancerSkill.OssifiedEssence]?.assignedSkillPoints ??
+        return (skillMap[NecromancerSkill.OssifiedEssence]
+                        ?.assignedSkillPoints ??
                     0) +
                 (skillMap[NecromancerSkill.Shadowblight]?.assignedSkillPoints ??
                     0) +
@@ -1091,7 +1183,8 @@ class SkillWidget extends StatelessWidget {
                     0) ==
             0;
       case NecromancerSkill.Shadowblight:
-        return (skillMap[NecromancerSkill.OssifiedEssence]?.assignedSkillPoints ??
+        return (skillMap[NecromancerSkill.OssifiedEssence]
+                        ?.assignedSkillPoints ??
                     0) +
                 (skillMap[NecromancerSkill.RathmasVigor]?.assignedSkillPoints ??
                     0) +
@@ -1099,7 +1192,8 @@ class SkillWidget extends StatelessWidget {
                     0) ==
             0;
       case NecromancerSkill.KalansEdict:
-        return (skillMap[NecromancerSkill.OssifiedEssence]?.assignedSkillPoints ??
+        return (skillMap[NecromancerSkill.OssifiedEssence]
+                        ?.assignedSkillPoints ??
                     0) +
                 (skillMap[NecromancerSkill.RathmasVigor]?.assignedSkillPoints ??
                     0) +
@@ -1121,70 +1215,95 @@ class SkillWidget extends StatelessWidget {
             0;
       case RogueSkill.Precision:
         return (skillMap[RogueSkill.Momentum]?.assignedSkillPoints ?? 0) +
-                (skillMap[RogueSkill.CloseQuartersCombat]?.assignedSkillPoints ??
+                (skillMap[RogueSkill.CloseQuartersCombat]
+                        ?.assignedSkillPoints ??
                     0) +
                 (skillMap[RogueSkill.Victimize]?.assignedSkillPoints ?? 0) +
                 (skillMap[RogueSkill.Exposure]?.assignedSkillPoints ?? 0) ==
             0;
       case RogueSkill.Victimize:
         return (skillMap[RogueSkill.Momentum]?.assignedSkillPoints ?? 0) +
-                (skillMap[RogueSkill.CloseQuartersCombat]?.assignedSkillPoints ??
+                (skillMap[RogueSkill.CloseQuartersCombat]
+                        ?.assignedSkillPoints ??
                     0) +
                 (skillMap[RogueSkill.Precision]?.assignedSkillPoints ?? 0) +
                 (skillMap[RogueSkill.Exposure]?.assignedSkillPoints ?? 0) ==
             0;
       case RogueSkill.Exposure:
         return (skillMap[RogueSkill.Momentum]?.assignedSkillPoints ?? 0) +
-                (skillMap[RogueSkill.CloseQuartersCombat]?.assignedSkillPoints ??
+                (skillMap[RogueSkill.CloseQuartersCombat]
+                        ?.assignedSkillPoints ??
                     0) +
                 (skillMap[RogueSkill.Precision]?.assignedSkillPoints ?? 0) +
                 (skillMap[RogueSkill.Victimize]?.assignedSkillPoints ?? 0) ==
             0;
       case SorcererSkill.Avalanche:
         return (skillMap[SorcererSkill.Shatter]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.OverflowingEnergy]?.assignedSkillPoints ??
+                (skillMap[
+                            SorcererSkill.OverflowingEnergy]
+                        ?.assignedSkillPoints ??
                     0) +
-                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.EsusFerocity]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ?? 0) ==
+                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[SorcererSkill.EsusFerocity]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ??
+                    0) ==
             0;
       case SorcererSkill.Shatter:
         return (skillMap[SorcererSkill.Avalanche]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.OverflowingEnergy]?.assignedSkillPoints ??
+                (skillMap[
+                            SorcererSkill.OverflowingEnergy]
+                        ?.assignedSkillPoints ??
                     0) +
-                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.EsusFerocity]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ?? 0) ==
+                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[SorcererSkill.EsusFerocity]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ??
+                    0) ==
             0;
       case SorcererSkill.OverflowingEnergy:
         return (skillMap[SorcererSkill.Avalanche]?.assignedSkillPoints ?? 0) +
                 (skillMap[SorcererSkill.Shatter]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.EsusFerocity]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ?? 0) ==
+                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[SorcererSkill.EsusFerocity]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ??
+                    0) ==
             0;
       case SorcererSkill.VyrsMastery:
         return (skillMap[SorcererSkill.Avalanche]?.assignedSkillPoints ?? 0) +
                 (skillMap[SorcererSkill.Shatter]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.OverflowingEnergy]?.assignedSkillPoints ??
+                (skillMap[
+                            SorcererSkill.OverflowingEnergy]
+                        ?.assignedSkillPoints ??
                     0) +
-                (skillMap[SorcererSkill.EsusFerocity]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ?? 0) ==
+                (skillMap[SorcererSkill.EsusFerocity]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ??
+                    0) ==
             0;
       case SorcererSkill.EsusFerocity:
         return (skillMap[SorcererSkill.Avalanche]?.assignedSkillPoints ?? 0) +
                 (skillMap[SorcererSkill.Shatter]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.OverflowingEnergy]?.assignedSkillPoints ??
+                (skillMap[SorcererSkill.OverflowingEnergy]
+                        ?.assignedSkillPoints ??
                     0) +
-                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ?? 0) ==
+                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ??
+                    0) +
+                (skillMap[SorcererSkill.Combustion]?.assignedSkillPoints ??
+                    0) ==
             0;
       case SorcererSkill.Combustion:
         return (skillMap[SorcererSkill.Avalanche]?.assignedSkillPoints ?? 0) +
                 (skillMap[SorcererSkill.Shatter]?.assignedSkillPoints ?? 0) +
-                (skillMap[SorcererSkill.OverflowingEnergy]?.assignedSkillPoints ??
+                (skillMap[SorcererSkill.OverflowingEnergy]
+                        ?.assignedSkillPoints ??
                     0) +
-                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ?? 0) +
+                (skillMap[SorcererSkill.VyrsMastery]?.assignedSkillPoints ??
+                    0) +
                 (skillMap[SorcererSkill.EsusFerocity]?.assignedSkillPoints ??
                     0) ==
             0;
@@ -1196,11 +1315,13 @@ class SkillWidget extends StatelessWidget {
   bool get _parentsThresholdIsMet {
     switch (skillTree.element) {
       case BarbarianSkill.ExposeVulnerability:
-        return (skillMap[BarbarianSkill.NoMercy]?.assignedSkillPoints ?? 0) > 0 ||
+        return (skillMap[BarbarianSkill.NoMercy]?.assignedSkillPoints ?? 0) >
+                0 ||
             (skillMap[BarbarianSkill.SlayingStrike]?.assignedSkillPoints ?? 0) >
                 0;
       case BarbarianSkill.BruteForce:
-        return (skillMap[BarbarianSkill.HeavyHanded]?.assignedSkillPoints ?? 0) >
+        return (skillMap[BarbarianSkill.HeavyHanded]?.assignedSkillPoints ??
+                    0) >
                 0 ||
             (skillMap[BarbarianSkill.Wallop]?.assignedSkillPoints ?? 0) > 0;
       case DruidSkill.BadOmen:
@@ -1212,7 +1333,8 @@ class SkillWidget extends StatelessWidget {
         return (skillMap[DruidSkill.ThickHide]?.assignedSkillPoints ?? 0) > 0 ||
             (skillMap[DruidSkill.NaturesResolve]?.assignedSkillPoints ?? 0) > 0;
       case DruidSkill.Resonance:
-        return (skillMap[DruidSkill.NaturalDisaster]?.assignedSkillPoints ?? 0) >
+        return (skillMap[DruidSkill.NaturalDisaster]?.assignedSkillPoints ??
+                    0) >
                 0 ||
             (skillMap[DruidSkill.CircleOfLife]?.assignedSkillPoints ?? 0) > 0;
       case NecromancerSkill.TidesOfBlood:
@@ -1227,16 +1349,20 @@ class SkillWidget extends StatelessWidget {
                         ?.assignedSkillPoints ??
                     0) >
                 0 ||
-            (skillMap[NecromancerSkill.RapidOssification]?.assignedSkillPoints ??
+            (skillMap[NecromancerSkill.RapidOssification]
+                        ?.assignedSkillPoints ??
                     0) >
                 0;
       case NecromancerSkill.Terror:
-        return (skillMap[NecromancerSkill.Gloom]?.assignedSkillPoints ?? 0) > 0 ||
-            (skillMap[NecromancerSkill.CripplingDarkness]?.assignedSkillPoints ??
+        return (skillMap[NecromancerSkill.Gloom]?.assignedSkillPoints ?? 0) >
+                0 ||
+            (skillMap[NecromancerSkill.CripplingDarkness]
+                        ?.assignedSkillPoints ??
                     0) >
                 0;
       case RogueSkill.TrickAttacks:
-        return (skillMap[RogueSkill.Concussive]?.assignedSkillPoints ?? 0) > 0 ||
+        return (skillMap[RogueSkill.Concussive]?.assignedSkillPoints ?? 0) >
+                0 ||
             (skillMap[RogueSkill.RapidGambits]?.assignedSkillPoints ?? 0) > 0;
       case SorcererSkill.FrigidBreeze:
         return (skillMap[SorcererSkill.Hoarfrost]?.assignedSkillPoints ?? 0) >
@@ -1249,7 +1375,8 @@ class SkillWidget extends StatelessWidget {
       case SorcererSkill.Convulsions:
         return (skillMap[SorcererSkill.Conduction]?.assignedSkillPoints ?? 0) >
                 0 ||
-            (skillMap[SorcererSkill.Electrocution]?.assignedSkillPoints ?? 0) > 0;
+            (skillMap[SorcererSkill.Electrocution]?.assignedSkillPoints ?? 0) >
+                0;
       default:
         if (_isNotCluster(parent)) {
           return (skillMap[parent]?.assignedSkillPoints ?? 0) > 0;
@@ -1270,7 +1397,8 @@ class SkillWidget extends StatelessWidget {
                           a.fold(
                               0,
                               (d, c) =>
-                                  d + (skillMap[c]?.assignedSkillPoints ?? 0))) ==
+                                  d +
+                                  (skillMap[c]?.assignedSkillPoints ?? 0))) ==
                   0);
 
   bool get _isIncrementable =>
