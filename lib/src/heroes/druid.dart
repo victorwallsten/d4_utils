@@ -87,10 +87,10 @@ abstract class Druid {
       case DruidSkill.EnhancedRavens:
       case DruidSkill.BrutalRavens:
       case DruidSkill.FerociousRavens:
-      case DruidSkill.VineCreeper:
-      case DruidSkill.EnhancedVineCreeper:
-      case DruidSkill.BrutalVineCreeper:
-      case DruidSkill.FerociousVineCreeper:
+      case DruidSkill.PoisonCreeper:
+      case DruidSkill.EnhancedPoisonCreeper:
+      case DruidSkill.BrutalPoisonCreeper:
+      case DruidSkill.FerociousPoisonCreeper:
       case DruidSkill.NaturesReach:
       case DruidSkill.CallOfTheWild:
       case DruidSkill.Clarity:
@@ -180,7 +180,7 @@ abstract class Druid {
       case DruidSkill.DebilitatingRoar:
       case DruidSkill.Wolves:
       case DruidSkill.Ravens:
-      case DruidSkill.VineCreeper:
+      case DruidSkill.PoisonCreeper:
       case DruidSkill.Boulder:
       case DruidSkill.Trample:
       case DruidSkill.Hurricane:
@@ -206,7 +206,7 @@ abstract class Druid {
       case DruidSkill.EnhancedDebilitatingRoar:
       case DruidSkill.EnhancedWolves:
       case DruidSkill.EnhancedRavens:
-      case DruidSkill.EnhancedVineCreeper:
+      case DruidSkill.EnhancedPoisonCreeper:
       case DruidSkill.EnhancedBoulder:
       case DruidSkill.EnhancedTrample:
       case DruidSkill.EnhancedHurricane:
@@ -248,8 +248,8 @@ abstract class Druid {
       case DruidSkill.FerociousWolves:
       case DruidSkill.BrutalRavens:
       case DruidSkill.FerociousRavens:
-      case DruidSkill.BrutalVineCreeper:
-      case DruidSkill.FerociousVineCreeper:
+      case DruidSkill.BrutalPoisonCreeper:
+      case DruidSkill.FerociousPoisonCreeper:
       case DruidSkill.NaturalBoulder:
       case DruidSkill.SavageBoulder:
       case DruidSkill.NaturalTrample:
@@ -540,13 +540,13 @@ abstract class Druid {
       );
 
   static Tree<Enum> get vineCreeper => _skillTree(
-        DruidSkill.VineCreeper,
+        DruidSkill.PoisonCreeper,
         [
           _skillTree(
-            DruidSkill.EnhancedVineCreeper,
+            DruidSkill.EnhancedPoisonCreeper,
             [
-              _skillTree(DruidSkill.BrutalVineCreeper, _childless),
-              _skillTree(DruidSkill.FerociousVineCreeper, _childless),
+              _skillTree(DruidSkill.BrutalPoisonCreeper, _childless),
+              _skillTree(DruidSkill.FerociousPoisonCreeper, _childless),
             ],
           ),
         ],

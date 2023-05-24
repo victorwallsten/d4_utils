@@ -96,10 +96,10 @@ enum DruidSkill {
   BrutalRavens,
   FerociousRavens,
 
-  VineCreeper,
-  EnhancedVineCreeper,
-  BrutalVineCreeper,
-  FerociousVineCreeper,
+  PoisonCreeper,
+  EnhancedPoisonCreeper,
+  BrutalPoisonCreeper,
+  FerociousPoisonCreeper,
 
   NaturesReach,
 

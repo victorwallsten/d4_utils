@@ -410,13 +410,13 @@ class SkillWidget extends StatelessWidget {
       case DruidSkill.FerociousRavens:
         return (skillMap[DruidSkill.BrutalRavens]?.assignedSkillPoints ?? 0) ==
             0;
-      case DruidSkill.BrutalVineCreeper:
-        return (skillMap[DruidSkill.FerociousVineCreeper]
+      case DruidSkill.BrutalPoisonCreeper:
+        return (skillMap[DruidSkill.FerociousPoisonCreeper]
                     ?.assignedSkillPoints ??
                 0) ==
             0;
-      case DruidSkill.FerociousVineCreeper:
-        return (skillMap[DruidSkill.BrutalVineCreeper]?.assignedSkillPoints ??
+      case DruidSkill.FerociousPoisonCreeper:
+        return (skillMap[DruidSkill.BrutalPoisonCreeper]?.assignedSkillPoints ??
                 0) ==
             0;
       case DruidSkill.NaturalBoulder:
