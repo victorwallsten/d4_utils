@@ -10,6 +10,565 @@ abstract class Barbarian {
 
   static List<Tree<Enum>> get _childless => const [];
 
+  static List<String> descriptionOf(BarbarianSkill barbarianSkill, int level) {
+    int perLevel = level > 0 ? level - 1 : level;
+    String s;
+    switch (barbarianSkill) {
+      case BarbarianSkill.Bash:
+        return [
+          'Generate Fury: 10',
+          'Lucky Hit Chance: 50%',
+          'Bash the enemy with your weapon, dealing ${30 + 3 * perLevel}% damage. After bashing enemies 4 times, your next Bash will Stun for 1.25 seconds, this increases to 2 seconds if using a Two-Handed weapon.',
+        ];
+      case BarbarianSkill.EnhancedBash:
+        return [
+          'Damaging a Stunned enemy with Bash grants you 10% Base Life as Fortify. Double this amount when using a Two-Handed weapon.',
+        ];
+      case BarbarianSkill.BattleBash:
+        return [
+          'Damaging a Stunned enemy with Bash generates an additional 3 Fury, or 4 Fury if using a Two-Handed weapon.',
+        ];
+      case BarbarianSkill.CombatBash:
+        return [
+          'After Critically Striking 4 times with Bash using a Two-Handed weapon, your next Core or Weapon Mastery Skill will Overpower.',
+        ];
+      case BarbarianSkill.Flay:
+        return [
+          'Generate Fury: 9',
+          'Lucky Hit Chance: 50%',
+          'Flay the enemy, dealing ${5 + 0.5 * perLevel}% damage and inflicting ${36 + 3.5 * perLevel}% Bleeding damage over 5 seconds.',
+        ];
+      case BarbarianSkill.EnhancedFlay:
+        return [
+          'Flay has a 10% chance to make the enemy Vulnerable for 2 seconds. Double this chance when using a Two-Handed weapon.',
+        ];
+      case BarbarianSkill.BattleFlay:
+        return [
+          'When Flay deals direct damage to an enemy, they take 10% increased Bleeding damage from you for the next 3 seconds.',
+        ];
+      case BarbarianSkill.CombatFlay:
+        return [
+          'When Flay deals direct damage to an enemy, you gain 3% Damage Reduction and 32 Thorns for 3 seconds. This stacks up to 4 times.',
+        ];
+      case BarbarianSkill.Frenzy:
+        return [
+          'Generate Fury: 4',
+          'Lucky Hit Chance: 30%',
+          'Unleash a rapid flurry of blows, dealing ${20 + 2 * perLevel}% damage with each pair of hits. If Frenzy hits an enemy, its Attack Speed is increased by 20% for 3 seconds, up to 60%.',
+        ];
+      case BarbarianSkill.EnhancedFrenzy:
+        return [
+          'While Frenzy is granting 60% bonus Attack Speed, it also generates 2 additional Fury.',
+        ];
+      case BarbarianSkill.BattleFrenzy:
+        return [
+          'While Berserking, your other skills gain 5% Attack Speed for each stack of Frenzy you have.',
+        ];
+      case BarbarianSkill.CombatFrenzy:
+        return [
+          'You gain 8% Damage Reduction for each stack of Frenzy you currently have.',
+        ];
+      case BarbarianSkill.LungingStrike:
+        return [
+          'Generate Fury: 9',
+          'Lucky Hit Chance: 50%',
+          'Lunge forward and strike an enemy for ${30 + 3 * perLevel}% damage.',
+        ];
+      case BarbarianSkill.EnhancedLungingStrike:
+        return [
+          'Lunging Strike deals 30% increased damage and Heals you for 2% Maximum Life when it damages a Healthy enemy.',
+        ];
+      case BarbarianSkill.BattleLungingStrike:
+        return [
+          'Lunging Strike also inflicts 20% Bleeding damage over 5 seconds.'
+        ];
+      case BarbarianSkill.CombatLungingStrike:
+        return [
+          'Critical Strikes with Lunging Strike grant you Berserking for 1.5 seconds.'
+        ];
+      case BarbarianSkill.DoubleSwing:
+        return [
+          'Fury Cost: 25',
+          'Lucky Hit Chance: 30%',
+          'Sweep your weapons from opposite directions, dealing ${36 + 3.5 * perLevel}% damage with each weapon. Enemies caught in the center are damaged by both.',
+        ];
+      case BarbarianSkill.EnhancedDoubleSwing:
+        return [
+          'If Double Swing damages a Stunned or Knocked Down enemy, gain 25 Fury.',
+        ];
+      case BarbarianSkill.FuriousDoubleSwing:
+        return [
+          'Casting Double Swing while Berserking grants 2 additional seconds of Berserking.',
+        ];
+      case BarbarianSkill.ViolentDoubleSwing:
+        return [
+          'Hitting an enemy with both hits of Double Swing makes them Vulnerable for 1 second.',
+        ];
+      case BarbarianSkill.HammerOfTheAncients:
+        return [
+          'Fury Cost: 35',
+          'Lucky Hit Chance: 50%',
+          'Slam your hammer down with the fury of the Ancients, dealing ${50 + 5 * perLevel}% damage to a concentrated area.',
+        ];
+      case BarbarianSkill.EnhancedHammerOfTheAncients:
+        return [
+          'Gain 3% more Fury for 5 seconds for each enemy damaged by Hammer of the Ancients, stacking up to 10 times.',
+        ];
+      case BarbarianSkill.FuriousHammerOfTheAncients:
+        return [
+          'Hammer of the Ancients deals 1% additional damage for each point of Fury you had when using it.',
+        ];
+      case BarbarianSkill.ViolentHammerOfTheAncients:
+        return [
+          'After Overpowering with Hammer of the Ancients, you deal 30% more damage for 5 seconds.',
+        ];
+      case BarbarianSkill.Rend:
+        return [
+          'Fury Cost: 35',
+          'Lucky Hit Chance: 33%',
+          'Cleave enemies in front of you, dealing ${12 + 1.33 * perLevel}% damage and inflicting ${96 + 9.5 * perLevel}% Bleeding damage over 5 seconds.',
+        ];
+      case BarbarianSkill.EnhancedRend:
+        return [
+          'Dealing direct damage with Rend extends the duration of Vulnerable on enemies by 2 seconds.',
+        ];
+      case BarbarianSkill.FuriousRend:
+        return [
+          'Direct damage with Rend grants 4 Fury per enemy hit, up to a maximum of 20 Fury.',
+        ];
+      case BarbarianSkill.ViolentRend:
+        return [
+          'Rend deals 12% increased damage to Vulnerable enemies.',
+        ];
+      case BarbarianSkill.Upheaval:
+        return [
+          'Fury Cost: 40',
+          'Lucky Hit Chance: 25%',
+          'Tear into the ground with your weapon and fling debris forward, dealing ${70 + 7 * perLevel}% damage.',
+        ];
+      case BarbarianSkill.EnhancedUpheaval:
+        return [
+          'Upheaval has a 20% chance to Stun all enemies it damages for 2.5 seconds.',
+        ];
+      case BarbarianSkill.FuriousUpheaval:
+        return [
+          'Dealing direct damage to an enemy with a Skill that is not Upheaval causes your next cast of Upheaval to deal 3% increased damage, stacking up to 10 times.',
+        ];
+      case BarbarianSkill.ViolentUpheaval:
+        return [
+          'If Upheaval damages at least 2 enemies, you gain Berserking for 2 seconds, increased to 3 seconds if it damages at least 4 enemies.',
+        ];
+      case BarbarianSkill.Whirlwind:
+        return [
+          'Fury Cost: 25 per second',
+          'Lucky Hit Chance: 20%',
+          'Rapidly attack surrounding enemies for ${17 + 2 * perLevel}% damage.',
+        ];
+      case BarbarianSkill.EnhancedWhirlwind:
+        return [
+          'Gain 1 Fury each time Whirlwind deals direct damage to an enemy, or 4 Fury against Elite enemies.',
+        ];
+      case BarbarianSkill.FuriousWhirlwind:
+        return [
+          'While using a Slashing weapon, Whirlwind also inflicts 40% of its Base damage as Bleeding damage over 5 seconds.',
+        ];
+      case BarbarianSkill.ViolentWhirlwind:
+        return [
+          'After using Whirlwind for 2 seconds, Whirlwind deals 30% increased damage until it is cancelled.',
+        ];
+      case BarbarianSkill.PressurePoint:
+        return [
+          'Lucky Hit: Your Core skills have up to a ${10 + 10 * perLevel}% chance to make enemies Vulnerable for 2 seconds.',
+        ];
+      case BarbarianSkill.EndlessFury:
+        return [
+          'Basic Skills generate ${5 + 5 * perLevel}% more Fury when using Two-Handed weapons.',
+        ];
+      case BarbarianSkill.ChallengingShout:
+        return [
+          'Cooldown: 25 seconds',
+          'Taunt Nearby enemies and gain ${40 + 4 * perLevel}% Damage Reduction for 6 seconds.',
+        ];
+      case BarbarianSkill.EnhancedChallengingShout:
+        return [
+          'While Challenging Shout is active, gain 20% bonus Maximum Life.',
+        ];
+      case BarbarianSkill.StrategicChallengingShout:
+        return [
+          'While Challenging Shout is active, gain Thorns equal to 30% of your Maximum Life.',
+        ];
+      case BarbarianSkill.TacticalChallengingShout:
+        return [
+          'While Challenging Shout is active, you gain 3 Fury each time you take damage.',
+        ];
+      case BarbarianSkill.GroundStomp:
+        return [
+          'Cooldown: ${16 - 0.8 * perLevel} seconds',
+          'Lucky Hit Chance: 33%',
+          'Smash the ground, dealing ${10 + 0.8 * perLevel}% damage and Stunning surrounding enemies for 3 seconds.',
+        ];
+      case BarbarianSkill.EnhancedGroundStomp:
+        return [
+          'Increase Ground Stomp\'s duration by 1 second.',
+        ];
+      case BarbarianSkill.StrategicGroundStomp:
+        return [
+          'Reduce the Cooldown of your Ultimate Skill by 1 second for each enemy damaged by Ground Stomp.',
+        ];
+      case BarbarianSkill.TacticalGroundStomp:
+        return [
+          'Ground Stomp generates 25 Fury.',
+        ];
+      case BarbarianSkill.IronSkin:
+        return [
+          'Cooldown: 14 seconds',
+          'Steel yourself, gaining a Barrier that absorbs ${50 + 5 * perLevel}% of your missing Life for 5 seconds.',
+        ];
+      case BarbarianSkill.EnhancedIronSkin:
+        return [
+          'Iron Skin\'s Barrier absorbs 10% more of your Maximum Life.',
+        ];
+      case BarbarianSkill.StrategicIronSkin:
+        return [
+          'Iron Skin also grants 15% Base Life as Fortify. Double this amount if cast while below 50% Life.',
+        ];
+      case BarbarianSkill.TacticalIronSkin:
+        return [
+          'While Iron Skin is active, Heal for 10% of the Barrier\'s original amount as Life per second.',
+        ];
+      case BarbarianSkill.RallyingCry:
+        return [
+          'Cooldown: 25 seconds',
+          'Bellow a rallying cry, increasing your Movement Speed by 30% ang Resource Generation by ${40 + 4 * perLevel}% for 6 seconds, and Nearby allies for 3 seconds.',
+        ];
+      case BarbarianSkill.EnhancedRallyingCry:
+        return [
+          'Rallying Cry grants you Unstoppable while active.',
+        ];
+      case BarbarianSkill.StrategicRallyingCry:
+        return [
+          'Rallying Cry grants you 10% Base Life as Fortify. While Rallying Cry is active, you gain an additional 2% Base Life as Fortify each time you take or deal direct damage.',
+        ];
+      case BarbarianSkill.TacticalRallyingCry:
+        return [
+          'Rallying Cry generates 20 Fury and grants you an additional 20% Resource Generation.',
+        ];
+      case BarbarianSkill.ImposingPresence:
+        return [
+          'Gain ${5 + 5 * perLevel}% additional Maximum Life.',
+        ];
+      case BarbarianSkill.MartialVigor:
+        return [
+          'Damage Reduction against Elites is increased by ${3 + 3 * perLevel}%.',
+        ];
+      case BarbarianSkill.Outburst:
+        return [
+          'Gain ${13 + 13 * perLevel} Thorns. Also gain 6 Thorns for each 32 bonus Maximum Life you have.',
+        ];
+      case BarbarianSkill.ToughAsNails:
+        return [
+          'Increase your Thorns by ${3 + 3 * perLevel}%. When enemies hit you, they take an additional 10% of your Thorns as Bleeding damage over 5 seconds.',
+        ];
+      case BarbarianSkill.Charge:
+        return [
+          'Cooldown: ${17 - 0.85 * perLevel} seconds',
+          'Lucky Hit Chance: 33%',
+          'Become Unstoppable and rush forward, pushing enemies with you then swinging through them for ${25 + 3 * perLevel}% damage and Kocking them Back.',
+        ];
+      case BarbarianSkill.EnhancedCharge:
+        return [
+          'Enemies who are Knocked Back into terrain by Charge take 15% damage and are Stunned for 3 seconds.',
+        ];
+      case BarbarianSkill.MightyCharge:
+        return [
+          'Damaging enemies with Charge makes them Vulnerable for 2 seconds.',
+        ];
+      case BarbarianSkill.PowerCharge:
+        return [
+          'Reduce Charge\'s Cooldown by 3 seconds if it Knocks Back an enemy into terrain.',
+        ];
+      case BarbarianSkill.Kick:
+        return [
+          'Charges: 2',
+          'Charge Cooldown: ${17 - 0.85 * perLevel} seconds',
+          'Lucky Hit Chance: 40%',
+          'Throw a powerful kick that deals 18% damage and Knocks Back enemies in front of you. Enemies who are Knocked Back into terrain take an additional 54% damage and are Stunned for 3 seconds.',
+        ];
+      case BarbarianSkill.EnhancedKick:
+        return [
+          'Damaging enemies with Kick makes them Vulnerable for 4 seconds.',
+        ];
+      case BarbarianSkill.MightyKick:
+        return [
+          'Kicked enemies deal 54% damage to enemies they collide with while being Knocked Back. Enemies damaged this way are Knocked Down for 2 seconds.',
+        ];
+      case BarbarianSkill.PowerKick:
+        return [
+          'If Kick damages an enemy, it consumes all of your Fury and deals an additional 20% damage per 10 Fury spent. Kick no longer Knocks Back enemies.',
+        ];
+      case BarbarianSkill.Leap:
+        return [
+          'Cooldown: ${17 - 0.85 * perLevel} seconds',
+          'Lucky Hit Chance: 66%',
+          'Leap forward and then slam down, dealing ${33 + 3 * perLevel}% damage and Knocking Back surrounding enemies on impact.',
+        ];
+      case BarbarianSkill.EnhancedLeap:
+        return [
+          'If Leap doesn\'t damage any enemies, its Cooldown is reduced by 4 seconds.',
+        ];
+      case BarbarianSkill.MightyLeap:
+        return [
+          'Enemies damaged by Leap are Slowed by 50% for 5 seconds.',
+        ];
+      case BarbarianSkill.PowerLeap:
+        return [
+          'If Leap damages at least one enemy, gain 40 Fury.',
+        ];
+      case BarbarianSkill.WarCry:
+        return [
+          'Cooldown: 25 seconds',
+          'Bellow a mighty war cry, increasing your damage dealt by ${15 + 1.5 * perLevel}% for 6 seconds, and Nearby allies for 3 seconds.',
+        ];
+      case BarbarianSkill.EnhancedWarCry:
+        return [
+          'War Cry grants you Berserking for 4 seconds.',
+        ];
+      case BarbarianSkill.MightyWarCry:
+        return [
+          'War Cry grants you 15% Base Life as Fortify.',
+        ];
+      case BarbarianSkill.PowerWarCry:
+        return [
+          'If at least 6 enemies are Nearby when you cast War Cry, your damage bonus is increased by an additional 10%.',
+        ];
+      case BarbarianSkill.BoomingVoice:
+        return [
+          'Your Shout Skill effect durations are increased by ${8 + 8 * perLevel}%.',
+        ];
+      case BarbarianSkill.RaidLeader:
+        return [
+          'Your Shouts also Heal allies for ${1 + 1 * perLevel}% of their Maximum Life per second.',
+        ];
+      case BarbarianSkill.GutturalYell:
+        return [
+          'Your Shout Skills cause enemies to deal ${4 + 4 * perLevel}% less damage for 5 seconds.',
+        ];
+      case BarbarianSkill.AggressiveResistance:
+        return [
+          'Gain ${3 + 3 * perLevel}% Damage Reduction while Berserking.',
+        ];
+      case BarbarianSkill.BattleFervor:
+        s = perLevel > 0 ? 'seconds' : 'second';
+        return [
+          'When a Brawling Skill damages at least one enemy, gain Berserking for ${1 + 1 * perLevel} $s',
+        ];
+      case BarbarianSkill.ProlificFury:
+        return [
+          'While Berserking, Fury Generation is increased by ${6 + 6 * perLevel}%.',
+        ];
+      case BarbarianSkill.Swiftness:
+        return [
+          'Movement Speed is increased by ${4 + 4 * perLevel}%.',
+        ];
+      case BarbarianSkill.QuickImpulses:
+        return [
+          'Reduce the duration of Control Impairing Effects by ${6 + 6 * perLevel}%.',
+        ];
+      case BarbarianSkill.DeathBlow:
+        return [
+          '',
+        ];
+      case BarbarianSkill.EnhancedDeathBlow:
+        return [
+          '',
+        ];
+      case BarbarianSkill.FightersDeathBlow:
+        return [
+          '',
+        ];
+      case BarbarianSkill.WarriorsDeathBlow:
+        return [
+          '',
+        ];
+      case BarbarianSkill.Rupture:
+        return [
+          'Cooldown: ${10 - 0.5 * perLevel} seconds',
+          'Lucky Hit Chance: 50%',
+          'Skewer enemies in front of you, dealing 13% damage, then rip your weapon out, damaging enemies for their total Bleeding amount and removing all Bleeding damage from them.',
+        ];
+      case BarbarianSkill.EnhancedRupture:
+        return [
+          'Ripping your weapon out of enemies during Rupture causes an explosion that deals 30% Bleeding damage over 5 seconds.',
+        ];
+      case BarbarianSkill.FightersRupture:
+        return [
+          'Hitting at least 1 enemy with Rupture Heals your for 15% of your Maximum Life.',
+        ];
+      case BarbarianSkill.WarriorsRupture:
+        return [
+          'Hitting enemies with Rupture increases your Attack Speed by 20% for 4 seconds.',
+        ];
+      case BarbarianSkill.SteelGrasp:
+        return [
+          'Charges: 2',
+          'Charge Cooldown: ${11 - 0.55 * perLevel} seconds',
+          'Lucky Hit Chance: 25%',
+          'Throw out a trio of chains that deal ${23 + 2 * perLevel}% damage and Pull In enemies.',
+        ];
+      case BarbarianSkill.EnhancedSteelGrasp:
+        return [
+          'Steel Grasp also makes enemies Vulnerable for 2.5 seconds.',
+        ];
+      case BarbarianSkill.FightersSteelGrasp:
+        return [
+          'If Steel Grasp damages an enemy, gain Berserking for 2 seconds.',
+        ];
+      case BarbarianSkill.WarriorsSteelGrasp:
+        return [
+          'Steel Grasp gains 1 additional Charge.',
+        ];
+      case BarbarianSkill.PitFighter:
+        return [
+          'You deal ${3 + 3 * perLevel}% increased damage to Close enemies and gain ${2 + 2 * perLevel}% Distant Damage Reduction.',
+        ];
+      case BarbarianSkill.NoMercy:
+        return [
+          'You have ${3 + 3 * perLevel}% increased Critical Strike chance against Immobilized, Stunned, or Slowed enemies.',
+        ];
+      case BarbarianSkill.SlayingStrike:
+        return [
+          'You deal ${8 + 7.5 * perLevel}% increased damage against Injured enemies.',
+        ];
+      case BarbarianSkill.ExposeVulnerability:
+        s = perLevel > 0 ? 'seconds' : 'second';
+        return [
+          'Dealing direct damage with a Weapon Mastery skill causes your next Core Skill to make enemies Vulnerable for ${1 + 1 * perLevel} $s',
+        ];
+      case BarbarianSkill.ThickSkin:
+        return [
+          'Each time you take direct damage gain ${0.4 + 0.35 * perLevel}% Base Life as Fortify.',
+        ];
+      case BarbarianSkill.DefensiveStance:
+        return [
+          'Increase the Damage Reduction gained while you are Fortified by an additional ${2 + 2 * perLevel}%.',
+        ];
+      case BarbarianSkill.Counteroffensive:
+        return [
+          'While you have Fortify for over 50% of your Maximum Life, you deal ${4 + 4 * perLevel}% increased damage.',
+        ];
+      case BarbarianSkill.Hamstring:
+        return [
+          'Your Bleeding effects Slow enemies by ${10 + 10 * perLevel}%.',
+        ];
+      case BarbarianSkill.CutToTheBone:
+        return [
+          'Your Bleeding effects deal ${6 + 6 * perLevel}% increased damage to Vulnerable enemies.',
+        ];
+      case BarbarianSkill.CallOfTheAncients:
+        return [
+          'Cooldown: 50 seconds',
+          'Lucky Hit Chance: 30%',
+          'Call upon 3 Ancients to aid you in battle for 6 seconds.',
+          '* Korlic leaps at enemies, dealing 104% damage and swings his weapons in a frenzy, dealing 39% damage per hit.',
+          '* Talic spins in a whirlwind rapidly attacking enemies for 65% damage.',
+          '* Madawc upheaves the ground, dealing 195% damage.',
+        ];
+      case BarbarianSkill.PrimeCallOfTheAncients:
+        return [
+          'While Call of the Ancients is active, gain 10% bonus Attack Speed and 10% increased damage.',
+        ];
+      case BarbarianSkill.SupremeCallOfTheAncients:
+        return [
+          'Each of the Ancients gains additional power:',
+          '* Korlic: You gain 10 Fury each time Korlic damages an enemy with his Frenzy.',
+          '* Talic: Enemies are Slowed by 50% for 1 second when damaged by his Whirlwind.',
+          '* Madawc: 30% chance to Stun enemies for 3 seconds when using his Upheaval.',
+        ];
+      case BarbarianSkill.IronMaelstrom:
+        return [
+          'Cooldown: 60 seconds',
+          'Lucky Hit Chance: 24%',
+          'Activate three times to attach chains to each of your weapons and perform an attack:',
+          '* First, your Two-Handed Bludgeoning weapon slams into the ground, dealing 60% damage and Stunning enemies for 2 seconds.',
+          '* Next, your Two-Handed Slashing weapon swipes in front of you, dealing 20% damage and inflicting 120% Bleeding damage over 5 seconds.',
+          '* Finally, your Dual Wield weapons swing around you, dealing 33% damage per hit.',
+        ];
+      case BarbarianSkill.PrimeIronMaelstrom:
+        return [
+          'Iron Maelstrom gains 10% increased Critical Strike Chance and deals 20% increased Critical Strike Damage.',
+        ];
+      case BarbarianSkill.SupremeIronMaelstrom:
+        return [
+          'Dealing direct damage to an enemy after swapping weapons reduces Iron Maelstrom\'s Cooldown by 1 second.',
+        ];
+      case BarbarianSkill.WrathOfTheBerserker:
+        return [
+          'Cooldown: 60 seconds',
+          'Explode into rage, Knocking Back surrounding enemies and gaining Berserking and Unstoppable for 5 seconds. For the next 10 seconds, dealing direct damage with Basic Skills grants Berserking for 5 seconds.',
+        ];
+      case BarbarianSkill.PrimeWrathOfTheBerserker:
+        return [
+          'While Wrath of tme Berserker is active, gain 20% increased Movement Speed and increase Fury Generation by 30%.',
+        ];
+      case BarbarianSkill.SupremeWrathOfTheBerserker:
+        return [
+          'While Wrath of the Berserker is active, every 50 Fury you spend increases Berserk\'s damage bonus by 25%.',
+        ];
+      case BarbarianSkill.HeavyHanded:
+        return [
+          'While using Two-Handed weapons you deal ${5 + 5 * perLevel}% increased Critical Strike Damage.',
+        ];
+      case BarbarianSkill.Wallop:
+        return [
+          'Your Skills using Bludgeoning weapons deal ${5 + 5 * perLevel}% increased damage if the enemy is Stunned or Vulnerable.',
+        ];
+      case BarbarianSkill.BruteForce:
+        return [
+          'Your Overpowers deal ${15 + 15 * perLevel}% increased damage when using a Two-Handed weapon.',
+        ];
+      case BarbarianSkill.Concussion:
+        return [
+          'Lucky Hit: Skills using Bludgeoning weapons have up to a ${10 + 10 * perLevel}% chance to Stun enemies for 3 seconds, or up to a ${15 + 15 * perLevel}% chance when using a Two-Handed Bludgeoning weapon.',
+        ];
+      case BarbarianSkill.TemperedFury:
+        return [
+          'Increase your Maximum Fury by ${3 + 3 * perLevel}.',
+        ];
+      case BarbarianSkill.FuriousImpulse:
+        return [
+          'Each time you swap weapons, gain ${2 + 2 * perLevel} Fury.',
+        ];
+      case BarbarianSkill.InvigoratingFury:
+        return [
+          'Heal for ${3 + 3 * perLevel}% of your Maximum Life for each 100 Fury spent.',
+        ];
+      case BarbarianSkill.Duelist:
+        return [
+          'Attack Speed is increased by ${3 + 3 * perLevel}% while using One-Handed weapons.',
+        ];
+      case BarbarianSkill.Unconstrained:
+        return [
+          'Increase Berserk\'s maximum duration by 5 seconds and increase its damage bonus by 25%.',
+        ];
+      case BarbarianSkill.WalkingArsenal:
+        return [
+          'Dealing direct damage with a Two-Handed Bludgeoning, Two-Handed Slashing, or Dual Wielded weapons grants 10% increased damage for 6 seconds.',
+          '',
+          'While all three damage bonuses are active, you gain an additional 15% increased damage.',
+        ];
+      case BarbarianSkill.UnbridledRage:
+        return [
+          'Core Skills deal 135% increased damage, but cost 100% more Fury.',
+        ];
+      case BarbarianSkill.GushingWounds:
+        return [
+          'When causing an enemy to Bleed, you have a chance equal to your Critical Strike Chance to increase the Bleed amount by 100% of your Critical Strike Damage bonus.',
+          '',
+          'Overpowering a Bleeding enemy creates an explosion that inflicts 11% Bleeding damage over 5 seconds.',
+        ];
+    }
+  }
+
   static BarbarianCluster clusterOf(BarbarianSkill barbarianSkill) {
     switch (barbarianSkill) {
       case BarbarianSkill.Bash:
