@@ -12,7 +12,6 @@ abstract class Rogue {
 
   static List<String> descriptionOf(RogueSkill rogueSkill, int level) {
     int perLevel = level > 0 ? level - 1 : level;
-    String s;
     switch (rogueSkill) {
       case RogueSkill.BladeShift:
         return [
