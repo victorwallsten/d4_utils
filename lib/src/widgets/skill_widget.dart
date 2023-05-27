@@ -1413,19 +1413,73 @@ class SkillWidget extends StatelessWidget {
         shape: Theme.of(context).expansionTileTheme.shape,
         childrenPadding: Theme.of(context).expansionTileTheme.childrenPadding,
         title: Text(EnumUtils.enumToNameWithSpaces(skillTree.element)),
-        trailing: AllocationWidget(
-          skillTree.element,
-          level: skillMap[skillTree.element]?.assignedSkillPoints ?? 0,
-          onMinusPressed: () {
-            if (_isDecrementable) {
-              decrementCallback(skillTree.element);
-            }
-          },
-          onPlusPressed: () {
-            if (_isIncrementable) {
-              incrementCallback(skillTree.element);
-            }
-          },
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  List<String> description;
+                  List<Widget> info;
+                  Enum skill = skillTree.element;
+                  int level = (skillMap[skill]?.assignedSkillPoints ?? 0) +
+                      (skillMap[skill]?.bonusSkillPoints ?? 0);
+                  if (skill is BarbarianSkill) {
+                    description = Barbarian.descriptionOf(skill, level);
+                  } else if (skillTree.element is DruidSkill) {
+                    description =
+                        Druid.descriptionOf(skill as DruidSkill, level);
+                  } else if (skillTree.element is NecromancerSkill) {
+                    description = Necromancer.descriptionOf(
+                        skill as NecromancerSkill, level);
+                  } else if (skillTree.element is RogueSkill) {
+                    description =
+                        Rogue.descriptionOf(skill as RogueSkill, level);
+                  } else if (skillTree.element is SorcererSkill) {
+                    description =
+                        Sorcerer.descriptionOf(skill as SorcererSkill, level);
+                  } else {
+                    description = [];
+                  }
+                  info = description
+                      .map((e) => Text(e))
+                      .toList(growable: true)
+                      .fold([], (b, a) {
+                    b.add(a);
+                    b.add(const SizedBox(height: 15));
+                    return b;
+                  });
+                  info.removeLast();
+                  return Dialog(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: info,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              icon: const Icon(Icons.info_rounded),
+            ),
+            AllocationWidget(
+              skillTree.element,
+              level: skillMap[skillTree.element]?.assignedSkillPoints ?? 0,
+              onMinusPressed: () {
+                if (_isDecrementable) {
+                  decrementCallback(skillTree.element);
+                }
+              },
+              onPlusPressed: () {
+                if (_isIncrementable) {
+                  incrementCallback(skillTree.element);
+                }
+              },
+            ),
+          ],
         ),
         children: skillTree.children
             .map(
