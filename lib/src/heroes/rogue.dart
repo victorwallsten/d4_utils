@@ -547,7 +547,7 @@ abstract class Rogue {
         ];
       case RogueSkill.AdrenalineRush:
         return [
-          'While moving, you gain ${5 + 5 * perLevel} increased Energy Regeneration.',
+          'While moving, you gain ${5 + 5 * perLevel}% increased Energy Regeneration.',
         ];
       case RogueSkill.Haste:
         return [
