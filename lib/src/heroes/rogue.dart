@@ -754,6 +754,15 @@ abstract class Rogue {
       case RogueSkill.Caltrops:
       case RogueSkill.Dash:
       case RogueSkill.ShadowStep:
+      case RogueSkill.Concealment:
+      case RogueSkill.PoisonTrap:
+      case RogueSkill.SmokeGrenade:
+      case RogueSkill.ColdImbuement:
+      case RogueSkill.PoisonImbuement:
+      case RogueSkill.ShadowImbuement:
+      case RogueSkill.DeathTrap:
+      case RogueSkill.RainOfArrows:
+      case RogueSkill.ShadowClone:
         return SkillType.Active;
       case RogueSkill.EnhancedBladeShift:
       case RogueSkill.EnhancedForcefulArrow:
@@ -830,16 +839,7 @@ abstract class Rogue {
       case RogueSkill.RapidGambits:
       case RogueSkill.TrickAttacks:
       case RogueSkill.Rugged:
-      case RogueSkill.Concealment:
       case RogueSkill.DarkShroud:
-      case RogueSkill.PoisonTrap:
-      case RogueSkill.SmokeGrenade:
-      case RogueSkill.ColdImbuement:
-      case RogueSkill.PoisonImbuement:
-      case RogueSkill.ShadowImbuement:
-      case RogueSkill.DeathTrap:
-      case RogueSkill.RainOfArrows:
-      case RogueSkill.ShadowClone:
       case RogueSkill.ReactiveDefense:
       case RogueSkill.WeaponMastery:
       case RogueSkill.Exploit:
