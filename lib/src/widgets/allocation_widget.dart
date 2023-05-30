@@ -5,34 +5,31 @@ class AllocationWidget extends StatelessWidget {
     this.skill, {
     super.key,
     required this.level,
-    this.onMinusPressed,
-    this.onPlusPressed,
+    required this.maxAssignedLevel,
+    required this.onPressed,
+    required this.onLongPress,
+    required this.color,
   });
 
   final Enum skill;
   final int level;
-  final VoidCallback? onMinusPressed;
-  final VoidCallback? onPlusPressed;
+  final int maxAssignedLevel;
+  final VoidCallback onPressed;
+  final VoidCallback onLongPress;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        IconButton(
-          onPressed: onMinusPressed,
-          icon: const Icon(
-            Icons.remove,
-          ),
+    return TextButton(
+      onPressed: onPressed,
+      onLongPress: onLongPress,
+      child: Text(
+        '$level/$maxAssignedLevel',
+        style: TextStyle(
+          color: color,
+          fontWeight: FontWeight.w500,
         ),
-        Text(level.toString()),
-        IconButton(
-          onPressed: onPlusPressed,
-          icon: const Icon(
-            Icons.add,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

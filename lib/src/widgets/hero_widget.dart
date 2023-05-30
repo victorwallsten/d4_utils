@@ -6,7 +6,6 @@ import 'package:d4_utils/src/enums/druid_cluster.dart';
 import 'package:d4_utils/src/enums/necromancer_cluster.dart';
 import 'package:d4_utils/src/enums/rogue_cluster.dart';
 import 'package:d4_utils/src/enums/sorcerer_cluster.dart';
-import 'package:d4_utils/src/utils/enum_utils.dart';
 import 'package:d4_utils/src/widgets/cluster_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -89,59 +88,44 @@ class _HeroWidgetState extends State<HeroWidget> {
       (_skillMap[_skillTree.element]?.assignedSkillPoints ?? 0) >=
       _thresholdOf(cluster);
 
-  bool _isClusterDecrementable(Enum cluster) {
+  int _maxClusterReduction(Enum cluster) {
     Iterable<Enum> clusters = _skillTree.children.map((child) => child.element);
-    int runningSum = 0;
-    if ((_skillMap[cluster]?.assignedSkillPoints ?? 0) == 0 ||
-        clusters.isEmpty) {
-      return false;
-    }
-    Iterable<Enum> clustersWithPoints = clusters
-        .where((element) => (_skillMap[element]?.assignedSkillPoints ?? 0) > 0);
-    runningSum = clustersWithPoints
-        .takeWhile((value) => value.index <= cluster.index)
-        .fold(0, (b, a) => b + (_skillMap[a]?.assignedSkillPoints ?? 0));
-    for (Enum e in clustersWithPoints
-        .skipWhile((value) => value.index <= cluster.index)) {
-      if (runningSum <= _thresholdOf(e)) {
-        return false;
+    List<int> clusterReductions = List.empty(growable: true);
+    clusterReductions.add(_skillMap[cluster]?.assignedSkillPoints ?? 0);
+    List<Enum> clustersWithPoints = clusters
+        .where((element) => (_skillMap[element]?.assignedSkillPoints ?? 0) > 0)
+        .toList();
+    clustersWithPoints.sort((a, b) => a.index.compareTo(b.index));
+    clustersWithPoints.fold(0, (b, a) {
+      if (a.index > cluster.index) {
+        clusterReductions.add(b - _thresholdOf(a));
       }
-      runningSum += (_skillMap[e]?.assignedSkillPoints ?? 0);
-    }
-    return true;
+      return b + (_skillMap[a]?.assignedSkillPoints ?? 0);
+    });
+    clusterReductions.sort();
+    return clusterReductions.first;
   }
 
   @override
   Widget build(BuildContext context) => ListView(
-        children: <Widget>[
-              ListTile(
-                title: Text(
-                  '${EnumUtils.enumToNameWithSpaces(_skillTree.element)} total:'
-                  ' ${_skillMap[_skillTree.element]?.assignedSkillPoints ?? 0}',
-                ),
-              ),
-            ] +
-            _skillTree.children
-                .map((child) => ClusterWidget(
-                      parent: _skillTree.element,
-                      skillTree: child,
-                      skillMap: _skillMap,
-                      isClusterUnlocked: _isClusterUnlocked(child.element),
-                      isClusterDecrementable:
-                          _isClusterDecrementable(child.element),
-                      incrementCallback: (Set<Enum> es) => setState(() {
-                        _skillMap[_skillTree.element]?.assignedSkillPoints++;
-                        for (Enum e in es) {
-                          _skillMap[e]?.assignedSkillPoints++;
-                        }
-                      }),
-                      decrementCallback: (Set<Enum> es) => setState(() {
-                        _skillMap[_skillTree.element]?.assignedSkillPoints--;
-                        for (Enum e in es) {
-                          _skillMap[e]?.assignedSkillPoints--;
-                        }
-                      }),
-                    ))
-                .toList(growable: false),
+        children: _skillTree.children
+            .map((child) => ClusterWidget(
+                  parent: _skillTree.element,
+                  skillTree: child,
+                  skillMap: _skillMap,
+                  isClusterUnlocked: _isClusterUnlocked(child.element),
+                  maxClusterReduction: _maxClusterReduction(child.element),
+                  callback: (Enum e, int d) => setState(() {
+                    if (e is BarbarianCluster ||
+                        e is DruidCluster ||
+                        e is NecromancerCluster ||
+                        e is RogueCluster ||
+                        e is SorcererCluster) {
+                      _skillMap[_skillTree.element]?.assignedSkillPoints += d;
+                    }
+                    _skillMap[e]?.assignedSkillPoints += d;
+                  }),
+                ))
+            .toList(growable: false),
       );
 }

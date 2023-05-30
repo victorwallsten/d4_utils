@@ -1,6 +1,6 @@
 import 'package:d4_utils/src/heroes/rogue.dart';
 import 'package:d4_utils/src/data_structures/skill.dart';
-import 'package:d4_utils/src/pages/skill_calculator_page.dart';
+import 'package:d4_utils/src/pages/home_page.dart';
 import 'package:d4_utils/src/widgets/hero_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ class SkillCalculatorRoguePage extends StatelessWidget {
   const SkillCalculatorRoguePage({super.key});
 
   static const String title = 'Rogue';
-  static const String route = '${SkillCalculatorPage.route}/rogue';
+  static const String route = '${HomePage.route}/skill_calculator_rogue';
 
   @override
   Widget build(BuildContext context) {
