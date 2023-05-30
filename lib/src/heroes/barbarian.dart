@@ -18,7 +18,7 @@ abstract class Barbarian {
         return [
           'Generate Fury: 10',
           'Lucky Hit Chance: 50%',
-          'Bash the enemy with your weapon, dealing ${30 + 3 * perLevel}% damage. After bashing enemies 4 times, your next Bash will Stun for 1.25 seconds, this increases to 2 seconds if using a Two-Handed weapon.',
+          'Bash the enemy with your weapon, dealing ${30 + 3 * perLevel}% damage. After bashing enemies 4 times, your next Bash will Stun for 1.25 seconds, increasing to 2 seconds if using a Two-Handed weapon.',
         ];
       case BarbarianSkill.EnhancedBash:
         return [

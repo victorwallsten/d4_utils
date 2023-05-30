@@ -110,7 +110,7 @@ abstract class Druid {
         return [
           'Spirit Cost: 15 per strike',
           'Lucky Hit Chance: 15%',
-          'Conjure a growing lightning storm that deals ${32 + 3 * perLevel}% damage per strike. The number of strikes increase the longer the storm is channeled up to a maximum of 5 at once.',
+          'Conjure a growing lightning storm that deals ${32 + 3 * perLevel}% damage per strike. The number of strikes increases the longer the storm is channeled, up to a maximum of 5 at once.',
         ];
       case DruidSkill.EnhancedLightningStorm:
         return [
