@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
-  static const String title = 'Diablo IV Utilities';
+  static const String title = 'Home';
   static const String route = '/';
 
   @override
