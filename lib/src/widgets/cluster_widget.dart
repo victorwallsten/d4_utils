@@ -41,37 +41,34 @@ class _ClusterWidgetState extends State<ClusterWidget> {
         collapsedShape: Border(
           bottom: BorderSide(color: Theme.of(context).disabledColor),
         ),
-        title: const Icon(null),
+        title: Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton(
+            onPressed: null,
+            child: Text(
+              EnumUtils.enumToNameWithSpaces(
+                widget.skillTree.element,
+              ),
+              style: TextStyle(
+                color: _foregroundColor,
+                fontSize: 18.0,
+              ),
+            ),
+          ),
+        ),
         onExpansionChanged: (value) {
           setState(() {
             _isExpanded = value;
           });
         },
-        leading: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AnimatedRotation(
-              turns: _isExpanded ? -0.25 : 0,
-              duration: const Duration(milliseconds: 200),
-              child: Icon(
-                Icons.expand_more,
-                size: 24.0,
-                color: _foregroundColor,
-              ),
-            ),
-            TextButton(
-              onPressed: null,
-              child: Text(
-                EnumUtils.enumToNameWithSpaces(
-                  widget.skillTree.element,
-                ),
-                style: TextStyle(
-                  color: _foregroundColor,
-                  fontSize: 18.0,
-                ),
-              ),
-            ),
-          ],
+        leading: AnimatedRotation(
+          turns: _isExpanded ? -0.25 : 0,
+          duration: const Duration(milliseconds: 200),
+          child: Icon(
+            Icons.expand_more,
+            size: 24.0,
+            color: _foregroundColor,
+          ),
         ),
         trailing: const Icon(null),
         children: widget.skillTree.children

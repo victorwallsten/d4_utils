@@ -30,34 +30,31 @@ class _HomePageState extends State<HomePage> {
                 bottom: BorderSide(color: Theme.of(context).disabledColor)),
             collapsedShape: Border(
                 bottom: BorderSide(color: Theme.of(context).disabledColor)),
-            title: const Icon(null),
+            title: Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                onPressed: null,
+                child: Text(
+                  'Skill Calculator',
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+            ),
             onExpansionChanged: (value) {
               setState(() {
                 _isExpanded = value;
               });
             },
-            leading: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AnimatedRotation(
-                  turns: _isExpanded ? -0.25 : 0,
-                  duration: const Duration(milliseconds: 200),
-                  child: Icon(
-                    Icons.expand_more,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-                TextButton(
-                  onPressed: null,
-                  child: Text(
-                    'Skill Calculator',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 18.0,
-                    ),
-                  ),
-                ),
-              ],
+            leading: AnimatedRotation(
+              turns: _isExpanded ? -0.25 : 0,
+              duration: const Duration(milliseconds: 200),
+              child: Icon(
+                Icons.expand_more,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
             trailing: const Icon(null),
             children: [
@@ -85,22 +82,20 @@ class _HomePageState extends State<HomePage> {
                 .map(
                   (e) => ListTile(
                     onTap: () => Navigator.pushNamed(context, e.$2),
-                    leading: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(null),
-                        TextButton(
-                          onPressed: null,
-                          child: Text(
-                            e.$1,
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 18.0,
-                            ),
+                    title: Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextButton(
+                        onPressed: null,
+                        child: Text(
+                          e.$1,
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontSize: 18.0,
                           ),
                         ),
-                      ],
+                      ),
                     ),
+                    leading: const Icon(null),
                     trailing: Icon(
                       Icons.arrow_forward_rounded,
                       color: Theme.of(context).primaryColor,

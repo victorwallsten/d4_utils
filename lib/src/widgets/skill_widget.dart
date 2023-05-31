@@ -1737,12 +1737,15 @@ class _SkillWidgetState extends State<SkillWidget> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   ListTile(
-                    title: TextButton(
-                      onPressed: null,
-                      child: Text(
-                        EnumUtils.enumToNameWithSpaces(skill),
-                        style: TextStyle(
-                          color: _foregroundColor,
+                    title: Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextButton(
+                        onPressed: null,
+                        child: Text(
+                          EnumUtils.enumToNameWithSpaces(skill),
+                          style: TextStyle(
+                            color: _foregroundColor,
+                          ),
                         ),
                       ),
                     ),
@@ -1810,17 +1813,18 @@ class _SkillWidgetState extends State<SkillWidget> {
     return widget.skillTree.children.isEmpty
         ? ListTile(
             shape: const Border(),
-            leading: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(null),
-                title,
-              ],
+            leading: const Icon(null),
+            title: Align(
+              alignment: Alignment.centerLeft,
+              child: title,
             ),
             trailing: trailing,
           )
         : ExpansionTile(
-            title: const Icon(null),
+            title: Align(
+              alignment: Alignment.centerLeft,
+              child: title,
+            ),
             textColor: _foregroundColor,
             collapsedTextColor: _foregroundColor,
             shape: const Border(),
@@ -1830,19 +1834,13 @@ class _SkillWidgetState extends State<SkillWidget> {
                 _isExpanded = value;
               });
             },
-            leading: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AnimatedRotation(
-                  turns: _isExpanded ? -0.25 : 0,
-                  duration: const Duration(milliseconds: 200),
-                  child: Icon(
-                    Icons.expand_more,
-                    color: _foregroundColor,
-                  ),
-                ),
-                title
-              ],
+            leading: AnimatedRotation(
+              turns: _isExpanded ? -0.25 : 0,
+              duration: const Duration(milliseconds: 200),
+              child: Icon(
+                Icons.expand_more,
+                color: _foregroundColor,
+              ),
             ),
             trailing: trailing,
             children: widget.skillTree.children
