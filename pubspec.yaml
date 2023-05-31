@@ -1,7 +1,7 @@
 name: d4_utils
 description: Utilities for D4
 publish_to: 'none'
-version: 0.1.1+2
+version: 0.1.2+3
 
 environment:
   sdk: '>=3.0.0'

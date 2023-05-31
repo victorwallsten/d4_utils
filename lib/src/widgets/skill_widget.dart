@@ -86,21 +86,24 @@ class _SkillWidgetState extends State<SkillWidget> {
     Enum cluster = _clusterOf(e);
 
     switch (cluster) {
-      case BarbarianCluster.Ultimate:
       case BarbarianCluster.KeyPassive:
-      case DruidCluster.Ultimate:
       case DruidCluster.KeyPassive:
-      case NecromancerCluster.Ultimate:
       case NecromancerCluster.KeyPassive:
-      case RogueCluster.Ultimate:
       case RogueCluster.KeyPassive:
-      case SorcererCluster.Ultimate:
       case SorcererCluster.KeyPassive:
         return 1;
     }
 
     switch (skillType) {
       case SkillType.Active:
+        switch (cluster) {
+          case BarbarianCluster.Ultimate:
+          case DruidCluster.Ultimate:
+          case NecromancerCluster.Ultimate:
+          case RogueCluster.Ultimate:
+          case SorcererCluster.Ultimate:
+            return 1;
+        }
         return 5;
       case SkillType.Passive:
         return 3;
